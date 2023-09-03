@@ -6,12 +6,12 @@ const Login = () => {
 
     return (
         <div className="card">
-            {user && <h2>Welcome {user.displayName}</h2>}
+            {user && <h2>Welcome, {user.displayName}</h2>}
             {error && <h2>Error: {String(error)}</h2>}
             {loading && <h2>Loading...</h2>}
             {!user && !loading && !error && (
             <>
-                <h2>Login</h2>
+                <h2>Login to MobileObi</h2>
                 <button onClick={signInWithGoogle}>Sign in with Google</button>
             </>
             )}
