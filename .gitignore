@@ -25,4 +25,4 @@ dist-ssr
 *.env
 
 # Firebase Configurations
-src/firebase.config.tsx
+firebase.config.tsx
