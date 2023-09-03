@@ -1,23 +1,33 @@
 import './css/App.css'
-// import Home from "./components/Home";
-import { auth, signInWithGoogle } from "./GoogleProvider";
-import { useAuthState } from "react-firebase-hooks/auth";
+import Auth from './components/Auth';
+import Home from './components/Home';
+import Login from './components/Login';
+import Dashboard from './components/Dashboard';
+import {Link , Route, Routes} from "react-router-dom";
+import Logout from './components/Logout';
 
 function App() {
-  const [user, loading, error] = useAuthState(auth);
-  return (<div className='App'>
-      <div className="card">
-        {user && <h2>Welcome {user.displayName}</h2>}
-        {error && <h2>Error: {String(error)}</h2>}
-        {loading && <h2>Loading...</h2>}
-        {!user && !loading && !error && (
-          <>
-            <h2>Login</h2>
-            <button onClick={signInWithGoogle}>Sign in with Google</button>
-          </>
-        )}
-      </div>
+  return (
+    <div>
+      <Link to="/">Home</Link>
+      <Link to="/dashboard">Dashboard</Link>
+      <Link to="/logout">Logout</Link>
+      <Routes>
+          <Route path="/" element={<Login/>}/>
+          <Route path="/dashboard" element={
+            <Auth>
+              <Dashboard/>
+            </Auth>
+          }/>
+          <Route path="/logout" element={
+            <Auth>
+              <Logout/>
+            </Auth>
+          }/>
+          <Route path="/login" element={<Login/>} />
+      </Routes>
     </div>
+
   );
 }
 

@@ -20,6 +20,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src", "GoogleProvider.tsx", "firebase.config.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
