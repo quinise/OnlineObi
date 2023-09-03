@@ -7,9 +7,9 @@ const Dashboard = () => {
 
   return (
     <>
-      <h1>Dashboard</h1>
+      <h1 className="text-3xl flex items-center justify-center">Dashboard</h1>
       <div className="card">
-              {user && <h2>Welcome, {user.displayName}</h2>}
+              {user && <h2 className="text-2xl flex items-center justify-center">Welcome, {user.displayName}</h2>}
               {error && <h2>Error: {String(error)}</h2>}
               {loading && <h2>Loading...</h2>}
       </div>
