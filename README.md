@@ -1,27 +1,21 @@
-# React + TypeScript + Vite
+# Mobile Obi
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Forgot your pennies or kola nuts? Don't want to crouch in the street? MObi casts IFA Obi divination on your phone! Each cast includes an Odu and it's interpretation, a yes/no/maybe result, and a set of four kola nuts. Casts can be saved (Core Data) for later recollection in this Swift application.
 
-Currently, two official plugins are available:
+## Project Goals
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+I set out on on this coding endeavor to learn how to use ReactJS, Vite, Figma, OAuth, and TailwindCSS.
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Run the Code
 
-- Configure the top-level `parserOptions` property like this:
+1. First, clone the repository and cd into the directory. 
+2. Next, run the following commands
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+```
+npm install
+npm run dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+3. Navigate to http://localhost:5173
+
