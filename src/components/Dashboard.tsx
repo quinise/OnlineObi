@@ -1,7 +1,6 @@
 import { auth } from "./../../GoogleProvider.tsx";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-
 const Dashboard = () => {
   const [user, loading, error] = useAuthState(auth);
 
