@@ -1,3 +1,5 @@
+// This file includes the code for the Dashboard page
+
 import { auth } from "./../../GoogleProvider.tsx";
 import { useAuthState } from "react-firebase-hooks/auth";
 
