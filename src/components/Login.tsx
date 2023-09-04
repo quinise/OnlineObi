@@ -1,3 +1,5 @@
+// This file includes the code for the Login page
+
 import { auth, signInWithGoogle } from "./../../GoogleProvider.tsx";
 import { useAuthState } from "react-firebase-hooks/auth";
 
@@ -5,6 +7,7 @@ const Login = () => {
     const [user, loading, error] = useAuthState(auth);
 
     return (
+        // Displayed user information
         <div className="card">
             {user && <h2 className="text-3xl flex items-center justify-center">Welcome, {user.displayName}!</h2>}
             {error && <h2>Error: {String(error)}</h2>}

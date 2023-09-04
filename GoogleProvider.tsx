@@ -1,3 +1,6 @@
+// This file includes the code tha connects the app to the Firebase/Google API
+// To use, create and import a firebase.config.tsx file with the project's credentials
+
 import { firebaseConfig } from './firebase.config';
 import { initializeApp } from "firebase/app";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
