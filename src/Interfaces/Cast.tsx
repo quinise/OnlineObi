@@ -1,5 +1,4 @@
 // This file defines the interface, Cast, which describes the atributes of a divination cast
-
 export interface Cast {
     id: string,
     odu: string,

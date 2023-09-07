@@ -1,5 +1,4 @@
 // This file includes the code for the Logout page
-
 import { useNavigate } from 'react-router-dom';
 import { auth } from "./../../GoogleProvider.tsx";
 import {  signOut } from "firebase/auth";

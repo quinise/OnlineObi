@@ -1,5 +1,4 @@
 // This file includes the App's routes and provides the navigation across each page
-
 import './css/App.css'
 import { auth } from "./../GoogleProvider.tsx";
 import { useAuthState } from "react-firebase-hooks/auth";
