@@ -1,5 +1,4 @@
 // This file includes the code for the Login page
-
 import { auth, signInWithGoogle } from "./../../GoogleProvider.tsx";
 import { useAuthState } from "react-firebase-hooks/auth";
 

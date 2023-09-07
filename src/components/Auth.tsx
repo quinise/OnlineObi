@@ -1,5 +1,4 @@
 // This file includes the middleware for the Googe Provider
-
 import { auth } from "./../../GoogleProvider.tsx";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Navigate } from "react-router-dom";

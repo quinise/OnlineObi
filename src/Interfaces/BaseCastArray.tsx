@@ -1,5 +1,4 @@
 // This file contains the different permutations of divination as an array of Casts
-
 import { Cast } from "./Cast";
 
 const aalaffiaOgbe: Cast = {
@@ -7,10 +6,10 @@ const aalaffiaOgbe: Cast = {
     odu: "Aalaffia - Ogbe", 
     timestamp: new Date(), 
     answer: "Yes", 
-    maleObi1: "MaleObi1Up", 
-    maleObi2: "MaleObi2Up", 
-    femaleObi1: "FemaleObi1Up", 
-    femaleObi2: "FemaleObi2Up", 
+    maleObi1: "MaleObi1Up.png", 
+    maleObi2: "MaleObi2Up.png", 
+    femaleObi1: "FemaleObi1Up.png", 
+    femaleObi2: "FemaleObi2Up.png", 
     interpretation: "Symbolizes good general welfare", 
     title: ""
 }
@@ -20,10 +19,10 @@ const yekuOyeku: Cast = {
     odu: "Yeku - Oyeku", 
     timestamp: new Date(), 
     answer: "No", 
-    maleObi1: "MaleObi1Down", 
-    maleObi2: "MaleObi2Down", 
-    femaleObi1: "FemaleObi1Down", 
-    femaleObi2: "FemaleObi2Down", 
+    maleObi1: "MaleObi1Down.png", 
+    maleObi2: "MaleObi2Down.png", 
+    femaleObi1: "FemaleObi1Down.png", 
+    femaleObi2: "FemaleObi2Down.png", 
     interpretation: "No light - potential delays and possible protection from ancestors...", 
     title: ""
 }
@@ -33,10 +32,10 @@ const okanranIleraOne: Cast = {
     odu: "Okanran - Ilera", 
     timestamp: new Date(), 
     answer: "Maybe", 
-    maleObi1: "MaleObi1Up", 
-    maleObi2: "MaleObi2Down", 
-    femaleObi1: "FemaleObi1Down",
-    femaleObi2: "FemaleObi2Down", 
+    maleObi1: "MaleObi1Up.png", 
+    maleObi2: "MaleObi2Down.png", 
+    femaleObi1: "FemaleObi1Down.png",
+    femaleObi2: "FemaleObi2Down.png", 
     interpretation: "Good health and success!", 
     title: ""
 }
@@ -46,10 +45,10 @@ const okanranIleraTwo: Cast = {
     odu: "Okanran - Ilera", 
     timestamp: new Date(), 
     answer: "Maybe", 
-    maleObi1: "MaleObi1Down", 
-    maleObi2: "MaleObi2Up", 
-    femaleObi1: "FemaleObi1Down", 
-    femaleObi2: "FemaleObi2Down", 
+    maleObi1: "MaleObi1Down.png", 
+    maleObi2: "MaleObi2Up.png", 
+    femaleObi1: "FemaleObi1Down.png", 
+    femaleObi2: "FemaleObi2Down.png", 
     interpretation: "Good health and success!", 
     title: ""
 }
@@ -59,11 +58,11 @@ const okanranAjeOne: Cast = {
     odu: "Okanran-Aje", 
     timestamp: new Date(), 
     answer: "No", 
-    maleObi1: "MaleObi1Down", 
-    maleObi2: "MaleObi2Up", 
-    femaleObi1: "FemaleObi1Down", 
-    femaleObi2: "FemaleObi2Down", 
-    interpretation: "Abundance", 
+    maleObi1: "MaleObi1Down.png", 
+    maleObi2: "MaleObi2Up.png", 
+    femaleObi1: "FemaleObi1Down.png", 
+    femaleObi2: "FemaleObi2Down.png", 
+    interpretation: "Abundance.png", 
     title: ""
 
 }
@@ -73,11 +72,11 @@ const okanranAjeTwo: Cast = {
     odu: "Okanran-Aje", 
     timestamp: new Date(), 
     answer: "No", 
-    maleObi1: "Male.Obi1Up", 
-    maleObi2: "MaleObi2Down", 
-    femaleObi1: "FemaleObi1Down", 
-    femaleObi2: "FemaleObi2Down", 
-    interpretation: "Abundance", 
+    maleObi1: "Male.Obi1Up.png", 
+    maleObi2: "MaleObi2Down.png", 
+    femaleObi1: "FemaleObi1Down.png", 
+    femaleObi2: "FemaleObi2Down.png", 
+    interpretation: "Abundance.png", 
     title: ""
 }
 const okanranAjeThree: Cast = {
@@ -85,11 +84,11 @@ const okanranAjeThree: Cast = {
     odu: "Okanran-Aje", 
     timestamp: new Date(), 
     answer: "No", 
-    maleObi1: "MaleObi1Down", 
-    maleObi2: "MaleObi2Down", 
-    femaleObi1: "FemaleObi1Up", 
-    femaleObi2: "FemaleObi2Down", 
-    interpretation: "Abundance", 
+    maleObi1: "MaleObi1Down.png", 
+    maleObi2: "MaleObi2Down.png", 
+    femaleObi1: "FemaleObi1Up.png", 
+    femaleObi2: "FemaleObi2Down.png", 
+    interpretation: "Abundance.png", 
     title: ""
 }
 
@@ -98,11 +97,11 @@ const okanranAjeFour: Cast = {
     odu: "Okanran-Aje", 
     timestamp: new Date(), 
     answer: "No", 
-    maleObi1: "MaleObi1Down", 
-    maleObi2: "MaleObi2Down", 
-    femaleObi1: "FemaleObi1Down", 
-    femaleObi2: "FemaleObi2Up", 
-    interpretation: "Abundance", 
+    maleObi1: "MaleObi1Down.png", 
+    maleObi2: "MaleObi2Down.png", 
+    femaleObi1: "FemaleObi1Down.png", 
+    femaleObi2: "FemaleObi2Up.png", 
+    interpretation: "Abundance.png", 
     title: ""
 }
 
@@ -111,11 +110,11 @@ const eifeEjire: Cast = {
     odu: "Ejife-Ejire", 
     timestamp: new Date(), 
     answer: "Yes", 
-    maleObi1: "MaleObi1Down", 
-    maleObi2: "MaleObi2Down", 
-    femaleObi1: "FemaleObi1Up", 
-    femaleObi2: "FemaleObi2Up", 
-    interpretation: "criminality, arguments", 
+    maleObi1: "MaleObi1Down.png", 
+    maleObi2: "MaleObi2Down.png", 
+    femaleObi1: "FemaleObi1Up.png", 
+    femaleObi2: "FemaleObi2Up.png", 
+    interpretation: "criminality, arguments.png", 
     title: ""
 }
 
@@ -124,10 +123,10 @@ const ejifeEroOne: Cast = {
     odu: "Ejife-Ero", 
     timestamp: new Date(), 
     answer: "Maybe", 
-    maleObi1: "MaleObi1Up", 
-    maleObi2: "MaleObi2Down", 
-    femaleObi1: "FemaleObi1Up", 
-    femaleObi2: "FemaleObi2Up", 
+    maleObi1: "MaleObi1Up.png", 
+    maleObi2: "MaleObi2Down.png", 
+    femaleObi1: "FemaleObi1Up.png", 
+    femaleObi2: "FemaleObi2Up.png", 
     interpretation: "calmness and whole-mindedness", 
     title: ""
 }
@@ -137,10 +136,10 @@ const ejifeEroTwo: Cast = {
     odu: "Ejife-Ero", 
     timestamp: new Date(), 
     answer: "Maybe", 
-    maleObi1: "MaleObi1Down", 
-    maleObi2: "MaleObi2Up", 
-    femaleObi1: "FemaleObi1Up", 
-    femaleObi2: "FemaleObi2Up", 
+    maleObi1: "MaleObi1Down.png", 
+    maleObi2: "MaleObi2Up.png", 
+    femaleObi1: "FemaleObi1Up.png", 
+    femaleObi2: "FemaleObi2Up.png", 
     interpretation: "calmness and whole-mindedness", 
     title: ""
 }
@@ -150,10 +149,10 @@ const obitaEtawaOne: Cast = {
     odu: "Obita-Etawa", 
     timestamp: new Date(), 
     answer: "Maybe", 
-    maleObi1: "MaleObi1Down", 
-    maleObi2: "MaleObi2Up", 
-    femaleObi1: "FemaleObi1Up", 
-    femaleObi2: "FemaleObi2Up", 
+    maleObi1: "MaleObi1Down.png", 
+    maleObi2: "MaleObi2Up.png", 
+    femaleObi1: "FemaleObi1Up.png", 
+    femaleObi2: "FemaleObi2Up.png", 
     interpretation: "No arguments, living harmoniously", 
     title: ""
 }
@@ -163,10 +162,10 @@ const obitaEtawaTwo: Cast = {
     odu: "Obita-Etawa", 
     timestamp: new Date(), 
     answer: "Maybe", 
-    maleObi1: "MaleObi1Up", 
-    maleObi2: "MaleObi2Down", 
-    femaleObi1: "FemaleObi1Up", 
-    femaleObi2: "FemaleObi2Up", 
+    maleObi1: "MaleObi1Up.png", 
+    maleObi2: "MaleObi2Down.png", 
+    femaleObi1: "FemaleObi1Up.png", 
+    femaleObi2: "FemaleObi2Up.png", 
     interpretation: "No arguments, living harmoniously", 
     title: ""
 }
@@ -176,10 +175,10 @@ const akitaEtawaOne: Cast = {
     odu: "Akita-Etawa", 
     timestamp: new Date(), 
     answer: "Maybe", 
-    maleObi1: "MaleObi1Up", 
-    maleObi2: "MaleObi2Up", 
-    femaleObi1: "FemaleObi1Down", 
-    femaleObi2: "FemaleObi2Up", 
+    maleObi1: "MaleObi1Up.png", 
+    maleObi2: "MaleObi2Up.png", 
+    femaleObi1: "FemaleObi1Down.png", 
+    femaleObi2: "FemaleObi2Up.png", 
     interpretation: "Hard work is rewarded", 
     title: ""
 }
@@ -189,13 +188,13 @@ const akitaEtawaTwo: Cast = {
     odu: "Akita-Etawa", 
     timestamp: new Date(), 
     answer: "Maybe", 
-    maleObi1: "MaleObi1Up", 
-    maleObi2: "MaleObi2Up", 
-    femaleObi1: "FemaleObi1Up", 
-    femaleObi2: "FemaleObi2Down", 
+    maleObi1: "MaleObi1Up.png", 
+    maleObi2: "MaleObi2Up.png", 
+    femaleObi1: "FemaleObi1Up.png", 
+    femaleObi2: "FemaleObi2Down.png", 
     interpretation: "Hard work is rewarded", 
     title: ""
 }
 
-export const BaseCastArray: [Cast, Cast, Cast, Cast, Cast, Cast, Cast, Cast, Cast, Cast, Cast, Cast, Cast, Cast, Cast, Cast] = [ aalaffiaOgbe, yekuOyeku, okanranIleraOne, okanranIleraTwo, okanranAjeOne, okanranAjeTwo,okanranAjeThree, okanranAjeFour, eifeEjire, ejifeEroOne, ejifeEroTwo, obitaEtawaOne, obitaEtawaTwo, akitaEtawaTwo, akitaEtawaOne, akitaEtawaTwo];
+export const BaseCastArray: [Cast, Cast, Cast, Cast, Cast, Cast, Cast, Cast, Cast, Cast, Cast, Cast, Cast, Cast, Cast, Cast] = [aalaffiaOgbe, yekuOyeku, okanranIleraOne, okanranIleraTwo, okanranAjeOne, okanranAjeTwo,okanranAjeThree, okanranAjeFour, eifeEjire, ejifeEroOne, ejifeEroTwo, obitaEtawaOne, obitaEtawaTwo, akitaEtawaTwo, akitaEtawaOne, akitaEtawaTwo];
 
