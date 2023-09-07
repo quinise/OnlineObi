@@ -47,26 +47,55 @@ const Dashboard = () => {
   const resetCastState = () => {
     setCast(undefined);
     setIsCastGenerated(false);
-  }  
-  return (
-    <>
+  }
+  
+  function DisplayWithoutCast() {
+    return (
+      <>
       <h1 className="text-3xl flex items-center justify-center">Dashboard</h1>
       <div className="card">
               {user && <h2 className="text-2xl flex items-center justify-center">Welcome, {user.displayName}</h2>}
               {error && <h2>Error: {String(error)}</h2>}
               {loading && <h2>Loading...</h2>}
-              {cast && <h1><b>Odu: </b>{cast.odu}</h1>}
-              {cast && <h1><b>Date: </b>{cast.timestamp.toLocaleDateString()}</h1>}
-              {cast && <h2><b>Answer: </b>{cast.answer}</h2>}
-              {cast && <h1><b>interpretation: </b>{cast.interpretation}</h1>}
-
               <div>
                 <button  onClick={() => generateCast(generateTargetIndex())}>Cast</button>
               </div>
               {}
       </div>
     </>
-  )
+    )
+  }
+
+  function DisplayWithCast() {
+    return (
+      <>
+        <h1 className="text-3xl flex items-center justify-center">Dashboard</h1>
+        <div className="card">
+                {user && <h2 className="text-2xl flex items-center justify-center">Welcome, {user.displayName}</h2>}
+                {error && <h2>Error: {String(error)}</h2>}
+                {loading && <h2>Loading...</h2>}
+                {cast && <h1><b>Odu: </b>{cast.odu}</h1>}
+                {cast && <h1><b>Date: </b>{cast.timestamp.toLocaleDateString()}</h1>}
+                {cast && <h1><b>Answer: </b>{cast.answer}</h1>}
+                {cast && <h1><b>interpretation: </b>{cast.interpretation}</h1>}
+                {cast && <img src={`src/assets/${cast.maleObi1}`}/>}
+                {cast && <img src={`src/assets/${cast.maleObi2}`}/>}
+                {cast && <img src={`src/assets/${cast.femaleObi1}`}/>}
+                {cast && <img src={`src/assets/${cast.femaleObi2}`}/>}
+                <div>
+                  <button  onClick={() => generateCast(generateTargetIndex())}>Cast</button>
+                </div>
+                {}
+        </div>
+      </>
+    )
+  }
+
+  if (isCastGenerated) {
+    return <DisplayWithCast/>
+  } else {
+    return <DisplayWithoutCast/>
+  }
 }
 
 export default Dashboard
