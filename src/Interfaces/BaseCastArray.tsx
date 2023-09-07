@@ -6,10 +6,10 @@ const aalaffiaOgbe: Cast = {
     odu: "Aalaffia - Ogbe", 
     timestamp: new Date(), 
     answer: "Yes", 
-    maleObi1: "MaleObi1Up.png", 
-    maleObi2: "MaleObi2Up.png", 
-    femaleObi1: "FemaleObi1Up.png", 
-    femaleObi2: "FemaleObi2Up.png", 
+    maleObi1: "Male1Up.png", 
+    maleObi2: "Male2Up.png", 
+    femaleObi1: "Female1Up.png", 
+    femaleObi2: "Female2Up.png", 
     interpretation: "Symbolizes good general welfare", 
     title: ""
 }
@@ -19,10 +19,10 @@ const yekuOyeku: Cast = {
     odu: "Yeku - Oyeku", 
     timestamp: new Date(), 
     answer: "No", 
-    maleObi1: "MaleObi1Down.png", 
-    maleObi2: "MaleObi2Down.png", 
-    femaleObi1: "FemaleObi1Down.png", 
-    femaleObi2: "FemaleObi2Down.png", 
+    maleObi1: "Male1Down.png", 
+    maleObi2: "Male2Down.png", 
+    femaleObi1: "Female1Down.png", 
+    femaleObi2: "Female2Down.png", 
     interpretation: "No light - potential delays and possible protection from ancestors...", 
     title: ""
 }
@@ -32,10 +32,10 @@ const okanranIleraOne: Cast = {
     odu: "Okanran - Ilera", 
     timestamp: new Date(), 
     answer: "Maybe", 
-    maleObi1: "MaleObi1Up.png", 
-    maleObi2: "MaleObi2Down.png", 
-    femaleObi1: "FemaleObi1Down.png",
-    femaleObi2: "FemaleObi2Down.png", 
+    maleObi1: "Male1Up.png", 
+    maleObi2: "Male2Down.png", 
+    femaleObi1: "Female1Down.png",
+    femaleObi2: "Female2Down.png", 
     interpretation: "Good health and success!", 
     title: ""
 }
@@ -45,10 +45,10 @@ const okanranIleraTwo: Cast = {
     odu: "Okanran - Ilera", 
     timestamp: new Date(), 
     answer: "Maybe", 
-    maleObi1: "MaleObi1Down.png", 
-    maleObi2: "MaleObi2Up.png", 
-    femaleObi1: "FemaleObi1Down.png", 
-    femaleObi2: "FemaleObi2Down.png", 
+    maleObi1: "Male1Down.png", 
+    maleObi2: "Male2Up.png", 
+    femaleObi1: "Female1Down.png", 
+    femaleObi2: "Female2Down.png", 
     interpretation: "Good health and success!", 
     title: ""
 }
@@ -58,10 +58,10 @@ const okanranAjeOne: Cast = {
     odu: "Okanran-Aje", 
     timestamp: new Date(), 
     answer: "No", 
-    maleObi1: "MaleObi1Down.png", 
-    maleObi2: "MaleObi2Up.png", 
-    femaleObi1: "FemaleObi1Down.png", 
-    femaleObi2: "FemaleObi2Down.png", 
+    maleObi1: "Male1Down.png", 
+    maleObi2: "Male2Up.png", 
+    femaleObi1: "Female1Down.png", 
+    femaleObi2: "Female2Down.png", 
     interpretation: "Abundance.png", 
     title: ""
 
@@ -72,10 +72,10 @@ const okanranAjeTwo: Cast = {
     odu: "Okanran-Aje", 
     timestamp: new Date(), 
     answer: "No", 
-    maleObi1: "Male.Obi1Up.png", 
-    maleObi2: "MaleObi2Down.png", 
-    femaleObi1: "FemaleObi1Down.png", 
-    femaleObi2: "FemaleObi2Down.png", 
+    maleObi1: "Male.1Up.png", 
+    maleObi2: "Male2Down.png", 
+    femaleObi1: "Female1Down.png", 
+    femaleObi2: "Female2Down.png", 
     interpretation: "Abundance.png", 
     title: ""
 }
@@ -84,10 +84,10 @@ const okanranAjeThree: Cast = {
     odu: "Okanran-Aje", 
     timestamp: new Date(), 
     answer: "No", 
-    maleObi1: "MaleObi1Down.png", 
-    maleObi2: "MaleObi2Down.png", 
-    femaleObi1: "FemaleObi1Up.png", 
-    femaleObi2: "FemaleObi2Down.png", 
+    maleObi1: "Male1Down.png", 
+    maleObi2: "Male2Down.png", 
+    femaleObi1: "Female1Up.png", 
+    femaleObi2: "Female2Down.png", 
     interpretation: "Abundance.png", 
     title: ""
 }
@@ -97,10 +97,10 @@ const okanranAjeFour: Cast = {
     odu: "Okanran-Aje", 
     timestamp: new Date(), 
     answer: "No", 
-    maleObi1: "MaleObi1Down.png", 
-    maleObi2: "MaleObi2Down.png", 
-    femaleObi1: "FemaleObi1Down.png", 
-    femaleObi2: "FemaleObi2Up.png", 
+    maleObi1: "Male1Down.png", 
+    maleObi2: "Male2Down.png", 
+    femaleObi1: "Female1Down.png", 
+    femaleObi2: "Female2Up.png", 
     interpretation: "Abundance.png", 
     title: ""
 }
@@ -110,10 +110,10 @@ const eifeEjire: Cast = {
     odu: "Ejife-Ejire", 
     timestamp: new Date(), 
     answer: "Yes", 
-    maleObi1: "MaleObi1Down.png", 
-    maleObi2: "MaleObi2Down.png", 
-    femaleObi1: "FemaleObi1Up.png", 
-    femaleObi2: "FemaleObi2Up.png", 
+    maleObi1: "Male1Down.png", 
+    maleObi2: "Male2Down.png", 
+    femaleObi1: "Female1Up.png", 
+    femaleObi2: "Female2Up.png", 
     interpretation: "criminality, arguments.png", 
     title: ""
 }
@@ -123,10 +123,10 @@ const ejifeEroOne: Cast = {
     odu: "Ejife-Ero", 
     timestamp: new Date(), 
     answer: "Maybe", 
-    maleObi1: "MaleObi1Up.png", 
-    maleObi2: "MaleObi2Down.png", 
-    femaleObi1: "FemaleObi1Up.png", 
-    femaleObi2: "FemaleObi2Up.png", 
+    maleObi1: "Male1Up.png", 
+    maleObi2: "Male2Down.png", 
+    femaleObi1: "Female1Up.png", 
+    femaleObi2: "Female2Up.png", 
     interpretation: "calmness and whole-mindedness", 
     title: ""
 }
@@ -136,10 +136,10 @@ const ejifeEroTwo: Cast = {
     odu: "Ejife-Ero", 
     timestamp: new Date(), 
     answer: "Maybe", 
-    maleObi1: "MaleObi1Down.png", 
-    maleObi2: "MaleObi2Up.png", 
-    femaleObi1: "FemaleObi1Up.png", 
-    femaleObi2: "FemaleObi2Up.png", 
+    maleObi1: "Male1Down.png", 
+    maleObi2: "Male2Up.png", 
+    femaleObi1: "Female1Up.png", 
+    femaleObi2: "Female2Up.png", 
     interpretation: "calmness and whole-mindedness", 
     title: ""
 }
@@ -149,10 +149,10 @@ const obitaEtawaOne: Cast = {
     odu: "Obita-Etawa", 
     timestamp: new Date(), 
     answer: "Maybe", 
-    maleObi1: "MaleObi1Down.png", 
-    maleObi2: "MaleObi2Up.png", 
-    femaleObi1: "FemaleObi1Up.png", 
-    femaleObi2: "FemaleObi2Up.png", 
+    maleObi1: "Male1Down.png", 
+    maleObi2: "Male2Up.png", 
+    femaleObi1: "Female1Up.png", 
+    femaleObi2: "Female2Up.png", 
     interpretation: "No arguments, living harmoniously", 
     title: ""
 }
@@ -162,10 +162,10 @@ const obitaEtawaTwo: Cast = {
     odu: "Obita-Etawa", 
     timestamp: new Date(), 
     answer: "Maybe", 
-    maleObi1: "MaleObi1Up.png", 
-    maleObi2: "MaleObi2Down.png", 
-    femaleObi1: "FemaleObi1Up.png", 
-    femaleObi2: "FemaleObi2Up.png", 
+    maleObi1: "Male1Up.png", 
+    maleObi2: "Male2Down.png", 
+    femaleObi1: "Female1Up.png", 
+    femaleObi2: "Female2Up.png", 
     interpretation: "No arguments, living harmoniously", 
     title: ""
 }
@@ -175,10 +175,10 @@ const akitaEtawaOne: Cast = {
     odu: "Akita-Etawa", 
     timestamp: new Date(), 
     answer: "Maybe", 
-    maleObi1: "MaleObi1Up.png", 
-    maleObi2: "MaleObi2Up.png", 
-    femaleObi1: "FemaleObi1Down.png", 
-    femaleObi2: "FemaleObi2Up.png", 
+    maleObi1: "Male1Up.png", 
+    maleObi2: "Male2Up.png", 
+    femaleObi1: "Female1Down.png", 
+    femaleObi2: "Female2Up.png", 
     interpretation: "Hard work is rewarded", 
     title: ""
 }
@@ -188,10 +188,10 @@ const akitaEtawaTwo: Cast = {
     odu: "Akita-Etawa", 
     timestamp: new Date(), 
     answer: "Maybe", 
-    maleObi1: "MaleObi1Up.png", 
-    maleObi2: "MaleObi2Up.png", 
-    femaleObi1: "FemaleObi1Up.png", 
-    femaleObi2: "FemaleObi2Down.png", 
+    maleObi1: "Male1Up.png", 
+    maleObi2: "Male2Up.png", 
+    femaleObi1: "Female1Up.png", 
+    femaleObi2: "Female2Down.png", 
     interpretation: "Hard work is rewarded", 
     title: ""
 }
