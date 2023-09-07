@@ -1,5 +1,5 @@
 // This file includes the code for the Dashboard page=
-import React, { useState } from "react";
+import { useState } from "react";
 import { auth } from "./../../GoogleProvider.tsx";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { BaseCastArray } from "../Interfaces/BaseCastArray.tsx";
@@ -55,10 +55,10 @@ const Dashboard = () => {
       <h1 className="text-3xl flex items-center justify-center">Dashboard</h1>
       <div className="card">
               {user && <h2 className="text-2xl flex items-center justify-center">Welcome, {user.displayName}</h2>}
-              {error && <h2>Error: {String(error)}</h2>}
-              {loading && <h2>Loading...</h2>}
-              <div>
-                <button  onClick={() => generateCast(generateTargetIndex())}>Cast</button>
+              {error && <h2 className="text-2xl flex items-center justify-center">Error: {String(error)}</h2>}
+              {loading && <h2 className="text-2xl flex items-center justify-center">Loading...</h2>}
+              <div className="mt-5 mb-10 flex items-center justify-center">
+                <button className="bg-blue-600/90 px-5 py-5"  onClick={() => generateCast(generateTargetIndex())}>Cast</button>
               </div>
               {}
       </div>
@@ -72,20 +72,21 @@ const Dashboard = () => {
         <h1 className="text-3xl flex items-center justify-center">Dashboard</h1>
         <div className="card">
                 {user && <h2 className="text-2xl flex items-center justify-center">Welcome, {user.displayName}</h2>}
-                {error && <h2>Error: {String(error)}</h2>}
-                {loading && <h2>Loading...</h2>}
-                {cast && <h1><b>Odu: </b>{cast.odu}</h1>}
-                {cast && <h1><b>Date: </b>{cast.timestamp.toLocaleDateString()}</h1>}
-                {cast && <h1><b>Answer: </b>{cast.answer}</h1>}
-                {cast && <h1><b>interpretation: </b>{cast.interpretation}</h1>}
-                {cast && <img src={`src/assets/${cast.maleObi1}`}/>}
-                {cast && <img src={`src/assets/${cast.maleObi2}`}/>}
-                {cast && <img src={`src/assets/${cast.femaleObi1}`}/>}
-                {cast && <img src={`src/assets/${cast.femaleObi2}`}/>}
-                <div>
-                  <button  onClick={() => generateCast(generateTargetIndex())}>Cast</button>
+                {error && <h2 className="text-2xl flex items-center justify-center">Error: {String(error)}</h2>}
+                {loading && <h2 className="text-2xl flex items-center justify-center">Loading...</h2>}
+                {cast && <h1 className="text-2xl mt-20 flex items-center justify-center"><b>Odu:&nbsp;</b>{cast.odu}</h1>}
+                {cast && <h1 className="text-2xl mt-5 flex items-center justify-center"><b>Date:&nbsp;</b>{cast.timestamp.toLocaleDateString()}</h1>}
+                {cast && <h1 className="text-2xl mt-5 flex items-center justify-center"><b>Answer:&nbsp;</b>{cast.answer}</h1>}
+                {cast && <h1 className="text-2xl mt-5 flex items-center justify-center"><b>Interpretation:&nbsp;</b>{cast.interpretation}</h1>}
+                <div className="container mx-auto mt-5 mb-5 h-20 w-20 flex items-center justify-center">
+                  {cast && <img className="object-scale-down h-5 w-5 inline" src={`src/assets/${cast.maleObi1}`}/>}
+                  {cast && <img className="object-scale-down h-5 w-5 inline" src={`src/assets/${cast.maleObi2}`}/>}
+                  {cast && <img className="object-scale-down h-5 w-5 inline" src={`src/assets/${cast.femaleObi1}`}/>}
+                  {cast && <img className="object-scale-down h-5 w-5 inline" src={`src/assets/${cast.femaleObi2}`}/>}
                 </div>
-                {}
+                <div className="mt-10 mb-10 flex items-center justify-center">
+                  <button className="bg-blue-600/90 px-5 py-5" onClick={() => generateCast(generateTargetIndex())}>Cast</button>
+                </div>
         </div>
       </>
     )
