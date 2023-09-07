@@ -62,7 +62,7 @@ const okanranAjeOne: Cast = {
     maleObi2: "Male2Up.png", 
     femaleObi1: "Female1Down.png", 
     femaleObi2: "Female2Down.png", 
-    interpretation: "Abundance.png", 
+    interpretation: "Abundance", 
     title: ""
 
 }
