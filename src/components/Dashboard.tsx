@@ -1,6 +1,8 @@
 // This file includes the code for the Dashboard page=
-import { useState } from "react";
+import React, { useState } from "react";
 import { auth } from "./../../GoogleProvider.tsx";
+import { db } from "../../firebase.config.tsx"
+import { addDoc, collection } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { BaseCastArray } from "../Interfaces/BaseCastArray.tsx";
 import { Cast } from "../Interfaces/Cast.tsx";
@@ -9,7 +11,9 @@ const Dashboard = () => {
   const [user, loading, error] = useAuthState(auth);
   const [cast, setCast] = useState<Cast>();
   const [isCastGenerated, setIsCastGenerated] = useState(false);
-  
+  const [newTitle, setNewTitle] = useState("");
+  const castsRef = collection(db, "casts");
+
   // Generates a random index to use on the BaseCase Array 
   function generateRandomNumber(arrayLength: number) {
     return Math.floor(Math.random() * arrayLength)
@@ -27,6 +31,7 @@ const Dashboard = () => {
     setIsCastGenerated(true);
   }
 
+  // This function maps the attributes of a cast to a new Cast
   const createCast = (targetIndex: number) => {
     const result: Cast = {
       id: BaseCastArray[targetIndex].id,
@@ -44,12 +49,39 @@ const Dashboard = () => {
     return result;
   }
 
-  const resetCastState = () => {
-    setCast(undefined);
-    setIsCastGenerated(false);
-  }
+  // const resetCastState = () => {
+  //   setCast(undefined);
+  //   setIsCastGenerated(false);
+  // }
   
-  function DisplayWithoutCast() {
+  const saveCastToDb = async () => {
+    // Prevents submission of blank casts to the database
+    if (!cast) return
+
+    await addDoc(castsRef, {
+      id: cast.id,
+      odu: cast.odu,
+      timestamp: cast.timestamp,
+      answer: cast.answer,
+      maleObi1: cast.maleObi1,
+      maleObi2: cast.maleObi2,
+      femaleObi1: cast.femaleObi1,
+      femaleObi2: cast.femaleObi2,
+      interpretation: cast.interpretation,
+      title: newTitle,
+      user: auth.currentUser?.uid
+    })
+  }
+  React.useEffect(() => {
+    const delayNewTitle = setTimeout(() => {
+      setNewTitle(newTitle);
+    }, 10000)
+
+    return () => clearTimeout(delayNewTitle)
+  }, [newTitle])
+
+
+  const DisplayWithoutCast = () => {
     return (
       <>
       <h1 className="text-3xl flex items-center justify-center">Dashboard</h1>
@@ -66,7 +98,7 @@ const Dashboard = () => {
     )
   }
 
-  function DisplayWithCast() {
+  const DisplayWithCast = () => {
     return (
       <>
         <h1 className="text-3xl flex items-center justify-center">Dashboard</h1>
@@ -83,6 +115,19 @@ const Dashboard = () => {
                   {cast && <img className="object-scale-down h-5 w-5 inline" src={`src/assets/${cast.maleObi2}`}/>}
                   {cast && <img className="object-scale-down h-5 w-5 inline" src={`src/assets/${cast.femaleObi1}`}/>}
                   {cast && <img className="object-scale-down h-5 w-5 inline" src={`src/assets/${cast.femaleObi2}`}/>}
+                </div>
+                <form onSubmit={() => saveCastToDb()}>
+                  <input
+                    type="text"
+                    className="newTitleInput"
+                    placeholder="Add a title..."
+                    value={newTitle}
+                    onChange={(e) => setNewTitle(e.target.value)}
+                    autoFocus
+                  />
+                </form>
+                <div className="mt-10 mb-10 flex items-center justify-center">
+                  <button className="bg-blue-600/90 px-5 py-5" onClick={() => saveCastToDb()}>Save</button>
                 </div>
                 <div className="mt-10 mb-10 flex items-center justify-center">
                   <button className="bg-blue-600/90 px-5 py-5" onClick={() => generateCast(generateTargetIndex())}>Cast</button>
