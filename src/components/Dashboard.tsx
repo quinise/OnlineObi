@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { auth } from "./../../GoogleProvider.tsx";
 import { db } from "../../firebase.config.tsx"
-import { addDoc, collection, query, where, getDocs, updateDoc } from "firebase/firestore";
+import { addDoc, collection, query, where, getDocs} from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { BaseCastArray } from "../Interfaces/BaseCastArray.tsx";
 import { Cast } from "../Interfaces/Cast.tsx";
