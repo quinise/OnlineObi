@@ -102,7 +102,7 @@ const Dashboard = () => {
     return (
       <>
         <h1 className="text-3xl flex items-center justify-center">Dashboard</h1>
-        <div className="card">
+        <div className="card border-black">
                 {user && <h2 className="text-2xl flex items-center justify-center">Welcome, {user.displayName}</h2>}
                 {error && <h2 className="text-2xl flex items-center justify-center">Error: {String(error)}</h2>}
                 {loading && <h2 className="text-2xl flex items-center justify-center">Loading...</h2>}
@@ -116,10 +116,10 @@ const Dashboard = () => {
                   {cast && <img className="object-scale-down h-5 w-5 inline" src={`src/assets/${cast.femaleObi1}`}/>}
                   {cast && <img className="object-scale-down h-5 w-5 inline" src={`src/assets/${cast.femaleObi2}`}/>}
                 </div>
-                <form onSubmit={() => saveCastToDb()}>
+                <form className="mt-20 mb-20 flex items-center justify-center" onSubmit={() => saveCastToDb()}>
                   <input
                     type="text"
-                    className="newTitleInput"
+                    className="text-2xl"
                     placeholder="Add a title..."
                     value={newTitle}
                     onChange={(e) => setNewTitle(e.target.value)}
