@@ -72,11 +72,11 @@ const okanranAjeTwo: Cast = {
     odu: "Okanran-Aje", 
     timestamp: new Date(), 
     answer: "No", 
-    maleObi1: "Male.1Up.png", 
+    maleObi1: "Male1Up.png", 
     maleObi2: "Male2Down.png", 
     femaleObi1: "Female1Down.png", 
     femaleObi2: "Female2Down.png", 
-    interpretation: "Abundance.png", 
+    interpretation: "Abundance", 
     title: ""
 }
 const okanranAjeThree: Cast = {
@@ -88,7 +88,7 @@ const okanranAjeThree: Cast = {
     maleObi2: "Male2Down.png", 
     femaleObi1: "Female1Up.png", 
     femaleObi2: "Female2Down.png", 
-    interpretation: "Abundance.png", 
+    interpretation: "Abundance", 
     title: ""
 }
 
@@ -101,7 +101,7 @@ const okanranAjeFour: Cast = {
     maleObi2: "Male2Down.png", 
     femaleObi1: "Female1Down.png", 
     femaleObi2: "Female2Up.png", 
-    interpretation: "Abundance.png", 
+    interpretation: "Abundance", 
     title: ""
 }
 
