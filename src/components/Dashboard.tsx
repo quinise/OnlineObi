@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { auth } from "./../../GoogleProvider.tsx";
 import { db } from "../../firebase.config.tsx"
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, query, where, getDocs, updateDoc } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { BaseCastArray } from "../Interfaces/BaseCastArray.tsx";
 import { Cast } from "../Interfaces/Cast.tsx";
@@ -53,10 +53,42 @@ const Dashboard = () => {
   //   setCast(undefined);
   //   setIsCastGenerated(false);
   // }
+
+  function showSuccessfulSaveAlert() {
+    alert('Your cast, ' + newTitle + ', has been saved!')
+  }
+
+  function showDuplicateTitleAlert() {
+    alert('A cast with this title has already been saved...');
+  }
+
+  function showEmptyTitleAlert() {
+    alert('The title may not be empty');
+  }
+
+  const checkForDuplicateTitle = async () => {
+    const duplicateTitleQuery = query(collection(db, "casts"), where("user", "==", auth.currentUser?.uid), where("title", "==", newTitle));
+    
+    const querySnapshot = await getDocs(duplicateTitleQuery);
+    if(querySnapshot.size === 1) {
+      // alert the user that they must choose a unique title
+      showDuplicateTitleAlert();
+      return true;
+    }
+
+    return false;
+  }
   
   const saveCastToDb = async () => {
-    // Prevents submission of blank casts to the database
-    if (!cast) return
+    // Prevents submission of blank casts and titles to the database
+    if (!cast) return;
+
+    if (!newTitle) {
+      showEmptyTitleAlert();
+      return;
+    }
+
+    if (await checkForDuplicateTitle()) return;
 
     await addDoc(castsRef, {
       id: cast.id,
@@ -71,7 +103,10 @@ const Dashboard = () => {
       title: newTitle,
       user: auth.currentUser?.uid
     })
+
+    showSuccessfulSaveAlert()
   }
+
   React.useEffect(() => {
     const delayNewTitle = setTimeout(() => {
       setNewTitle(newTitle);
