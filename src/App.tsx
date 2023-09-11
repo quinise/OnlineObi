@@ -63,6 +63,7 @@ function App() {
       </div>
     );
   } else {
+    // Navbar with link to Login
     return (
       <div className='container'>
         <div className='mt-5 mb-7 relative'>
