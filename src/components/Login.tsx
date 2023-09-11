@@ -10,7 +10,7 @@ const Login = () => {
         <div className="card">
             {user && <h2 className="text-3xl flex items-center justify-center">Welcome, {user.displayName}!</h2>}
             {error && <h2>Error: {String(error)}</h2>}
-            {loading && <h2 className="text-2xl">Loading...</h2>}
+            {loading && <h2 className="text-2xl flex items-center justify-center">Loading...</h2>}
             {!user && !loading && !error && (
             <>
             <h1 className='text-7xl mt-10 mb-10 flex items-center justify-center'>Mobile Obi</h1>

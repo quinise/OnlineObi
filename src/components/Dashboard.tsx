@@ -49,11 +49,6 @@ const Dashboard = () => {
     return result;
   }
 
-  // const resetCastState = () => {
-  //   setCast(undefined);
-  //   setIsCastGenerated(false);
-  // }
-
   function showSuccessfulSaveAlert() {
     alert('Your cast, ' + newTitle + ', has been saved!')
   }
