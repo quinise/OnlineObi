@@ -16,8 +16,8 @@ function App() {
     console.log("useAuthState Error: " + error);
     return (
       // Navbar with useAuthState error
-      <div className='container'>
-        <div className='mt-5 mb-7 relative'>
+      <div className='container text-forrest'>
+        <div className='text-forrest mt-5 mb-7 relative'>
           <Link to="/"><p className='ml-10 mr-10 inline'>Home</p></Link>
           <Link to="/dashboard"><p className='ml-10 mr-10 inline'>Dashboard</p></Link>
         </div>
@@ -36,8 +36,8 @@ function App() {
   if (user) {
     return (
       // Navbar with a valid user, includes logout
-      <div className='container'>
-        <div className='mt-5 mb-7 relative'>
+      <div className='container text-forrest'>
+        <div className='mt-5 mb-10 relative'>
           <Link to="/dashboard"><p className='ml-10 mr-10 inline'>Dashboard</p></Link>
           <Link to="/castList"><p className='ml-10 mr-10 inline'>Saved Casts</p></Link>
 
@@ -65,7 +65,7 @@ function App() {
   } else {
     // Navbar with link to Login
     return (
-      <div className='container'>
+      <div className='container text-forrest'>
         <div className='mt-5 mb-7 relative'>
         </div>
         <Routes>
