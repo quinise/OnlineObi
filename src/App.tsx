@@ -40,7 +40,6 @@ function App() {
         <div className='mt-5 mb-10 relative'>
           <Link to="/dashboard"><p className='ml-10 mr-10 inline'>Dashboard</p></Link>
           <Link to="/castList"><p className='ml-10 mr-10 inline'>Saved Casts</p></Link>
-
           <Link to="/logout"><p className='ml-10 absolute top-0 right-0 inline'>Logout</p></Link>
         </div>
         <Routes>
