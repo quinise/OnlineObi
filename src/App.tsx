@@ -16,22 +16,15 @@ function App() {
   if (error) {
     console.log("useAuthState Error: " + error);
     return (
-      // Navbar with useAuthState error
-      <div className='container text-forrest'>
-        <div className='text-forrest mt-5 mb-7 relative'>
-          <Link to="/"><p className='ml-10 mr-10 inline'>Home</p></Link>
-          <Link to="/dashboard"><p className='ml-10 mr-10 inline'>Dashboard</p></Link>
-        </div>
+      // Navbar with useAuthState error and link to login
+      <>
+      <div>
         <Routes>
-            <Route path="/" element={<Login/>}/>
-            <Route path="/dashboard" element={
-              <Auth>
-                <Dashboard/>
-              </Auth>
-            }/>
-            <Route path="/login" element={<Login/>} />
+          <Route path="/" element={ <Login/> } /> 
+          <Route path="/login" element={ <Login/> } />
         </Routes>
       </div>
+      </>
   )}
 
   if (user) {
@@ -41,9 +34,21 @@ function App() {
       <Navbar />
       <div>
         <Routes> 
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/castList" element={<CastList />} />
-          <Route path="/logout" element={<Logout />} />
+          <Route path="/dashboard" element={
+            <Auth>
+              <Dashboard/>
+            </Auth>
+          } />
+          <Route path="/castList" element={
+            <Auth>
+              <CastList />
+            </Auth>
+          } />
+          <Route path="/logout" element={
+            <Auth>
+              <Logout />
+            </Auth>
+          } />
         </Routes>
       </div>
       </>
@@ -51,14 +56,14 @@ function App() {
   } else {
     // Navbar with link to Login
     return (
-      <div className='container text-forrest'>
-        <div className='mt-5 mb-7 relative'>
-        </div>
+      <>
+      <div>
         <Routes>
-            <Route path="/" element={<Login/>}/>
-            <Route path="/login" element={<Login/>} />
+          <Route path="/" element={ <Login/> } /> 
+          <Route path="/login" element={ <Login/> } />
         </Routes>
       </div>
+      </>
     )
   }
 }

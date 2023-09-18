@@ -114,13 +114,13 @@ const Dashboard = () => {
   const DisplayWithoutCast = () => {
     return (
       <>
-      <h1 className="text-3xl flex items-center justify-center">Dashboard</h1>
+      <h1 className="text-3xl text-forrest flex items-center justify-center">Dashboard</h1>
       <div className="card">
-              {user && <h2 className="text-2xl flex items-center justify-center">Welcome, {user.displayName}</h2>}
-              {error && <h2 className="text-2xl flex items-center justify-center">Error: {String(error)}</h2>}
-              {loading && <h2 className="text-2xl flex items-center justify-center">Loading...</h2>}
+              {user && <h2 className="text-2xl text-forrest flex items-center justify-center">Welcome, {user.displayName}</h2>}
+              {error && <h2 className="text-2xl text-forrest flex items-center justify-center">Error: {String(error)}</h2>}
+              {loading && <h2 className="text-2xl text-forrest flex items-center justify-center">Loading...</h2>}
               <div className="mt-5 mb-10 flex items-center justify-center">
-                <button className="bg-blue-600/90 px-5 py-5"  onClick={() => generateCast(generateTargetIndex())}>Cast</button>
+                <button className="bg-limeCream text-forrest rounded-xl px-5 py-5"  onClick={() => generateCast(generateTargetIndex())}>Cast</button>
               </div>
               {}
       </div>
