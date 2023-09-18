@@ -1,6 +1,6 @@
 // This file includes the code for the page with a list of saved casts.
 import React, { Fragment, useState } from "react";
-import { collection, query, where, onSnapshot} from "firebase/firestore";
+import { collection, query, where, onSnapshot, limit} from "firebase/firestore";
 import { db } from "../../firebase.config.tsx"
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Cast } from "../Interfaces/Cast.tsx";
@@ -55,11 +55,11 @@ const CastList = () => {
   const renderListOfCasts = (uniqueCasts: Cast[]) => {
     return (
       <div>{uniqueCasts && uniqueCasts?.map((castFromList: Cast) =>
-        <div className="mt-16 mx-auto w-96 h-48 p-6 bg-lime-cream/40 border-2 border-forrest/60 rounded-tl-2xl shadow-md block" onClick={
+        <div className="mt-16 mx-auto w-96 h-48 p-6 bg-limeCream/40 border-2 border-forrest/60 rounded-tl-2xl shadow-md block" onClick={
           () => setModuleCast(castFromList)}>
-          <div className="w-88 h-36 pt-12 pl-4 bg-lime-cream/60 rounded-lg border-2 border-forrest/40 flex justify-between">
+          <div className="w-88 h-36 pt-12 pl-4 bg-limeCream/60 rounded-lg border-2 border-forrest/40 flex justify-between">
             <h1 className="text-2xl text-forrest inline" key={makeid(16)}>{castFromList.title}</h1>
-            <button className="bg-red text-white hover:bg-dark-red h-12 ml-0 mt-1 mb-1 mr-4 px-5 py-2 inline">Delete</button>
+            <button className="bg-red text-white hover:bg-darkRed h-12 ml-0 mt-1 mb-1 mr-4 px-5 py-2 inline">Delete</button>
           </div>
         </div>
         )}
@@ -116,14 +116,13 @@ const CastList = () => {
             <p className="text-xl text-forrest mb-5 ">Answer: {cast.answer}</p>
             <p className="text-xl text-forrest mb-5 ">Interpretation: {cast.interpretation}</p>
            </div>
-            
             <div className="mt-8 mb-8 flex justify-between">
               <img className="object-scale-down h-32 w-32 inline" src={`src/assets/${cast.maleObi1}`}/>
               <img className="object-scale-down h-32 w-32 inline" src={`src/assets/${cast.maleObi2}`}/>
               <img className="object-scale-down h-32 w-32 inline" src={`src/assets/${cast.femaleObi1}`}/>
               <img className="object-scale-down h-32 w-32 inline" src={`src/assets/${cast.femaleObi2}`}/>
             </div>
-            <button className="bg-lime rounded-md text-ivory hover:bg-lime-cream h-12 ml-12 mt-1 mb-1 mr-4 px-5 py-2 inline">Edit</button>
+            <button className="bg-lime rounded-md text-ivory hover:bg-limeCream h-12 ml-12 mt-1 mb-1 mr-4 px-5 py-2 inline">Edit</button>
           </div>
         </Modal>
     </Fragment>
