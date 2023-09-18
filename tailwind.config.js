@@ -5,17 +5,18 @@ export default {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
-      'white': '#ffffff',
-      'google-blue': '#2563eb',
-      'meta-blue': '#0ea5e9',
-      'red': '#dc2626',
-      'dark-red': '#991b1b',
+      white: '#ffffff',
+      'googleBlue': '#2563eb',
+      'metaBlue': '#0ea5e9',
+      red: '#dc2626',
+      'darkRed': '#991b1b',
       'forrest': '#14532d',
+      'lightForrest': '#86efac',
       'lime': '#84cc16',
-      'lime-cream': '#d9f99d',
+      'limeCream': '#d9f99d',
       'mahogany': '#450a0a',
       'ivory': '#fffbeb',
-      'green': '#22c55e'
+      green: '#22c55e'
     }
   },
   plugins: [],

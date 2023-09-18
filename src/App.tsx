@@ -8,6 +8,7 @@ import Dashboard from './components/Dashboard';
 import {Link , Route, Routes} from "react-router-dom";
 import Logout from './components/Logout';
 import CastList from './components/CastList.tsx';
+import Navbar from './components/Navbar'
 
 function App() {
   const [user, loading, error] = useAuthState(auth);
@@ -36,30 +37,16 @@ function App() {
   if (user) {
     return (
       // Navbar with a valid user, includes logout
-      <div className='container text-forrest'>
-        <div className='mt-5 mb-10 relative'>
-          <Link to="/dashboard"><p className='ml-10 mr-10 inline'>Dashboard</p></Link>
-          <Link to="/castList"><p className='ml-10 mr-10 inline'>Saved Casts</p></Link>
-          <Link to="/logout"><p className='ml-10 absolute top-0 right-0 inline'>Logout</p></Link>
-        </div>
-        <Routes>
-            <Route path="/dashboard" element={
-              <Auth>
-                <Dashboard/>
-              </Auth>
-            }/>
-            <Route path="/castList" element={
-              <Auth>
-                <CastList/>
-              </Auth>
-            }/>
-            <Route path="/logout" element={
-              <Auth>
-                <Logout/>
-              </Auth>
-            }/>
+      <>
+      <Navbar />
+      <div>
+        <Routes> 
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/castList" element={<CastList />} />
+          <Route path="/logout" element={<Logout />} />
         </Routes>
       </div>
+      </>
     );
   } else {
     // Navbar with link to Login
