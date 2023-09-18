@@ -22,7 +22,7 @@ function MobileMenu({ navLinks, close }) {
     <div>
         <div className="top-0 1-0 h-screen w-full backdrop-blur-sm bg-forrest bg-opacity-60 fixed inset-0"></div>
         <div className="fixed inset-0 top 1-0 p-5">
-            <div className={`w-full bg-ivory rounded-xl p-5 transition-all ${animation ? "scale-100" : "scale-95"}`}>
+            <div className={`full bg-ivory rounded-xl p-5 transition-all ${animation ? "scale-100" : "scale-95"}`}>
                 <div className="flex items-center justify-between">
                     <h1>Menu</h1>
                     <IoCloseOutline className="w-7 h-7 hover:scale-110 transition-all cursor-pointer" onClick={() => {close()}}/>

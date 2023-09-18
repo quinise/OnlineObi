@@ -120,7 +120,7 @@ const Dashboard = () => {
               {error && <h2 className="text-2xl text-forrest flex items-center justify-center">Error: {String(error)}</h2>}
               {loading && <h2 className="text-2xl text-forrest flex items-center justify-center">Loading...</h2>}
               <div className="mt-5 mb-10 flex items-center justify-center">
-                <button className="bg-limeCream text-forrest rounded-xl px-5 py-5"  onClick={() => generateCast(generateTargetIndex())}>Cast</button>
+                <button className="bg-lime text-ivory rounded-xl hover:bg-limeCream px-5 py-5"  onClick={() => generateCast(generateTargetIndex())}>Cast</button>
               </div>
               {}
       </div>
@@ -132,36 +132,29 @@ const Dashboard = () => {
     return (
       <>
         <h1 className="text-3xl flex items-center justify-center">Dashboard</h1>
-        <div className="card border-black">
-                {user && <h2 className="text-2xl flex items-center justify-center">Welcome, {user.displayName}</h2>}
-                {error && <h2 className="text-2xl flex items-center justify-center">Error: {String(error)}</h2>}
-                {loading && <h2 className="text-2xl flex items-center justify-center">Loading...</h2>}
-                {cast && <h1 className="text-2xl mt-20 flex items-center justify-center"><b>Odu:&nbsp;</b>{cast.odu}</h1>}
-                {cast && <h1 className="text-2xl mt-5 flex items-center justify-center"><b>Date:&nbsp;</b>{cast.timestamp.toLocaleDateString()}</h1>}
-                {cast && <h1 className="text-2xl mt-5 flex items-center justify-center"><b>Answer:&nbsp;</b>{cast.answer}</h1>}
-                {cast && <h1 className="text-2xl mt-5 flex items-center justify-center"><b>Interpretation:&nbsp;</b>{cast.interpretation}</h1>}
-                <div className="container mx-auto mt-5 mb-5 h-20 w-20 flex items-center justify-center">
-                  {cast && <img className="object-scale-down h-5 w-5 inline" src={`src/assets/${cast.maleObi1}`}/>}
-                  {cast && <img className="object-scale-down h-5 w-5 inline" src={`src/assets/${cast.maleObi2}`}/>}
-                  {cast && <img className="object-scale-down h-5 w-5 inline" src={`src/assets/${cast.femaleObi1}`}/>}
-                  {cast && <img className="object-scale-down h-5 w-5 inline" src={`src/assets/${cast.femaleObi2}`}/>}
-                </div>
-                <form className="mt-20 mb-20 flex items-center justify-center" onSubmit={() => saveCastToDb()}>
-                  <input
-                    type="text"
-                    className="text-2xl"
-                    placeholder="Add a title..."
-                    value={newTitle}
-                    onChange={(e) => setNewTitle(e.target.value)}
-                    autoFocus
-                  />
-                </form>
-                <div className="mt-10 mb-10 flex items-center justify-center">
-                  <button className="bg-blue-600/90 px-5 py-5" onClick={() => saveCastToDb()}>Save</button>
-                </div>
-                <div className="mt-10 mb-10 flex items-center justify-center">
-                  <button className="bg-blue-600/90 px-5 py-5" onClick={() => generateCast(generateTargetIndex())}>Cast</button>
-                </div>
+        {user && <h2 className="text-2xl flex items-center justify-center">Welcome, {user.displayName}</h2>}
+        {error && <h2 className="text-2xl flex items-center justify-center">Error: {String(error)}</h2>}
+        {loading && <h2 className="text-2xl flex items-center justify-center">Loading...</h2>}
+        <div className="h-100 w-1/2 mt-10 mx-auto border-2 border-forrest/60 rounded-xl shadow-md">
+          {cast && <h1 className="text-2xl mt-20 flex items-center justify-center"><b>Odu:&nbsp;</b>{cast.odu}</h1>}
+          {cast && <h1 className="text-2xl mt-5 flex items-center justify-center"><b>Date:&nbsp;</b>{cast.timestamp.toLocaleDateString()}</h1>}
+          {cast && <h1 className="text-2xl mt-5 flex items-center justify-center"><b>Answer:&nbsp;</b>{cast.answer}</h1>}
+          {cast && <h1 className="text-2xl mt-5 flex items-center justify-center"><b>Interpretation:&nbsp;</b>{cast.interpretation}</h1>}
+          <div className="container mx-auto mt-5 mb-5 h-32 w-32 flex items-center justify-center">
+            {cast && <img className="object-scale-down h-64 w-64 inline" src={`src/assets/${cast.maleObi1}`}/>}
+            {cast && <img className="object-scale-down h-64 w-64 inline" src={`src/assets/${cast.maleObi2}`}/>}
+            {cast && <img className="object-scale-down h-64 w-64 inline" src={`src/assets/${cast.femaleObi1}`}/>}
+            {cast && <img className="object-scale-down h-64 w-64 inline" src={`src/assets/${cast.femaleObi2}`}/>}
+          </div>
+            <form className="mt-20 mb-20 flex items-center justify-center" onSubmit={() => saveCastToDb()}>
+              <input type="text" className="text-2xl border-2 border-forrest/60 rounded" placeholder="Add a title..." value={newTitle} onChange={(e) => setNewTitle(e.target.value)} autoFocus />
+            </form>
+            <div className="mt-10 mb-10 flex items-center justify-center">
+              <button className="bg-lime text-ivory rounded-xl hover:bg-limeCream px-5 py-5 shadow-md" onClick={() => saveCastToDb()}>Save</button>
+            </div>
+        </div>
+        <div className="mt-32 mb-10 flex items-center justify-center">
+          <button className="bg-lime text-ivory rounded-xl hover:bg-limeCream px-5 py-5 shadow-md" onClick={() => generateCast(generateTargetIndex())}>Cast</button>
         </div>
       </>
     )

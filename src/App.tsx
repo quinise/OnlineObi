@@ -5,7 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import Auth from './components/Auth';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
-import {Link , Route, Routes} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Logout from './components/Logout';
 import CastList from './components/CastList.tsx';
 import Navbar from './components/Navbar'
