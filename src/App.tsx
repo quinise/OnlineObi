@@ -54,14 +54,12 @@ function App() {
   } else {
     // return the Login page if there is no user
     return (
-      <>
-      <div className='bg-ivory'>
+      <div className='bg-ivory h-screen'>
         <Routes>
           <Route path="/" element={ <Login/> } /> 
           <Route path="/login" element={ <Login/> } />
         </Routes>
       </div>
-      </>
     )
   }
 }

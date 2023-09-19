@@ -1,6 +1,6 @@
 // This file includes the code for the page with a list of saved casts.
 import React, { Fragment, useState } from "react";
-import { collection, query, where, onSnapshot, limit} from "firebase/firestore";
+import { collection, query, where, onSnapshot} from "firebase/firestore";
 import { db } from "../../firebase.config.tsx"
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Cast } from "../Interfaces/Cast.tsx";
@@ -46,12 +46,14 @@ const CastList = () => {
     return !duplicate;
   })
 
+  // Provide the Module component with the selected cast
   function setModuleCast(inputCast: Cast) {
      setCast(inputCast);
      setShowModal(true)
      return cast;
   }
 
+  // Provide the CastList component with a the user's list of uniquely titled casts
   const renderListOfCasts = (uniqueCasts: Cast[]) => {
     return (
       <div>{uniqueCasts && uniqueCasts?.map((castFromList: Cast) =>
@@ -68,11 +70,16 @@ const CastList = () => {
   }
 
   React.useEffect(() => {
-    const fetchCasts  = () => {
+    // Let this component finish or start making a request before a new component is mounted
+    let didCancel = false;
+
+    // Query the Firebase database for all the user's casts
+    async function fetchCasts () {
+      if (!didCancel) {
       const queryCasts = query(castsRef, where("user", "==", auth.currentUser?.uid));
      
-      const unsubscribe = onSnapshot(queryCasts, (snapshot) => {
-        snapshot.forEach((doc) => {
+      const unsubscribe = await onSnapshot(queryCasts, (snapshot) => {
+      snapshot.forEach((doc) => {
           const incommingCast: Cast = {
             id: doc.data().id,
             odu: doc.data().odu,
@@ -86,18 +93,22 @@ const CastList = () => {
               title: doc.data().title
           }
 
-            casts.push(incommingCast);
-            return incommingCast;
-  
+          casts.push(incommingCast);
+          return incommingCast;
         })
-        setCasts(casts)
-      });
-      
-      return () => unsubscribe();
-    };
 
+        setCasts(casts)
+        });
+
+        return () => unsubscribe();
+      }
+    }
+      
     fetchCasts();
 
+    return () => {
+      didCancel = true;
+    }
   }, [castsRef, casts, uniqueCasts]);
 
   return (
