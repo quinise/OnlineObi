@@ -16,48 +16,46 @@ function App() {
   if (error) {
     console.log("useAuthState Error: " + error);
     return (
-      // Navbar with useAuthState error and link to login
-      <>
-      <div>
+      // No Navbar with useAuthState error, but a link to login instead
+      <div className='bg-ivory'>
         <Routes>
           <Route path="/" element={ <Login/> } /> 
           <Route path="/login" element={ <Login/> } />
         </Routes>
       </div>
-      </>
   )}
 
   if (user) {
     return (
       // Navbar with a valid user, includes logout
-      <>
-      <Navbar />
-      <div>
-        <Routes> 
-          <Route path="/dashboard" element={
-            <Auth>
-              <Dashboard/>
-            </Auth>
-          } />
-          <Route path="/castList" element={
-            <Auth>
-              <CastList />
-            </Auth>
-          } />
-          <Route path="/logout" element={
-            <Auth>
-              <Logout />
-            </Auth>
-          } />
-        </Routes>
+      <div className="bg-ivory h-screen">
+        <Navbar />
+        <div>
+          <Routes> 
+            <Route path="/dashboard" element={
+              <Auth>
+                <Dashboard/>
+              </Auth>
+            } />
+            <Route path="/castList" element={
+              <Auth>
+                <CastList />
+              </Auth>
+            } />
+            <Route path="/logout" element={
+              <Auth>
+                <Logout />
+              </Auth>
+            } />
+          </Routes>
+        </div>
       </div>
-      </>
     );
   } else {
-    // Navbar with link to Login
+    // return the Login page if there is no user
     return (
       <>
-      <div>
+      <div className='bg-ivory'>
         <Routes>
           <Route path="/" element={ <Login/> } /> 
           <Route path="/login" element={ <Login/> } />
