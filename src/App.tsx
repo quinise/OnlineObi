@@ -32,6 +32,11 @@ function App() {
         <Navbar />
         <div>
           <Routes> 
+          <Route path="/" element={
+              <Auth>
+                <Dashboard/>
+              </Auth>
+            } />
             <Route path="/dashboard" element={
               <Auth>
                 <Dashboard/>
@@ -57,7 +62,8 @@ function App() {
       <div className='bg-ivory h-screen'>
         <Routes>
           <Route path="/" element={ <Login/> } /> 
-          <Route path="/login" element={ <Login/> } />
+          <Route path="/login" element={ <Login/> } 
+          />
         </Routes>
       </div>
     )
