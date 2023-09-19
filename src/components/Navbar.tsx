@@ -1,9 +1,11 @@
+// This file provides a Navbar (regular or mobile sized) for all the page components in the App
 import { useState } from 'react'
 import { auth } from "./../../GoogleProvider.tsx";
 import { useAuthState } from "react-firebase-hooks/auth";
 import WebMenu from './../components/WebMenu'
 import MobileMenu from './../components/MobileMenu'
 
+// Defining routes links
 const signInNavLinks = [
   {
     text: "Login",
