@@ -114,9 +114,13 @@ const Dashboard = () => {
   const DisplayWithoutCast = () => {
     return (
       <div className="mt-10">
-      <h1 className="text-3xl text-forrest flex items-center justify-center">Dashboard</h1>
+      <h1 className="text-3xl text-forrest mb-5 flex items-center justify-center">Dashboard</h1>
       <div className="card">
-              {user && <h2 className="text-2xl text-forrest flex items-center justify-center">Welcome, {user.displayName}</h2>}
+              {user &&  <>
+                          <h2 className="text-2xl text-forrest flex items-center justify-center">Welcome, {user.displayName}</h2>
+                          <p className="text-mahogany mt-10 mb-10 flex items-center justify-center">Would you like to divine something new?</p>
+                        </>
+              }
               {error && <h2 className="text-2xl text-forrest flex items-center justify-center">Error: {String(error)}</h2>}
               {loading && <h2 className="text-2xl text-forrest flex items-center justify-center">Loading...</h2>}
               <div className="mt-5 mb-10 flex items-center justify-center">
