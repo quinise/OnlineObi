@@ -54,11 +54,11 @@ const Dashboard = () => {
   }
 
   function showDuplicateTitleAlert() {
-    alert('A cast with this title has already been saved...');
+    alert('A cast with this title has already been saved... Please choose a unique title.');
   }
 
   function showEmptyTitleAlert() {
-    alert('The title may not be empty');
+    alert('The cast title may not be empty.');
   }
 
   const checkForDuplicateTitle = async () => {
@@ -114,17 +114,18 @@ const Dashboard = () => {
   const DisplayWithoutCast = () => {
     return (
       <div className="mt-10">
-      <h1 className="text-3xl text-forrest mb-5 flex items-center justify-center">Dashboard</h1>
+      <h1 className="text-3xl text-forrest text-opacity-50 mb-5 flex items-center justify-center">Dashboard</h1>
       <div className="card">
               {user &&  <>
                           <h2 className="text-2xl text-forrest flex items-center justify-center">Welcome, {user.displayName}</h2>
+                          <img className="object-scale-down h-64 w-64 mx-auto mt-10 mb-10" src="src/assets/favicon.png"/>
                           <p className="text-mahogany mt-10 mb-10 flex items-center justify-center">Would you like to divine something new?</p>
                         </>
               }
               {error && <h2 className="text-2xl text-forrest flex items-center justify-center">Error: {String(error)}</h2>}
               {loading && <h2 className="text-2xl text-forrest flex items-center justify-center">Loading...</h2>}
-              <div className="mt-5 mb-10 flex items-center justify-center">
-                <button className="bg-lime text-ivory rounded-xl hover:bg-limeCream px-5 py-5"  onClick={() => generateCast(generateTargetIndex())}>Cast</button>
+              <div className="mt-5 flex items-center justify-center">
+                <button className="bg-lime text-ivory rounded-xl hover:bg-limeCream px-5 py-5 shadow-mds"  onClick={() => generateCast(generateTargetIndex())}>Cast</button>
               </div>
               {}
       </div>
@@ -135,15 +136,15 @@ const Dashboard = () => {
   const DisplayWithCast = () => {
     return (
       <div className="mt-10">
-        <h1 className="text-3xl flex items-center justify-center">Dashboard</h1>
-        {user && <h2 className="text-2xl flex items-center justify-center">Welcome, {user.displayName}</h2>}
-        {error && <h2 className="text-2xl flex items-center justify-center">Error: {String(error)}</h2>}
-        {loading && <h2 className="text-2xl flex items-center justify-center">Loading...</h2>}
-        <div className="h-100 w-1/2 mt-10 mx-auto border-2 border-forrest/60 rounded-xl shadow-md">
-          {cast && <h1 className="text-2xl mt-20 flex items-center justify-center"><b>Odu:&nbsp;</b>{cast.odu}</h1>}
-          {cast && <h1 className="text-2xl mt-5 flex items-center justify-center"><b>Date:&nbsp;</b>{cast.timestamp.toLocaleDateString()}</h1>}
-          {cast && <h1 className="text-2xl mt-5 flex items-center justify-center"><b>Answer:&nbsp;</b>{cast.answer}</h1>}
-          {cast && <h1 className="text-2xl mt-5 flex items-center justify-center"><b>Interpretation:&nbsp;</b>{cast.interpretation}</h1>}
+        <h1 className="text-3xl text-forrest text-opacity-50 flex items-center justify-center">Dashboard</h1>
+        {user && <h2 className="text-2xl text-mahogany flex items-center justify-center">Welcome, {user.displayName}</h2>}
+        {error && <h2 className="text-2xl text-forrest flex items-center justify-center">Error: {String(error)}</h2>}
+        {loading && <h2 className="text-2xl text-forrest flex items-center justify-center">Loading...</h2>}
+        <div className="bg-forrest bg-opacity-50 h-100 w-2/3 mt-10 mx-auto border-2 border-forrest/60 rounded-xl shadow-md">
+          {cast && <h1 className="text-2xl text-mahogany mt-20 flex items-center justify-center"><b>Odu:&nbsp;</b>{cast.odu}</h1>}
+          {cast && <h1 className="text-2xl text-mahogany mt-5 flex items-center justify-center"><b>Date:&nbsp;</b>{cast.timestamp.toLocaleDateString()}</h1>}
+          {cast && <h1 className="text-2xl text-mahogany mt-5 flex items-center justify-center"><b>Answer:&nbsp;</b>{cast.answer}</h1>}
+          {cast && <h1 className="text-2xl text-mahogany mt-5 flex items-center justify-center"><b>Interpretation:&nbsp;</b>{cast.interpretation}</h1>}
           <div className="container mx-auto mt-5 mb-5 h-32 w-32 flex items-center justify-center">
             {cast && <img className="object-scale-down h-64 w-64 inline" src={`src/assets/${cast.maleObi1}`}/>}
             {cast && <img className="object-scale-down h-64 w-64 inline" src={`src/assets/${cast.maleObi2}`}/>}
