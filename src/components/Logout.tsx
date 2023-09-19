@@ -20,7 +20,7 @@ const Logout = () => {
     <>
       <h2 className='mt-5 mb-10 flex items-center justify-center'>Are you sure you'd like to log out?</h2>
       <div className='mt-5 mb-10 flex items-center justify-center'>
-        <button className='bg-blue-600/90 px-5 py-5' onClick={handleLogout}>Logout</button>
+        <button className='bg-lime rounded-md text-ivory hover:bg-limeCream px-5 py-5' onClick={handleLogout}>Logout</button>
       </div>
     </>
   )
