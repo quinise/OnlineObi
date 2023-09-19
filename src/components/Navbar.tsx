@@ -4,7 +4,7 @@ import { auth } from "./../../GoogleProvider.tsx";
 import { useAuthState } from "react-firebase-hooks/auth";
 import WebMenu from './../components/WebMenu'
 import MobileMenu from './../components/MobileMenu'
-
+     
 // Defining routes links
 const signInNavLinks = [
   {
