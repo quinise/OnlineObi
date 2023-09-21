@@ -1,14 +1,16 @@
 // This file includes the code for the page with a list of saved casts.
 import React, { Fragment, useState } from "react";
-import { collection, query, where, onSnapshot} from "firebase/firestore";
-import { db } from "../../firebase.config.tsx"
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Cast } from "../Interfaces/Cast.tsx";
+import { makeid } from "./../service/utils.tsx";
+import { fetchCasts } from "./../service/casts.tsx"
 import { auth } from "./../../GoogleProvider.tsx";
 import Modal from "./Modal.tsx";
 
 const CastList = () => {
   const [user] = useAuthState(auth);
+  const [casts, setCasts] = useState<Cast[]>([]);
+  const [showModal, setShowModal] = useState(false);
   const [cast, setCast] = useState<Cast>({
     id: makeid(8), 
     odu:" Aalaffia - Ogbe",
@@ -20,23 +22,7 @@ const CastList = () => {
     femaleObi2: "Female2Up.png", 
     interpretation: "Symbolizes good general welfare", 
     title: ""
-    });
-  const [casts, setCasts] = useState<Cast[]>([]);
-  const [showModal, setShowModal] = useState(false);
-  const castsRef = (collection(db, "casts"));
-
-  // Generate a random id string to use for unique keys
-  function makeid(length: number) {
-    let result = '';
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.?!@#$&*';
-    const charactersLength = characters.length;
-    let counter = 0;
-    while (counter < length) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-      counter += 1;
-    }
-    return result;
-}
+  });
 
   // Provide the Module component with the selected cast
   function setModuleCast(inputCast: Cast) {
@@ -62,47 +48,10 @@ const CastList = () => {
   }
 
   React.useEffect(() => {
-    // Let this component finish or start making a request before a new component is mounted
-    let didCancel = false;
-
-    // Query the Firebase database for all the user's casts
-    async function fetchCasts () {
-      if (!didCancel) {
-      const queryCasts = query(castsRef, where("user", "==", auth.currentUser?.uid));
-     
-      const unsubscribe = await onSnapshot(queryCasts, (snapshot) => {
       
-        const temp = [];
-        snapshot.forEach((doc) => {
-          const incommingCast: Cast = {
-            id: doc.data().id,
-            odu: doc.data().odu,
-              timestamp: doc.data().timestamp,
-              answer: doc.data().answer,
-              maleObi1: doc.data().maleObi1,
-              maleObi2: doc.data().maleObi2,
-              femaleObi1: doc.data().femaleObi1,
-              femaleObi2: doc.data().femaleObi2,
-              interpretation: doc.data().interpretation,
-              title: doc.data().title
-          }
-
-          temp.push(incommingCast);
-          return incommingCast;
-        })
-
-        setCasts([...temp])
-        });
-
-        return () => unsubscribe();
-      }
-    }
-      
-    fetchCasts();
-   
-    return () => {
-      didCancel = true;
-    }
+    fetchCasts((data) => {
+      setCasts(data)
+    });
   }, []);
 
   return (
