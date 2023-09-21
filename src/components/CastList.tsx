@@ -1,9 +1,9 @@
 // This file includes the code for the page with a list of saved casts.
 import React, { Fragment, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Cast } from "../Interfaces/Cast.tsx";
-import { makeid } from "./../service/utils.tsx";
-import { fetchCasts } from "./../service/casts.tsx"
+import { Cast } from "../interfaces/Cast.tsx";
+import { makeid } from "../services/utils.tsx";
+import { fetchCasts } from "../services/fetchCasts.tsx"
 import { auth } from "./../../GoogleProvider.tsx";
 import Modal from "./Modal.tsx";
 

@@ -1,14 +1,14 @@
-import {collection, onSnapshot, query, where} from "firebase/firestore";
-import {auth} from "../../GoogleProvider.js";
-import {Cast} from "../Interfaces/Cast.js";
-import {db} from "../../firebase.config";
+import { collection, onSnapshot, query, where } from "firebase/firestore";
+import { auth } from "../../GoogleProvider.js";
+import { Cast } from "../interfaces/Cast.js";
+import { db } from "../../firebase.config.js";
 
-async function fetchCasts (callback) {
+function fetchCasts (callback) {
         const castsRef = (collection(db, "casts"));
 
         const queryCasts = query(castsRef, where("user", "==", auth.currentUser?.uid));
 
-        const unsubscribe = await onSnapshot(queryCasts, (snapshot) => {
+        const unsubscribe = onSnapshot(queryCasts, (snapshot) => {
 
             const temp = [];
             snapshot.forEach((doc) => {
@@ -36,4 +36,4 @@ async function fetchCasts (callback) {
 
 }
 
-export {fetchCasts}
+export { fetchCasts }
