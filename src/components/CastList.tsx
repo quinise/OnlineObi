@@ -38,14 +38,6 @@ const CastList = () => {
     return result;
 }
 
-  // Create an array of casts without duplicates
-  const seen = new Set();
-  const uniqueCasts = casts.filter( cast => {
-    const duplicate = seen.has(cast.title);
-    seen.add(cast.title);
-    return !duplicate;
-  })
-
   // Provide the Module component with the selected cast
   function setModuleCast(inputCast: Cast) {
      setCast(inputCast);
@@ -79,7 +71,9 @@ const CastList = () => {
       const queryCasts = query(castsRef, where("user", "==", auth.currentUser?.uid));
      
       const unsubscribe = await onSnapshot(queryCasts, (snapshot) => {
-      snapshot.forEach((doc) => {
+      
+        const temp = [];
+        snapshot.forEach((doc) => {
           const incommingCast: Cast = {
             id: doc.data().id,
             odu: doc.data().odu,
@@ -93,11 +87,11 @@ const CastList = () => {
               title: doc.data().title
           }
 
-          casts.push(incommingCast);
+          temp.push(incommingCast);
           return incommingCast;
         })
 
-        setCasts(casts)
+        setCasts([...temp])
         });
 
         return () => unsubscribe();
@@ -109,15 +103,13 @@ const CastList = () => {
     return () => {
       didCancel = true;
     }
-  }, [castsRef, casts, renderListOfCasts, uniqueCasts]);
-
-  console.log()
+  }, []);
 
   return (
     <Fragment>
       {user && <h2 className="text-3xl text-forrest mt-10 flex items-center justify-center">{user.displayName}'s Casts</h2>}
       <div>
-        {renderListOfCasts(uniqueCasts)}
+        {renderListOfCasts(casts)}
       </div>
         <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
           <div className="p-6">
