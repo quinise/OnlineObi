@@ -6,19 +6,21 @@ import { Cast } from "../interfaces/Cast.tsx";
 import { checkForDuplicateTitle } from "../services/utils.tsx"
 import { saveCastToDb } from "../services/saveCast.tsx";
 import { generatedCast } from "../services/generateCast.tsx"; 
+import Modal from "./Modal.tsx";
 
 const Dashboard = () => {
   const [user, loading, error] = useAuthState(auth);
   const [cast, setCast] = useState<Cast>();
   const [isCastGenerated, setIsCastGenerated] = useState(false);
   const [newTitle, setNewTitle] = useState("");
-
+  const [showModal, setShowModal] = useState(false);
 
   const generateCast = () => {
     const castResult = generatedCast;
 
     setCast(castResult);
     setIsCastGenerated(true);
+    setShowModal(true);
   }
 
   function showSuccessfulSaveAlert() {
@@ -32,15 +34,6 @@ const Dashboard = () => {
   function showEmptyTitleAlert() {
     alert('The cast title may not be empty.');
   }
-
-  const handleDuplicateTitle = async (newTitle) => {    
-    if(await checkForDuplicateTitle(newTitle)) {
-      // alert the user that they must choose a unique title
-      showDuplicateTitleAlert();
-    } else {
-      return false;
-    }
-  }
   
   const handleSaveCast = async () => {
     // Prevents submission of blank casts and titles to the database
@@ -48,14 +41,22 @@ const Dashboard = () => {
 
     if (!newTitle) {
       showEmptyTitleAlert();
+
       return;
     }
 
-    if (await handleDuplicateTitle(newTitle)) return;
+    if (await checkForDuplicateTitle(newTitle)) {
+      showDuplicateTitleAlert();
+      
+      return;
 
-    saveCastToDb(cast, newTitle);
+    } else {
+      saveCastToDb(cast, newTitle);
 
-    showSuccessfulSaveAlert()
+      showSuccessfulSaveAlert();
+    }
+
+    
   }
 
   React.useEffect(() => {
@@ -72,18 +73,17 @@ const Dashboard = () => {
       <div className="mt-10">
       <h1 className="text-3xl text-forrest text-opacity-50 mb-5 flex items-center justify-center">Dashboard</h1>
       <div className="card">
-              {user &&  <>
-                          <h2 className="text-2xl text-forrest flex items-center justify-center">Welcome, {user.displayName}</h2>
-                          <img className="object-scale-down h-64 w-64 mx-auto mt-10 mb-10" src="src/assets/favicon.png"/>
-                          <p className="text-mahogany mt-10 mb-10 flex items-center justify-center">Would you like to divine something new?</p>
-                        </>
-              }
-              {error && <h2 className="text-2xl text-forrest flex items-center justify-center">Error: {String(error)}</h2>}
-              {loading && <h2 className="text-2xl text-forrest flex items-center justify-center">Loading...</h2>}
-              <div className="mt-5 flex items-center justify-center">
-                <button className="bg-lime text-ivory rounded-xl hover:bg-limeCream px-5 py-5 shadow-mds"  onClick={() => generateCast()}>Cast</button>
-              </div>
-              {}
+          {user &&  <>
+                      <h2 className="text-2xl text-forrest flex items-center justify-center">Welcome, {user.displayName}</h2>
+                      <img className="object-scale-down h-64 w-64 mx-auto mt-10 mb-10" src="src/assets/favicon.png"/>
+                      <p className="text-mahogany mt-10 mb-10 flex items-center justify-center">Would you like to divine something new?</p>
+                    </>
+          }
+          {error && <h2 className="text-2xl text-forrest flex items-center justify-center">Error: {String(error)}</h2>}
+          {loading && <h2 className="text-2xl text-forrest flex items-center justify-center">Loading...</h2>}
+          <div className="mt-5 flex items-center justify-center">
+            <button className="bg-lime text-ivory rounded-xl hover:bg-limeCream px-5 py-5 shadow-mds"  onClick={() => generateCast()}>Cast</button>
+          </div>
       </div>
     </div>
     )
@@ -91,33 +91,40 @@ const Dashboard = () => {
 
   const DisplayWithCast = () => {
     return (
+      <>
       <div className="mt-10">
         <h1 className="text-3xl text-forrest text-opacity-50 flex items-center justify-center">Dashboard</h1>
         {user && <h2 className="text-2xl text-mahogany flex items-center justify-center">Welcome, {user.displayName}</h2>}
         {error && <h2 className="text-2xl text-forrest flex items-center justify-center">Error: {String(error)}</h2>}
         {loading && <h2 className="text-2xl text-forrest flex items-center justify-center">Loading...</h2>}
-        <div className="bg-forrest bg-opacity-50 h-100 w-2/3 mt-10 mx-auto border-2 border-forrest/60 rounded-xl shadow-md">
+        <img className="object-scale-down h-64 w-64 mx-auto mt-10 mb-10" src="src/assets/favicon.png"/>
+        <p className="text-mahogany mt-10 mb-10 flex items-center justify-center">Would you like to divine something new?</p>
+        <div className="mt-10 mb-10 flex items-center justify-center">
+          <button className="bg-lime text-ivory rounded-xl hover:bg-limeCream px-5 py-5 shadow-md" onClick={() => generateCast()}>Cast</button>
+        </div>
+      </div>
+      
+      <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
+      <div className="h-100 w-2/3 mt-10 mx-auto">
           {cast && <h1 className="text-2xl text-mahogany mt-20 flex items-center justify-center"><b>Odu:&nbsp;</b>{cast.odu}</h1>}
           {cast && <h1 className="text-2xl text-mahogany mt-5 flex items-center justify-center"><b>Date:&nbsp;</b>{cast.timestamp.toLocaleDateString()}</h1>}
           {cast && <h1 className="text-2xl text-mahogany mt-5 flex items-center justify-center"><b>Answer:&nbsp;</b>{cast.answer}</h1>}
           {cast && <h1 className="text-2xl text-mahogany mt-5 flex items-center justify-center"><b>Interpretation:&nbsp;</b>{cast.interpretation}</h1>}
           <div className="container mx-auto mt-5 mb-5 h-32 w-32 flex items-center justify-center">
-            {cast && <img className="object-scale-down h-64 w-64 inline" src={`src/assets/${cast.maleObi1}`}/>}
-            {cast && <img className="object-scale-down h-64 w-64 inline" src={`src/assets/${cast.maleObi2}`}/>}
-            {cast && <img className="object-scale-down h-64 w-64 inline" src={`src/assets/${cast.femaleObi1}`}/>}
-            {cast && <img className="object-scale-down h-64 w-64 inline" src={`src/assets/${cast.femaleObi2}`}/>}
+            {cast && <img className="object-scale-down h-64 w-64 inline" src={`src/assets/${cast.maleObi1}`} />}
+            {cast && <img className="object-scale-down h-64 w-64 inline" src={`src/assets/${cast.maleObi2}`} />}
+            {cast && <img className="object-scale-down h-64 w-64 inline" src={`src/assets/${cast.femaleObi1}`} />}
+            {cast && <img className="object-scale-down h-64 w-64 inline" src={`src/assets/${cast.femaleObi2}`} />}
           </div>
-            <form className="mt-20 mb-20 flex items-center justify-center" onSubmit={() => handleSaveCast()}>
-              <input type="text" className="text-2xl border-2 border-forrest/60 rounded" placeholder="Add a title..." value={newTitle} onChange={(e) => setNewTitle(e.target.value)} autoFocus />
-            </form>
-            <div className="mt-10 mb-10 flex items-center justify-center">
-              <button className="bg-lime text-ivory rounded-xl hover:bg-limeCream px-5 py-5 shadow-md" onClick={() => handleSaveCast()}>Save</button>
-            </div>
+          <form className="mt-20 mb-20 flex items-center justify-center" onSubmit={() => handleSaveCast()}>
+            <input type="text" className="text-2xl border-2 border-forrest/60 rounded" placeholder="Add a title..." value={newTitle} onChange={(e) => setNewTitle(e.target.value)} autoFocus />
+          </form>
+          <div className="mt-10 mb-10 flex items-center justify-center">
+            <button className="bg-lime text-ivory rounded-xl hover:bg-limeCream px-5 py-5 shadow-md" onClick={() => handleSaveCast()}>Save</button>
+          </div>
         </div>
-        <div className="mt-32 mb-10 flex items-center justify-center">
-          <button className="bg-lime text-ivory rounded-xl hover:bg-limeCream px-5 py-5 shadow-md" onClick={() => generateCast()}>Cast</button>
-        </div>
-      </div>
+      </Modal>
+      </>
     )
   }
 
