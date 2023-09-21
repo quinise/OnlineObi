@@ -53,7 +53,7 @@ const CastList = () => {
      return cast;
   }
 
-  // Provide the CastList HTML with a the user's list of uniquely titled casts
+  // Provide the HTML for a the user's list of uniquely titled casts
   const renderListOfCasts = (uniqueCasts: Cast[]) => {
     return (
       <div>{uniqueCasts && uniqueCasts?.map((castFromList: Cast) =>
@@ -105,11 +105,13 @@ const CastList = () => {
     }
       
     fetchCasts();
-
+   
     return () => {
       didCancel = true;
     }
-  }, [castsRef, casts, uniqueCasts]);
+  }, [castsRef, casts, renderListOfCasts, uniqueCasts]);
+
+  console.log()
 
   return (
     <Fragment>
