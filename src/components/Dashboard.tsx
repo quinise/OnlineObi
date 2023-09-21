@@ -1,52 +1,24 @@
 // This file includes the code for the Dashboard page=
 import React, { useState } from "react";
 import { auth } from "./../../GoogleProvider.tsx";
-import { db } from "../../firebase.config.tsx"
-import { addDoc, collection, query, where, getDocs} from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { BaseCastArray } from "../Interfaces/BaseCastArray.tsx";
-import { Cast } from "../Interfaces/Cast.tsx";
+import { Cast } from "../interfaces/Cast.tsx";
+import { checkForDuplicateTitle } from "../services/utils.tsx"
+import { saveCastToDb } from "../services/saveCast.tsx";
+import { generatedCast } from "../services/generateCast.tsx"; 
 
 const Dashboard = () => {
   const [user, loading, error] = useAuthState(auth);
   const [cast, setCast] = useState<Cast>();
   const [isCastGenerated, setIsCastGenerated] = useState(false);
   const [newTitle, setNewTitle] = useState("");
-  const castsRef = collection(db, "casts");
 
-  // Generates a random index to use on the BaseCase Array 
-  function generateRandomNumber(arrayLength: number) {
-    return Math.floor(Math.random() * arrayLength)
-  }
 
-  // Generates a random index in the BaseCastArray
-  const generateTargetIndex = () => {
-    return generateRandomNumber(BaseCastArray.length);
-  }
-
-  const generateCast = (targetIndex: number) => {
-    const castResult = createCast(targetIndex);
+  const generateCast = () => {
+    const castResult = generatedCast;
 
     setCast(castResult);
     setIsCastGenerated(true);
-  }
-
-  // This function maps the attributes of a cast to a new Cast
-  const createCast = (targetIndex: number) => {
-    const result: Cast = {
-      id: BaseCastArray[targetIndex].id,
-      odu: BaseCastArray[targetIndex].odu,
-      timestamp: new Date(),
-      answer: BaseCastArray[targetIndex].answer,
-      maleObi1: BaseCastArray[targetIndex].maleObi1,
-      maleObi2: BaseCastArray[targetIndex].maleObi2,
-      femaleObi1: BaseCastArray[targetIndex].femaleObi1,
-      femaleObi2: BaseCastArray[targetIndex].femaleObi2,
-      interpretation: BaseCastArray[targetIndex].interpretation,
-      title: BaseCastArray[targetIndex].title
-    };
-
-    return result;
   }
 
   function showSuccessfulSaveAlert() {
@@ -61,20 +33,16 @@ const Dashboard = () => {
     alert('The cast title may not be empty.');
   }
 
-  const checkForDuplicateTitle = async () => {
-    const duplicateTitleQuery = query(collection(db, "casts"), where("user", "==", auth.currentUser?.uid), where("title", "==", newTitle));
-    
-    const querySnapshot = await getDocs(duplicateTitleQuery);
-    if(querySnapshot.size === 1) {
+  const handleDuplicateTitle = async (newTitle) => {    
+    if(await checkForDuplicateTitle(newTitle)) {
       // alert the user that they must choose a unique title
       showDuplicateTitleAlert();
-      return true;
+    } else {
+      return false;
     }
-
-    return false;
   }
   
-  const saveCastToDb = async () => {
+  const handleSaveCast = async () => {
     // Prevents submission of blank casts and titles to the database
     if (!cast) return;
 
@@ -83,21 +51,9 @@ const Dashboard = () => {
       return;
     }
 
-    if (await checkForDuplicateTitle()) return;
+    if (await handleDuplicateTitle(newTitle)) return;
 
-    await addDoc(castsRef, {
-      id: cast.id,
-      odu: cast.odu,
-      timestamp: cast.timestamp,
-      answer: cast.answer,
-      maleObi1: cast.maleObi1,
-      maleObi2: cast.maleObi2,
-      femaleObi1: cast.femaleObi1,
-      femaleObi2: cast.femaleObi2,
-      interpretation: cast.interpretation,
-      title: newTitle,
-      user: auth.currentUser?.uid
-    })
+    saveCastToDb(cast, newTitle);
 
     showSuccessfulSaveAlert()
   }
@@ -125,7 +81,7 @@ const Dashboard = () => {
               {error && <h2 className="text-2xl text-forrest flex items-center justify-center">Error: {String(error)}</h2>}
               {loading && <h2 className="text-2xl text-forrest flex items-center justify-center">Loading...</h2>}
               <div className="mt-5 flex items-center justify-center">
-                <button className="bg-lime text-ivory rounded-xl hover:bg-limeCream px-5 py-5 shadow-mds"  onClick={() => generateCast(generateTargetIndex())}>Cast</button>
+                <button className="bg-lime text-ivory rounded-xl hover:bg-limeCream px-5 py-5 shadow-mds"  onClick={() => generateCast()}>Cast</button>
               </div>
               {}
       </div>
@@ -151,15 +107,15 @@ const Dashboard = () => {
             {cast && <img className="object-scale-down h-64 w-64 inline" src={`src/assets/${cast.femaleObi1}`}/>}
             {cast && <img className="object-scale-down h-64 w-64 inline" src={`src/assets/${cast.femaleObi2}`}/>}
           </div>
-            <form className="mt-20 mb-20 flex items-center justify-center" onSubmit={() => saveCastToDb()}>
+            <form className="mt-20 mb-20 flex items-center justify-center" onSubmit={() => handleSaveCast()}>
               <input type="text" className="text-2xl border-2 border-forrest/60 rounded" placeholder="Add a title..." value={newTitle} onChange={(e) => setNewTitle(e.target.value)} autoFocus />
             </form>
             <div className="mt-10 mb-10 flex items-center justify-center">
-              <button className="bg-lime text-ivory rounded-xl hover:bg-limeCream px-5 py-5 shadow-md" onClick={() => saveCastToDb()}>Save</button>
+              <button className="bg-lime text-ivory rounded-xl hover:bg-limeCream px-5 py-5 shadow-md" onClick={() => handleSaveCast()}>Save</button>
             </div>
         </div>
         <div className="mt-32 mb-10 flex items-center justify-center">
-          <button className="bg-lime text-ivory rounded-xl hover:bg-limeCream px-5 py-5 shadow-md" onClick={() => generateCast(generateTargetIndex())}>Cast</button>
+          <button className="bg-lime text-ivory rounded-xl hover:bg-limeCream px-5 py-5 shadow-md" onClick={() => generateCast()}>Cast</button>
         </div>
       </div>
     )
