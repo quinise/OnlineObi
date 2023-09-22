@@ -82,7 +82,7 @@ const Dashboard = () => {
           {error && <h2 className="text-2xl text-forrest flex items-center justify-center">Error: {String(error)}</h2>}
           {loading && <h2 className="text-2xl text-forrest flex items-center justify-center">Loading...</h2>}
           <div className="mt-5 flex items-center justify-center">
-            <button className="bg-lime text-ivory rounded-xl hover:bg-limeCream px-5 py-5 shadow-mds"  onClick={() => generateCast()}>Cast</button>
+            <button className="bg-forrest text-ivory rounded-xl hover:bg-forrest/60 px-5 py-4 shadow-mds"  onClick={() => generateCast()}>Cast</button>
           </div>
       </div>
     </div>

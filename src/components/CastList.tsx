@@ -76,7 +76,7 @@ const CastList = () => {
               <img className="object-scale-down h-32 w-32 inline" src={`src/assets/${cast.femaleObi1}`}/>
               <img className="object-scale-down h-32 w-32 inline" src={`src/assets/${cast.femaleObi2}`}/>
             </div>
-            <button className="bg-lime rounded-md text-ivory hover:bg-limeCream h-12 ml-12 mt-1 mb-1 mr-4 px-5 py-2 inline">Edit</button>
+            <button className="bg-forrest rounded-md text-ivory hover:bg-forrest/60 h-12 ml-12 mt-1 mb-1 mr-4 px-5 py-2 inline">Edit</button>
           </div>
         </Modal>
     </Fragment>
