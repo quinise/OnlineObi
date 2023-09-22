@@ -8,7 +8,7 @@ function WebMenu({ navLinks }) {
         { navLinks.map(({text, path }, index) => {
             return (
                 <>
-                    <Link className="hover:text-limeCream cursor-pointer" key={index} to={path}>{text}</Link>
+                    <Link className="hover:text-forrest/60 cursor-pointer" key={index} to={path}>{text}</Link>
                 </>
             );
             })} 
