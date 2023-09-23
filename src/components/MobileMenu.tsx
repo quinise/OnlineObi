@@ -2,10 +2,13 @@
 import React, { useState } from 'react'
 import { IoCloseOutline } from "react-icons/io5"
 import { Link } from "react-router-dom";
+import { uid } from 'uid';
 
 function MobileMenu({ navLinks, close }) {
   const [animation, setAnimation] = useState(false);
-    
+  const uuid = uid();
+
+
   React.useEffect(() => {
     setAnimation(true);
     window.addEventListener("resize", (e) => {
@@ -32,7 +35,7 @@ function MobileMenu({ navLinks, close }) {
                 {navLinks.map(({ text, path}, index) => {
                         return (
                             <>
-                            <Link className="block py-2 text-forrest" key={index} to={path}>{text}</Link>
+                            <Link className="block py-2 text-forrest" key={ uuid } to={ path }>{ text }</Link>
                             </>
                     );
                 })}
