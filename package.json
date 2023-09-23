@@ -19,7 +19,8 @@
     "react-dom": "^18.2.0",
     "react-firebase-hooks": "^5.1.1",
     "react-icons": "^4.11.0",
-    "react-lodash": "^0.1.2"
+    "react-lodash": "^0.1.2",
+    "uid": "^2.0.2"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.198",

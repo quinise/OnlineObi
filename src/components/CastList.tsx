@@ -35,10 +35,10 @@ const CastList = () => {
   const renderListOfCasts = (uniqueCasts: Cast[]) => {
     return (
       <div>{uniqueCasts && uniqueCasts?.map((castFromList: Cast) =>
-        <div className="mt-16 mx-auto w-96 h-48 p-6 bg-limeCream/40 border-2 border-forrest/60 rounded-tl-2xl shadow-md block" onClick={
+        <div className="mt-16 mx-auto w-96 h-48 p-6 bg-forrest/60 border-2 border-forrest/60 rounded-tl-2xl shadow-md block" onClick={
           () => setModuleCast(castFromList)}>
-          <div className="w-88 h-36 pt-12 pl-4 bg-limeCream/60 rounded-lg border-2 border-forrest/40 flex justify-between">
-            <h1 className="text-2xl text-forrest inline" key={makeid(16)}>{castFromList.title}</h1>
+          <div className="w-88 h-36 pt-12 pl-4 bg-forrest/20 rounded-lg border-2 border-forrest/40 flex justify-between">
+            <h1 className="text-2xl text-ivory inline" key={makeid(16)}>{castFromList.title}</h1>
             <button className="bg-red text-white hover:bg-darkRed h-12 ml-0 mt-1 mb-1 mr-4 px-5 py-2 inline">Delete</button>
           </div>
         </div>
@@ -49,7 +49,7 @@ const CastList = () => {
 
   React.useEffect(() => {
       
-    fetchCasts((data) => {
+    fetchCasts((data: Cast[]) => {
       setCasts(data)
     });
   }, []);
