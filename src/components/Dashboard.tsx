@@ -70,7 +70,7 @@ const Dashboard = () => {
 
   const DisplayWithoutCast = () => {
     return (
-      <div className="mt-10">
+      <div className="mt-10 pb-10">
       <h1 className="text-3xl text-forrest text-opacity-50 mb-5 flex items-center justify-center">Dashboard</h1>
       <div className="card">
           {user &&  <>
