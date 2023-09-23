@@ -57,7 +57,7 @@ const CastList = () => {
   return (
     <Fragment>
       {user && <h2 className="text-3xl text-forrest mt-10 flex items-center justify-center">{user.displayName}'s Casts</h2>}
-      <div>
+      <div className="pb-10">
         {renderListOfCasts(casts)}
       </div>
         <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
