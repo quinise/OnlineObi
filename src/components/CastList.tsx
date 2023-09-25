@@ -2,9 +2,9 @@
 import React, { Fragment, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Cast } from "../interfaces/Cast.tsx";
-import { makeid } from "../services/utils.tsx";
 import { fetchCasts } from "../services/fetchCasts.tsx"
 import { auth } from "./../../GoogleProvider.tsx";
+import { uid } from "uid";
 import Modal from "./Modal.tsx";
 
 const CastList = () => {
@@ -12,7 +12,7 @@ const CastList = () => {
   const [casts, setCasts] = useState<Cast[]>([]);
   const [showModal, setShowModal] = useState(false);
   const [cast, setCast] = useState<Cast>({
-    id: makeid(8), 
+    id: uid(), 
     odu:" Aalaffia - Ogbe",
     timestamp: new Date(), 
     answer: "Yes", 
@@ -38,7 +38,7 @@ const CastList = () => {
         <div className="mt-16 mx-auto w-96 h-48 p-6 bg-forrest/60 border-2 border-forrest/60 rounded-tl-2xl shadow-md block" onClick={
           () => setModuleCast(castFromList)}>
           <div className="w-88 h-36 pt-12 pl-4 bg-forrest/20 rounded-lg border-2 border-forrest/40 flex justify-between">
-            <h1 className="text-2xl text-ivory inline" key={makeid(16)}>{castFromList.title}</h1>
+            <h1 className="text-2xl text-ivory inline" key={castFromList.id}>{castFromList.title}</h1>
             <button className="bg-red text-white hover:bg-darkRed h-12 ml-0 mt-1 mb-1 mr-4 px-5 py-2 inline">Delete</button>
           </div>
         </div>
