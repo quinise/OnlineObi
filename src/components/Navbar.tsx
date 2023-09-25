@@ -8,6 +8,7 @@ import MobileMenu from './../components/MobileMenu'
 // Defining routes links
 const signInNavLinks = [
   {
+    id: "1",
     text: "Login",
     path: "/login"
   }
@@ -15,16 +16,19 @@ const signInNavLinks = [
 
 const authNavLinks = [
   {
+    id: "1",
     text: "Dashboard",
     path: "/dashboard"
   },
 
   {
+    id: "2",
     text: "Cast List",
     path: "/castList"
   },
 
   {
+    id: "3",
     text: "Logout",
     path: '/logout'
   }
