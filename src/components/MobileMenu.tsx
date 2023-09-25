@@ -32,10 +32,10 @@ function MobileMenu({ navLinks, close }) {
                     <IoCloseOutline className="w-7 h-7 hover:scale-110 transition-all cursor-pointer" onClick={() => {close()}}/>
                 </div> 
                 <div className="mt-5 divide-y">
-                {navLinks.map(({ text, path}, index) => {
+                {navLinks.map(({ text, path, id}, index) => {
                         return (
                             <>
-                            <Link className="block py-2 text-forrest" key={ uuid } to={ path }>{ text }</Link>
+                            <Link className="block py-2 text-forrest" key={ id } to={ path }>{ text }</Link>
                             </>
                     );
                 })}

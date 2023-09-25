@@ -100,7 +100,7 @@ const Dashboard = () => {
         <img className="object-scale-down h-64 w-64 mx-auto mt-10 mb-10" src="src/assets/favicon.png"/>
         <p className="text-mahogany mt-10 mb-10 flex items-center justify-center">Would you like to divine something new?</p>
         <div className="mt-10 mb-10 flex items-center justify-center">
-          <button className="bg-lime text-ivory rounded-xl hover:bg-limeCream px-5 py-5 shadow-md" onClick={() => generateCast()}>Cast</button>
+          <button className="bg-forrest text-ivory rounded-xl hover:bg-forrest/60 px-5 py-5 shadow-md" onClick={() => generateCast()}>Cast</button>
         </div>
       </div>
       
@@ -120,7 +120,7 @@ const Dashboard = () => {
             <input type="text" className="text-2xl border-2 border-forrest/60 rounded" placeholder="Add a title..." value={newTitle} onChange={(e) => setNewTitle(e.target.value)} autoFocus />
           </form>
           <div className="mt-10 mb-10 flex items-center justify-center">
-            <button className="bg-lime text-ivory rounded-xl hover:bg-limeCream px-5 py-5 shadow-md" onClick={() => handleSaveCast()}>Save</button>
+            <button className="bg-forrest text-ivory rounded-xl hover:bg-forrest/60 px-5 py-5 shadow-md" onClick={() => handleSaveCast()}>Save</button>
           </div>
         </div>
       </Modal>
