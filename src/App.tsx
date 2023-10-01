@@ -19,8 +19,8 @@ function App() {
       // No Navbar with useAuthState error, but a link to login instead
       <div className='bg-ivory'>
         <Routes>
-          <Route path="/" element={ <Login/> } /> 
-          <Route path="/login" element={ <Login/> } />
+          <Route path="/" element={ <Login /> } /> 
+          <Route path="/login" element={ <Login /> } />
         </Routes>
       </div>
   )}
@@ -34,12 +34,12 @@ function App() {
           <Routes> 
           <Route path="/" element={
               <Auth>
-                <Dashboard/>
+                <Dashboard />
               </Auth>
             } />
             <Route path="/dashboard" element={
               <Auth>
-                <Dashboard/>
+                <Dashboard />
               </Auth>
             } />
             <Route path="/castList" element={
@@ -61,8 +61,8 @@ function App() {
     return (
       <div className='bg-ivory h-screen'>
         <Routes>
-          <Route path="/" element={ <Login/> } /> 
-          <Route path="/login" element={ <Login/> } 
+          <Route path="/" element={ <Login /> } /> 
+          <Route path="/login" element={ <Login /> } 
           />
         </Routes>
       </div>

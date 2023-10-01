@@ -25,15 +25,13 @@ function MobileMenu({ navLinks, close }) {
         <div className="fixed inset-0 top 1-0 p-5">
             <div className={`w-full bg-ivory rounded-xl p-5 transition-all ${animation ? "scale-100" : "scale-95"}`}>
                 <div className="flex items-center justify-between">
-                    <h1>Menu</h1>
+                    <h1 className="text-forrest font-serif">Menu</h1>
                     <IoCloseOutline className="w-7 h-7 hover:scale-110 transition-all cursor-pointer" onClick={() => {close()}}/>
                 </div> 
-                <div className="mt-5 divide-y">
-                {navLinks.map(({ text, path, id}, index) => {
-                        return (
-                            <>
-                            <Link className="block py-2 text-forrest" key={ id } to={ path }>{ text }</Link>
-                            </>
+                <div className="mt-5">
+                {navLinks.map(({ text, path }, index: number) => {
+                    return (
+                        <Link className="block py-2 text-forrest font-serif" key={ `mobileNav${index}` } to={ path }>{ text }</Link>
                     );
                 })}
             </div> 
