@@ -2,7 +2,8 @@
 import React, { Fragment, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Cast } from "../interfaces/Cast.tsx";
-import { fetchCasts } from "../services/fetchCasts.tsx"
+import { fetchCasts } from "../services/fetchCasts.tsx";
+import { handleDelete } from "../services/deleteCast.tsx";
 import { auth } from "./../../GoogleProvider.tsx";
 import { uid } from "uid";
 import Modal from "./Modal.tsx";
@@ -34,12 +35,12 @@ const CastList = () => {
   // Provide the HTML for a the user's list of uniquely titled casts
   const renderListOfCasts = (uniqueCasts: Cast[]) => {
     return (
-      <div>{uniqueCasts && uniqueCasts?.map((castFromList: Cast) =>
-        <div className="mt-16 mx-auto w-96 h-48 p-6 bg-forrest/60 border-2 border-forrest/60 rounded-tl-2xl shadow-md block" onClick={
-          () => setModuleCast(castFromList)}>
+      <div>{uniqueCasts && uniqueCasts?.map((castFromList: Cast, index:number) =>
+        <div key={`cl${index}`} className="mt-16 mx-auto w-96 h-48 p-6 bg-forrest/60 border-2 border-forrest/60 rounded-tl-2xl shadow-md block">
           <div className="w-88 h-36 pt-12 pl-4 bg-forrest/20 rounded-lg border-2 border-forrest/40 flex justify-between">
-            <h1 className="text-2xl text-ivory inline" key={castFromList.id}>{castFromList.title}</h1>
-            <button className="bg-red text-white hover:bg-darkRed h-12 ml-0 mt-1 mb-1 mr-4 px-5 py-2 inline">Delete</button>
+            <h1 className="text-2xl text-ivory inline" key={ castFromList.id } onClick={
+          () => setModuleCast(castFromList)}>{ castFromList.title }</h1>
+            <button onClick={ () => handleDelete(castFromList)} className="bg-red text-white hover:bg-darkRed h-12 ml-0 mt-1 mb-1 mr-4 px-5 py-2 inline">Delete</button>
           </div>
         </div>
         )}

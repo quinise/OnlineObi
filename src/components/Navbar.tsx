@@ -8,7 +8,6 @@ import MobileMenu from './../components/MobileMenu'
 // Defining routes links
 const signInNavLinks = [
   {
-    id: "1",
     text: "Login",
     path: "/login"
   }
@@ -16,19 +15,16 @@ const signInNavLinks = [
 
 const authNavLinks = [
   {
-    id: "1",
     text: "Dashboard",
     path: "/dashboard"
   },
 
   {
-    id: "2",
     text: "Cast List",
     path: "/castList"
   },
 
   {
-    id: "3",
     text: "Logout",
     path: '/logout'
   }
@@ -49,13 +45,16 @@ const Navbar = () => {
 
   if (user) {
     return (
-      <nav className="pt-10 p-5 w-full flex items-center justify-center">
-        <WebMenu navLinks = { authNavLinks } />
-        <div className="flex justify-end w-full sm:hidden">
-          <button className="bg-white text-forrest shadow-md px-5 py-2 rounded-full" onClick={() => {setOpen(true);}}>Menu</button>
-        </div>
-        {open ? (<MobileMenu navLinks={ authNavLinks } close={() => setOpen(false)} />) : (<></>)}
-      </nav>
+      <div>
+        <nav className="pt-10 p-5 w-full flex items-center justify-center">
+          <WebMenu navLinks = { authNavLinks } />
+          <div className="flex justify-end w-full sm:hidden">
+            <button className="bg-white text-forrest shadow-md px-5 py-2 rounded-full" onClick={() => {setOpen(true);}}>Menu</button>
+          </div>
+          {open ? (<MobileMenu navLinks={ authNavLinks } close={() => setOpen(false)} />) : (<></>)}
+        </nav>
+      </div>
+      
     )
   } else {
     return (
