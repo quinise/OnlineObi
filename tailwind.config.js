@@ -18,6 +18,10 @@ export default {
       'ivory': '#fffbeb',
       'green': '#22c55e',
       'gold': '#eab308'
+    },
+    fontFamily: {
+      'serif': ['ui-serif', '"young-serif"'],
+      'sans-serif': ['ui-sans-serif', "poppins"],
     }
   },
   plugins: [],

@@ -38,9 +38,9 @@ const CastList = () => {
       <div>{uniqueCasts && uniqueCasts?.map((castFromList: Cast, index:number) =>
         <div key={`cl${index}`} className="mt-16 mx-auto w-96 h-48 p-6 bg-forrest/60 border-2 border-forrest/60 rounded-tl-2xl shadow-md block">
           <div className="w-88 h-36 pt-12 pl-4 bg-forrest/20 rounded-lg border-2 border-forrest/40 flex justify-between">
-            <h1 className="text-2xl text-ivory inline" key={ castFromList.id } onClick={
+            <h1 className="text-2xl text-ivory font-serif inline" key={ castFromList.id } onClick={
           () => setModuleCast(castFromList)}>{ castFromList.title }</h1>
-            <button onClick={ () => handleDelete(castFromList)} className="bg-red text-white hover:bg-darkRed h-12 ml-0 mt-1 mb-1 mr-4 px-5 py-2 inline">Delete</button>
+            <button onClick={ () => handleDelete(castFromList)} className="bg-red text-white font-'sans-serif' hover:bg-darkRed h-12 ml-0 mt-1 mb-1 mr-4 px-5 py-2 inline">Delete</button>
           </div>
         </div>
         )}
@@ -57,7 +57,7 @@ const CastList = () => {
 
   return (
     <Fragment>
-      {user && <h2 className="text-3xl text-forrest mt-10 flex items-center justify-center">{user.displayName}'s Casts</h2>}
+      {user && <h2 className="text-3xl text-forrest font-serif mt-10 flex items-center justify-center">{user.displayName}'s Casts</h2>}
       <div className="pb-10">
         {renderListOfCasts(casts)}
       </div>

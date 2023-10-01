@@ -49,7 +49,7 @@ const Navbar = () => {
         <nav className="pt-10 p-5 w-full flex items-center justify-center">
           <WebMenu navLinks = { authNavLinks } />
           <div className="flex justify-end w-full sm:hidden">
-            <button className="bg-white text-forrest shadow-md px-5 py-2 rounded-full" onClick={() => {setOpen(true);}}>Menu</button>
+            <button className="bg-white text-forrest font-serif shadow-md px-5 py-2 rounded-full" onClick={() => {setOpen(true);}}>Menu</button>
           </div>
           {open ? (<MobileMenu navLinks={ authNavLinks } close={() => setOpen(false)} />) : (<></>)}
         </nav>
