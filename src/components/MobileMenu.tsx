@@ -2,12 +2,9 @@
 import React, { useState } from 'react'
 import { IoCloseOutline } from "react-icons/io5"
 import { Link } from "react-router-dom";
-import { uid } from 'uid';
 
 function MobileMenu({ navLinks, close }) {
   const [animation, setAnimation] = useState(false);
-  const uuid = uid();
-
 
   React.useEffect(() => {
     setAnimation(true);
