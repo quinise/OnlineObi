@@ -77,7 +77,7 @@ const Dashboard = () => {
           {user &&  <>
                       <h2 className="text-2xl text-forrest font-serif flex items-center justify-center">Welcome, {user.displayName}</h2>
                       <img className="object-scale-down h-64 w-64 mx-auto mt-10 mb-10" src="src/assets/favicon.png"/>
-                      <p className="text-mahogany font-'sans-serif' mt-10 mb-10 flex items-center justify-center">Would you like to divine something new?</p>
+                      <p className="text-mahogany font-sans-serif mt-10 mb-10 flex items-center justify-center"><b>Would you like to divine something new?</b></p>
                     </>
           }
           {error && <h2 className="text-2xl text-forrest font-serif flex items-center justify-center">Error: {String(error)}</h2>}
@@ -87,7 +87,7 @@ const Dashboard = () => {
               scale: 1.1,
               textShadow: "0px 0px 8px rgb(255, 255, 255)",
               boxShadow: "0px 0px 8px rgb(255, 255, 255)",
-            }} className="bg-forrest text-ivory font-'sans-serif' rounded-xl hover:bg-forrest/60 px-5 py-4 shadow-mds"  onClick={() => generateCast()}>Cast</motion.button>
+            }} className="bg-forrest text-ivory font-sans-serif rounded-xl hover:bg-forrest/60 px-5 py-4 shadow-mds"  onClick={() => generateCast()}>Cast</motion.button>
           </div>
       </div>
     </div>
