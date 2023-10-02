@@ -1,7 +1,7 @@
 // This file includes the code for the Login page
 import { auth, signInWithGoogle } from "./../../GoogleProvider.tsx";
 import { useAuthState } from "react-firebase-hooks/auth";
-
+import { motion } from "framer-motion";
 const Login = () => {
     const [user, loading, error] = useAuthState(auth);
 
@@ -14,7 +14,9 @@ const Login = () => {
             {!user && !loading && !error && (
             <>
                 <h1 className='text-7xl text-forrest font-serif mt-10 mb-10 flex items-center justify-center'>Mobile Obi</h1>
-                <img className="object-contain h-48 w-96 mb-10 mx-auto block" src="src/assets/ObiLogo.png"/>            
+                <div>
+                    <motion.img animate={{rotate: [50,200, 200, 0]}} transition={{duration: 4}} className="object-contain h-48 w-96 mb-10 mx-auto block" src="src/assets/ObiLogo.png"/>
+                </div>
                 <h3 className="text-2xl text-mahogany w-full mb-5 font-serif flex items-center justify-center">What is Obi?</h3>
                 <p className="text-1xl text-mahogany/60 font-'sans-serif' w-2/5 mb-8 mx-auto">Obi is a divination system used in the spiritual science, IFA. To cast, the diviner throws kola nut, coconut pieces, or even pennies on the ground; then interprets an answer based on how the pieces land...</p>
                 <div className="bg-forrest/60 border-2 border-forrest/50 p-5 h-48 w-2/5 mb-12 mx-auto shadow-md">
