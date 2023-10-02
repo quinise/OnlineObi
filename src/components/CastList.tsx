@@ -37,7 +37,12 @@ const CastList = () => {
   const renderListOfCasts = (uniqueCasts: Cast[]) => {
     return (
       <div>{uniqueCasts && uniqueCasts?.map((castFromList: Cast, index:number) =>
-        <motion.div whileHover={{ scale: 1.1 }} key={`cl${index}`} className="mt-16 mx-auto w-96 h-48 p-6 bg-forrest/60 border-2 border-forrest/60 rounded-tl-2xl shadow-md block">
+        <motion.div whileHover={{ 
+          scale: 1.1,
+          textShadow: "0px 0px 8px rgb(255, 255, 255)",
+          boxShadow: "0px 0px 8px rgb(255, 255, 255)",
+
+        }} key={`cl${index}`} className="mt-16 mx-auto w-96 h-48 p-6 bg-forrest/60 border-2 border-forrest/60 rounded-tl-2xl shadow-md block">
           <div className="w-88 h-36 pt-12 pl-4 bg-forrest/20 rounded-lg border-2 border-forrest/40 flex justify-between">
             <h1 className="text-2xl text-ivory font-serif inline" key={ castFromList.id } onClick={
           () => setModuleCast(castFromList)}>{ castFromList.title }</h1>

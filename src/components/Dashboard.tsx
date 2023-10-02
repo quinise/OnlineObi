@@ -83,7 +83,11 @@ const Dashboard = () => {
           {error && <h2 className="text-2xl text-forrest font-serif flex items-center justify-center">Error: {String(error)}</h2>}
           {loading && <h2 className="text-2xl text-forrest font-serif flex items-center justify-center">Loading...</h2>}
           <div className="mt-5 flex items-center justify-center">
-            <motion.button whileHover={{ scale: 1.1 }} className="bg-forrest text-ivory font-'sans-serif' rounded-xl hover:bg-forrest/60 px-5 py-4 shadow-mds"  onClick={() => generateCast()}>Cast</motion.button>
+            <motion.button whileHover={{ 
+              scale: 1.1,
+              textShadow: "0px 0px 8px rgb(255, 255, 255)",
+              boxShadow: "0px 0px 8px rgb(255, 255, 255)",
+            }} className="bg-forrest text-ivory font-'sans-serif' rounded-xl hover:bg-forrest/60 px-5 py-4 shadow-mds"  onClick={() => generateCast()}>Cast</motion.button>
           </div>
       </div>
     </div>

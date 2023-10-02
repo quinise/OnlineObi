@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { IoCloseOutline } from "react-icons/io5"
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 function MobileMenu({ navLinks, close }) {
   const [animation, setAnimation] = useState(false);
@@ -31,7 +32,9 @@ function MobileMenu({ navLinks, close }) {
                 <div className="mt-5">
                 {navLinks.map(({ text, path }, index: number) => {
                     return (
-                        <Link className="block py-2 text-forrest font-serif" key={ `mobileNav${index}` } to={ path }>{ text }</Link>
+                        <motion.div whileHover={{ scale: 1.1, originX: 0 }} transition={{ type: "spring", stiffness: "300" }}>
+                            <Link className="block py-2 text-forrest font-serif" key={ `mobileNav${index}` } to={ path }>{ text }</Link>
+                        </motion.div>
                     );
                 })}
             </div> 
