@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { auth } from "./../../GoogleProvider.tsx";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { motion } from "framer-motion";
 import { Cast } from "../interfaces/Cast.tsx";
 import { checkForDuplicateTitle } from "../services/utils.tsx"
 import { saveCastToDb } from "../services/saveCast.tsx";
@@ -71,7 +72,7 @@ const Dashboard = () => {
   const DisplayWithoutCast = () => {
     return (
       <div className="mt-10 pb-10">
-      <h1 className="text-3xl text-forrest text-opacity-50 font-serif mb-5 flex items-center justify-center">Dashboard</h1>
+      <motion.h1 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: .3, duration: 1 }} className="text-3xl text-forrest text-opacity-50 font-serif mb-5 flex items-center justify-center">Dashboard</motion.h1>
       <div className="card">
           {user &&  <>
                       <h2 className="text-2xl text-forrest font-serif flex items-center justify-center">Welcome, {user.displayName}</h2>
@@ -82,7 +83,7 @@ const Dashboard = () => {
           {error && <h2 className="text-2xl text-forrest font-serif flex items-center justify-center">Error: {String(error)}</h2>}
           {loading && <h2 className="text-2xl text-forrest font-serif flex items-center justify-center">Loading...</h2>}
           <div className="mt-5 flex items-center justify-center">
-            <button className="bg-forrest text-ivory font-'sans-serif' rounded-xl hover:bg-forrest/60 px-5 py-4 shadow-mds"  onClick={() => generateCast()}>Cast</button>
+            <motion.button whileHover={{ scale: 1.1 }} className="bg-forrest text-ivory font-'sans-serif' rounded-xl hover:bg-forrest/60 px-5 py-4 shadow-mds"  onClick={() => generateCast()}>Cast</motion.button>
           </div>
       </div>
     </div>

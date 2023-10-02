@@ -2,6 +2,7 @@
 import { auth, signInWithGoogle } from "./../../GoogleProvider.tsx";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { motion } from "framer-motion";
+
 const Login = () => {
     const [user, loading, error] = useAuthState(auth);
 
