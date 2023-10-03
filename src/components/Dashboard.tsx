@@ -8,6 +8,7 @@ import { checkForDuplicateTitle } from "../services/utils.tsx"
 import { saveCastToDb } from "../services/saveCast.tsx";
 import { generatedCast } from "../services/generateCast.tsx"; 
 import Modal from "./Modal.tsx";
+import Loader from "./Loader.tsx";
 
 const h1Variants = {
   initial: {
