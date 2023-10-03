@@ -30,7 +30,7 @@ function MobileMenu({ navLinks, close }) {
                     <IoCloseOutline className="w-7 h-7 hover:scale-110 transition-all cursor-pointer" onClick={() => {close()}}/>
                 </div> 
                 <div className="mt-5">
-                {navLinks.map(({ text, path }, index: number) => {
+                { navLinks.map(({ text, path }, index: number) => {
                     return (
                         <motion.div whileHover={{ scale: 1.1, originX: 0 }} transition={{ type: "spring", stiffness: "300" }}>
                             <Link className="block py-2 text-forrest font-serif" key={ `mobileNav${index}` } to={ path }>{ text }</Link>

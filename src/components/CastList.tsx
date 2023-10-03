@@ -1,7 +1,7 @@
 // This file includes the code for the page with a list of saved casts.
 import React, { Fragment, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Cast } from "../interfaces/Cast.tsx";
 import { fetchCasts } from "../services/fetchCasts.tsx";
 import { handleDelete } from "../services/deleteCast.tsx";
@@ -18,6 +18,7 @@ const bumpVariants = {
   }
 }
 
+// Provides the "bump" animation on Title
 const titleBumpVariants = {
   whileHover: { 
     scale: 1.1,
@@ -62,9 +63,9 @@ const CastList = () => {
         <motion.div key={`cl${index}`} className="mt-16 mx-auto w-96 h-48 p-6 bg-forrest/60 border-2 border-forrest/60 rounded-tl-2xl shadow-md block"
           variants={ bumpVariants }
           whileHover="whileHover">
-          <div className="w-88 h-36 pt-12 pl-4 bg-forrest/20 rounded-lg border-2 border-forrest/40 flex justify-between">
-            <h1 className="text-2xl text-ivory font-serif inline" key={ castFromList.id } onClick={
-          () => setModuleCast(castFromList)}>{ castFromList.title }</h1>
+          <div className="w-88 h-36 pt-12 pl-4 bg-forrest/20 rounded-lg border-2 border-forrest/40 flex justify-between" key={ castFromList.id } onClick={
+          () => setModuleCast(castFromList)}>
+            <h1 className="text-2xl text-ivory font-serif inline">{ castFromList.title }</h1>
             <button onClick={ () => handleDelete(castFromList)} className="bg-red text-white font-sans-serif hover:bg-darkRed h-12 ml-0 mt-1 mb-1 mr-4 px-5 py-2 inline">Delete</button>
           </div>
         </motion.div>
