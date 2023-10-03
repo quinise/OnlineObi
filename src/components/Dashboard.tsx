@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { auth } from "./../../GoogleProvider.tsx";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { animate, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Cast } from "../interfaces/Cast.tsx";
 import { checkForDuplicateTitle } from "../services/utils.tsx"
 import { saveCastToDb } from "../services/saveCast.tsx";
@@ -145,7 +145,7 @@ const Dashboard = () => {
           {cast && <h1 className="text-2xl text-mahogany mt-5 flex items-center justify-center"><b>Date:&nbsp;</b>{cast.timestamp.toLocaleDateString()}</h1>}
           {cast && <h1 className="text-2xl text-mahogany mt-5 flex items-center justify-center"><b>Answer:&nbsp;</b>{cast.answer}</h1>}
           {cast && <h1 className="text-2xl text-mahogany mt-5 flex items-center justify-center"><b>Interpretation:&nbsp;</b>{cast.interpretation}</h1>}
-          <div className="container mx-auto mt-5 mb-5 h-32 w-32 flex items-center justify-center">
+          <div className="container mx-auto mt-10 mb-5 h-32 w-32 flex items-center justify-center">
             {cast && <motion.img className="object-scale-down h-64 w-64 inline" 
               variants={ kolaVariants }
               whileHover="whileHover"
@@ -164,7 +164,10 @@ const Dashboard = () => {
               src={`src/assets/${cast.femaleObi2}`} />}
           </div>
           <form className="mt-20 mb-20 flex items-center justify-center" onSubmit={() => handleSaveCast()}>
-            <input type="text" className="text-2xl border-2 border-forrest/60 rounded" placeholder="Add a title..." value={newTitle} onChange={(e) => setNewTitle(e.target.value)} autoFocus />
+            <motion.input type="text" className="text-2xl border-2 border-forrest/60 rounded" 
+              variants={buttonVariants}
+              whileHover="whileHover"
+              placeholder="Add a title..." value={newTitle} onChange={(e) => setNewTitle(e.target.value)} autoFocus />
           </form>
           <div className="mt-10 mb-10 flex items-center justify-center">
             <motion.button className="bg-forrest text-ivory rounded-xl hover:bg-forrest/60 px-5 py-5 shadow-md" 
