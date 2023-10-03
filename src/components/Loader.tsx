@@ -1,4 +1,4 @@
-import React from 'react'
+// This file provides the code that animates a ball to signifiy that something in the DOM is loading
 import { motion } from 'framer-motion'
 
 const loaderVariants = {
@@ -12,7 +12,8 @@ const loaderVariants = {
             },
             y: {
                 yoyo: Infinity,
-                duration: 0.25
+                duration: 0.25,
+                ease: 'easeOut'
             },
         }
     }
@@ -21,7 +22,7 @@ const loaderVariants = {
 const Loader = () => {
   return (
     <>
-    <motion.div className='loader bg-white rounded-md w-10 h-10 mx-auto'
+    <motion.div className='loader bg-forrest rounded-md w-10 h-10 mx-auto'
         variants={loaderVariants}
         animate="animationOne"
     >
