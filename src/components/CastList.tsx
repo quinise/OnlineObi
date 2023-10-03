@@ -1,7 +1,7 @@
 // This file includes the code for the page with a list of saved casts.
 import React, { Fragment, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Cast } from "../interfaces/Cast.tsx";
 import { fetchCasts } from "../services/fetchCasts.tsx";
 import { handleDelete } from "../services/deleteCast.tsx";
@@ -18,6 +18,7 @@ const bumpVariants = {
   }
 }
 
+// Provides the "bump" animation on Title
 const titleBumpVariants = {
   whileHover: { 
     scale: 1.1,
