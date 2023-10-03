@@ -60,7 +60,7 @@ const CastList = () => {
   const renderListOfCasts = (uniqueCasts: Cast[]) => {
     return (
       <div>{uniqueCasts && uniqueCasts?.map((castFromList: Cast, index:number) =>
-        <motion.div key={`cl${index}`} className="mt-16 mx-auto w-96 h-48 p-6 bg-forrest/60 border-2 border-forrest/60 rounded-tl-2xl shadow-md block"
+        <motion.div key={`cl${index}`} className="mt-16 mx-auto w-96 h-40 p-1.5 bg-forrest/60 border-2 border-forrest/60 rounded-tl-2xl shadow-md block"
           variants={ bumpVariants }
           whileHover="whileHover">
           <div className="w-88 h-36 pt-12 pl-4 bg-forrest/20 rounded-lg border-2 border-forrest/40 flex justify-between" key={ castFromList.id } onClick={

@@ -27,7 +27,7 @@ function MobileMenu({ navLinks, close }) {
             <div className={`w-full bg-ivory rounded-xl p-5 transition-all ${animation ? "scale-100" : "scale-95"}`}>
                 <div className="flex items-center justify-between">
                     <h1 className="text-forrest font-serif">Menu</h1>
-                    <IoCloseOutline className="w-7 h-7 hover:scale-110 transition-all cursor-pointer" onClick={() => {close()}}/>
+                    <IoCloseOutline className="text-forrest w-7 h-7 hover:scale-110 transition-all cursor-pointer" onClick={() => {close()}}/>
                 </div> 
                 <div className="mt-5">
                 { navLinks.map(({ text, path }, index: number) => {
