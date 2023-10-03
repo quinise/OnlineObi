@@ -106,7 +106,7 @@ const Dashboard = () => {
         >Dashboard</motion.h1>
       <div className="card">
           {user &&  <>
-                      <h2 className="text-2xl text-forrest font-serif flex items-center justify-center">Welcome, {user.displayName}</h2>
+                      <h2 className="text-2xl text-mahogany font-sans-serif flex items-center justify-center">Welcome, {user.displayName}</h2>
                       <img className="object-scale-down h-64 w-64 mx-auto mt-10 mb-10" src="src/assets/favicon.png"/>
                       <p className="text-mahogany font-sans-serif mt-10 mb-10 flex items-center justify-center"><b>Would you like to divine something new?</b></p>
                     </>
@@ -128,23 +128,23 @@ const Dashboard = () => {
     return (
       <>
       <div className="mt-10">
-        <h1 className="text-3xl text-forrest text-opacity-50 flex items-center justify-center">Dashboard</h1>
-        {user && <h2 className="text-2xl text-mahogany flex items-center justify-center">Welcome, {user.displayName}</h2>}
-        {error && <h2 className="text-2xl text-forrest flex items-center justify-center">Error: {String(error)}</h2>}
-        {loading && <h2 className="text-2xl text-forrest flex items-center justify-center">Loading...</h2>}
+        <h1 className="text-3xl text-forrest font-serif text-opacity-50 flex items-center justify-center">Dashboard</h1>
+        {user && <h2 className="text-2xl text-mahogany font-sans-serif flex items-center justify-center">Welcome, {user.displayName}</h2>}
+        {error && <h2 className="text-2xl text-forrest font-serif flex items-center justify-center">Error: {String(error)}</h2>}
+        {loading && <h2 className="text-2xl text-forrest font-serif flex items-center justify-center">Loading...</h2>}
         <img className="object-scale-down h-64 w-64 mx-auto mt-10 mb-10" src="src/assets/favicon.png"/>
-        <p className="text-mahogany mt-10 mb-10 flex items-center justify-center">Would you like to divine something new?</p>
+        <p className="text-mahogany font-sans-serif mt-10 mb-10 flex items-center justify-center">Would you like to divine something new?</p>
         <div className="mt-10 mb-10 flex items-center justify-center">
-          <button className="bg-forrest text-ivory rounded-xl hover:bg-forrest/60 px-5 py-5 shadow-md" onClick={() => generateCast()}>Cast</button>
+          <button className="bg-forrest text-ivory font-sans-serif rounded-xl hover:bg-forrest/60 px-5 py-5 shadow-md" onClick={() => generateCast()}>Cast</button>
         </div>
       </div>
       
       <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
       <div className="h-100 w-2/3 mt-10 mx-auto">
-          {cast && <h1 className="text-2xl text-mahogany mt-20 flex items-center justify-center"><b>Odu:&nbsp;</b>{cast.odu}</h1>}
-          {cast && <h1 className="text-2xl text-mahogany mt-5 flex items-center justify-center"><b>Date:&nbsp;</b>{cast.timestamp.toLocaleDateString()}</h1>}
-          {cast && <h1 className="text-2xl text-mahogany mt-5 flex items-center justify-center"><b>Answer:&nbsp;</b>{cast.answer}</h1>}
-          {cast && <h1 className="text-2xl text-mahogany mt-5 flex items-center justify-center"><b>Interpretation:&nbsp;</b>{cast.interpretation}</h1>}
+          {cast && <h1 className="text-2xl text-mahogany font-sans-serif mt-20 flex items-center justify-center"><b>Odu:&nbsp;</b>{cast.odu}</h1>}
+          {cast && <h1 className="text-2xl text-mahogany font-sans-serif mt-5 flex items-center justify-center"><b>Date:&nbsp;</b>{cast.timestamp.toLocaleDateString()}</h1>}
+          {cast && <h1 className="text-2xl text-mahogany font-sans-serif mt-5 flex items-center justify-center"><b>Answer:&nbsp;</b>{cast.answer}</h1>}
+          {cast && <h1 className="text-2xl text-mahogany font-sans-serif mt-5 flex items-center justify-center"><b>Interpretation:&nbsp;</b>{cast.interpretation}</h1>}
           <div className="container mx-auto mt-10 mb-5 h-32 w-32 flex items-center justify-center">
             {cast && <motion.img className="object-scale-down h-64 w-64 inline" 
               variants={ kolaVariants }
@@ -163,14 +163,14 @@ const Dashboard = () => {
               whileHover="whileHover"
               src={`src/assets/${cast.femaleObi2}`} />}
           </div>
-          <form className="mt-20 mb-20 flex items-center justify-center" onSubmit={() => handleSaveCast()}>
+          <form className="font-sans-serif mt-20 mb-20 flex items-center justify-center" onSubmit={() => handleSaveCast()}>
             <motion.input type="text" className="text-2xl border-2 border-forrest/60 rounded" 
               variants={buttonVariants}
               whileHover="whileHover"
-              placeholder="Add a title..." value={newTitle} onChange={(e) => setNewTitle(e.target.value)} autoFocus />
+              placeholder=" add a title..." value={newTitle} onChange={(e) => setNewTitle(e.target.value)} autoFocus />
           </form>
           <div className="mt-10 mb-10 flex items-center justify-center">
-            <motion.button className="bg-forrest text-ivory rounded-xl hover:bg-forrest/60 px-5 py-5 shadow-md" 
+            <motion.button className="bg-forrest text-ivory font-sans-serif rounded-xl hover:bg-forrest/60 px-5 py-5 shadow-md" 
             variants={ buttonVariants }
             whileHover="whileHover"
             onClick={() => handleSaveCast()}>Save</motion.button>
