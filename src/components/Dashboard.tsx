@@ -2,12 +2,39 @@
 import React, { useState } from "react";
 import { auth } from "./../../GoogleProvider.tsx";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { motion } from "framer-motion";
+import { animate, motion } from "framer-motion";
 import { Cast } from "../interfaces/Cast.tsx";
 import { checkForDuplicateTitle } from "../services/utils.tsx"
 import { saveCastToDb } from "../services/saveCast.tsx";
 import { generatedCast } from "../services/generateCast.tsx"; 
 import Modal from "./Modal.tsx";
+
+const h1Variants = {
+  initial: {
+    opacity: 0
+  },
+  animate: {
+    opacity: 1,
+    transition: {
+      delay: .3, 
+      duration: 1
+    }
+  }
+}
+
+const buttonVariants = {
+  whileHover: {
+    scale: 1.1,
+    textShadow: "0px 0px 8px rgb(255, 255, 255)",
+    boxShadow: "0px 0px 8px rgb(255, 255, 255)",
+  }
+}
+
+const kolaVariants = {
+  whileHover: {
+    scale: 2,
+  }
+}
 
 const Dashboard = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -72,7 +99,11 @@ const Dashboard = () => {
   const DisplayWithoutCast = () => {
     return (
       <div className="mt-10 pb-10">
-      <motion.h1 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: .3, duration: 1 }} className="text-3xl text-forrest text-opacity-50 font-serif mb-5 flex items-center justify-center">Dashboard</motion.h1>
+      <motion.h1 className="text-3xl text-forrest text-opacity-50 font-serif mb-5 flex items-center justify-center"
+        variants={ h1Variants }
+        initial="initial"
+        animate="animate"
+        >Dashboard</motion.h1>
       <div className="card">
           {user &&  <>
                       <h2 className="text-2xl text-forrest font-serif flex items-center justify-center">Welcome, {user.displayName}</h2>
@@ -83,11 +114,10 @@ const Dashboard = () => {
           {error && <h2 className="text-2xl text-forrest font-serif flex items-center justify-center">Error: {String(error)}</h2>}
           {loading && <h2 className="text-2xl text-forrest font-serif flex items-center justify-center">Loading...</h2>}
           <div className="mt-5 flex items-center justify-center">
-            <motion.button whileHover={{ 
-              scale: 1.1,
-              textShadow: "0px 0px 8px rgb(255, 255, 255)",
-              boxShadow: "0px 0px 8px rgb(255, 255, 255)",
-            }} className="bg-forrest text-ivory font-sans-serif rounded-xl hover:bg-forrest/60 px-5 py-4 shadow-mds"  onClick={() => generateCast()}>Cast</motion.button>
+            <motion.button className="bg-forrest text-ivory font-sans-serif rounded-xl hover:bg-forrest/60 px-5 py-4 shadow-mds" 
+              variants={ buttonVariants } 
+              whileHover="whileHover"
+              onClick={() => generateCast()}>Cast</motion.button>
           </div>
       </div>
     </div>
@@ -116,16 +146,31 @@ const Dashboard = () => {
           {cast && <h1 className="text-2xl text-mahogany mt-5 flex items-center justify-center"><b>Answer:&nbsp;</b>{cast.answer}</h1>}
           {cast && <h1 className="text-2xl text-mahogany mt-5 flex items-center justify-center"><b>Interpretation:&nbsp;</b>{cast.interpretation}</h1>}
           <div className="container mx-auto mt-5 mb-5 h-32 w-32 flex items-center justify-center">
-            {cast && <img className="object-scale-down h-64 w-64 inline" src={`src/assets/${cast.maleObi1}`} />}
-            {cast && <img className="object-scale-down h-64 w-64 inline" src={`src/assets/${cast.maleObi2}`} />}
-            {cast && <img className="object-scale-down h-64 w-64 inline" src={`src/assets/${cast.femaleObi1}`} />}
-            {cast && <img className="object-scale-down h-64 w-64 inline" src={`src/assets/${cast.femaleObi2}`} />}
+            {cast && <motion.img className="object-scale-down h-64 w-64 inline" 
+              variants={ kolaVariants }
+              whileHover="whileHover"
+              src={`src/assets/${cast.maleObi1}`} />}
+            {cast && <motion.img className="object-scale-down h-64 w-64 inline" 
+              variants={ kolaVariants }
+              whileHover="whileHover"
+              src={`src/assets/${cast.maleObi2}`} />}
+            {cast && <motion.img className="object-scale-down h-64 w-64 inline" 
+              variants={ kolaVariants }
+              whileHover="whileHover"
+              src={`src/assets/${cast.femaleObi1}`} />}
+            {cast && <motion.img className="object-scale-down h-64 w-64 inline" 
+              variants={ kolaVariants }
+              whileHover="whileHover"
+              src={`src/assets/${cast.femaleObi2}`} />}
           </div>
           <form className="mt-20 mb-20 flex items-center justify-center" onSubmit={() => handleSaveCast()}>
             <input type="text" className="text-2xl border-2 border-forrest/60 rounded" placeholder="Add a title..." value={newTitle} onChange={(e) => setNewTitle(e.target.value)} autoFocus />
           </form>
           <div className="mt-10 mb-10 flex items-center justify-center">
-            <button className="bg-forrest text-ivory rounded-xl hover:bg-forrest/60 px-5 py-5 shadow-md" onClick={() => handleSaveCast()}>Save</button>
+            <motion.button className="bg-forrest text-ivory rounded-xl hover:bg-forrest/60 px-5 py-5 shadow-md" 
+            variants={ buttonVariants }
+            whileHover="whileHover"
+            onClick={() => handleSaveCast()}>Save</motion.button>
           </div>
         </div>
       </Modal>
