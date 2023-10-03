@@ -10,7 +10,7 @@ function WebMenu({ navLinks }) {
         { navLinks.map(({text, path }, index: number) => {
             return (
               <motion.div whileHover={{ scale: 1.3, originX: 0 }}>
-                <Link className="hover:text-forrest/60 cursor-pointer" key={`nav${index}`} to={ path }>{ text }</Link>
+                <Link className="hover:text-forrest/60 cursor-pointer" key={`webNav${index}` } to={ path }>{ text }</Link>
               </motion.div>
             );
             })} 
