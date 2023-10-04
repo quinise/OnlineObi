@@ -5,7 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { motion } from "framer-motion";
 import { Cast } from "../interfaces/Cast.tsx";
 import { checkForDuplicateTitle } from "../services/utils.tsx"
-import { saveCastToDb } from "../services/saveCast.tsx";
+import { addCastToDb } from "../services/addCast.tsx";
 import { generatedCast } from "../services/generateCast.tsx"; 
 import Modal from "./Modal.tsx";
 import Loader from "./Loader.tsx";
@@ -80,7 +80,7 @@ const Dashboard = () => {
       return;
 
     } else {
-      saveCastToDb(cast, newTitle);
+      addCastToDb(cast, newTitle);
 
       showSuccessfulSaveAlert();
     }
@@ -113,7 +113,7 @@ const Dashboard = () => {
                     </>
           }
           {error && <h2 className="text-2xl text-forrest font-serif flex items-center justify-center">Error: {String(error)}</h2>}
-          {loading && <h2 className="text-2xl text-forrest font-serif flex items-center justify-center">Loading...</h2>}
+          {loading && <Loader />}
           <div className="mt-5 flex items-center justify-center">
             <motion.button className="bg-forrest text-ivory font-sans-serif rounded-xl hover:bg-forrest/60 px-5 py-4 shadow-mds" 
               variants={ buttonVariants } 
