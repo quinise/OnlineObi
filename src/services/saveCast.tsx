@@ -1,3 +1,4 @@
+// This file provides the code to save a Cast type object to the Firebase Collection "casts" as a document 
 import { uid } from 'uid';
 import { db } from "../../firebase.config.tsx"
 import { addDoc, collection} from "firebase/firestore";
