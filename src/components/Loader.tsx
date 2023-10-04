@@ -1,4 +1,4 @@
-import React from 'react'
+// This file provides the code for the loading animation
 import { motion } from 'framer-motion'
 
 const loaderVariants = {
