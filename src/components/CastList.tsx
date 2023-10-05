@@ -40,7 +40,7 @@ const CastList = () => {
   const [cast, setCast] = useState<Cast>({
     id: uid(), 
     odu:" Aalaffia - Ogbe",
-    timestamp: new Date(), 
+    timestamp: Date.now(), 
     answer: "Yes", 
     maleObi1: "Male1Up.png", 
     maleObi2: "Male2Up.png", 
