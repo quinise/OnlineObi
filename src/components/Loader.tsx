@@ -1,4 +1,3 @@
-// This file provides the code that animates a ball to signifiy that something in the DOM is loading
 import { motion } from 'framer-motion'
 
 const loaderVariants = {

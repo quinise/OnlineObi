@@ -1,10 +1,11 @@
+// This file provides the code to add a Cast type object to the Firebase Collection "casts" as a document 
 import { uid } from 'uid';
 import { db } from "../../firebase.config.tsx"
 import { addDoc, collection} from "firebase/firestore";
-import { auth } from "./../../GoogleProvider.tsx";
+import { auth } from "../../GoogleProvider.tsx";
 import { Cast } from "../interfaces/Cast.js";
 
-const saveCastToDb = async (cast: Cast, newTitle: string) => {
+const addCastToDb = async (cast: Cast, newTitle: string) => {
     
   const uuid = uid()
   const castsRef = collection(db, "casts");
@@ -24,4 +25,4 @@ const saveCastToDb = async (cast: Cast, newTitle: string) => {
     })
   }
 
-  export { saveCastToDb };
+  export { addCastToDb };

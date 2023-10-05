@@ -1,13 +1,11 @@
+// This file provides the code that deletes a cast entry from the Cast List page
 import { db } from "./../../firebase.config.js";
-//import { ref, remove, } from "firebase/database";
 import { doc, deleteDoc } from "firebase/firestore";
 import { Cast } from "../interfaces/Cast.js";
 
 const handleDelete = async (castToDelete: Cast) => {
-    //remove(ref(deleteFromDb, `/${castToDelete.id}`));
-    console.log("i am deleting", castToDelete.id);
-    await deleteDoc(doc(db,"casts" , castToDelete.id));
-
+    const docToDelete = doc(db, "casts", castToDelete.id);
+    await deleteDoc(docToDelete);
 }
 
 export  { handleDelete }
