@@ -16,7 +16,7 @@ const createCast = (targetIndex: number) => {
     const result: Cast = {
       id: BaseCastArray[targetIndex].id,
       odu: BaseCastArray[targetIndex].odu,
-      timestamp: new Date(),
+      timestamp: Date.now(),
       answer: BaseCastArray[targetIndex].answer,
       maleObi1: BaseCastArray[targetIndex].maleObi1,
       maleObi2: BaseCastArray[targetIndex].maleObi2,

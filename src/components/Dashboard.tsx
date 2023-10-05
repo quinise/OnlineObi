@@ -143,7 +143,7 @@ const Dashboard = () => {
       <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
       <div className="h-100 w-2/3 mt-10 mx-auto">
           {cast && <h1 className="text-2xl text-mahogany font-sans-serif mt-20 flex items-center justify-center"><b>Odu:&nbsp;</b>{cast.odu}</h1>}
-          {cast && <h1 className="text-2xl text-mahogany font-sans-serif mt-5 flex items-center justify-center"><b>Date:&nbsp;</b>{cast.timestamp.toLocaleDateString()}</h1>}
+          {cast && <h1 className="text-2xl text-mahogany font-sans-serif mt-5 flex items-center justify-center"><b>Date:&nbsp;</b>{new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(cast.timestamp)}</h1>}
           {cast && <h1 className="text-2xl text-mahogany font-sans-serif mt-5 flex items-center justify-center"><b>Answer:&nbsp;</b>{cast.answer}</h1>}
           {cast && <h1 className="text-2xl text-mahogany font-sans-serif mt-5 flex items-center justify-center"><b>Interpretation:&nbsp;</b>{cast.interpretation}</h1>}
           <div className="container mx-auto mt-10 mb-5 h-32 w-32 flex items-center justify-center">
