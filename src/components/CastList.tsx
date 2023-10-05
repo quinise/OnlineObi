@@ -72,7 +72,7 @@ const CastList = () => {
             </div>
           </motion.div>
         </div>
-        <button className="bg-red text-white font-sans-serif hover:bg-darkRed h-12 px-5 py-2 ml-[57%]" key={`deleteButton${castFromList.id}`} onClick={() => handleDelete(castFromList)}>Delete</button>
+        <button className="bg-red text-white font-sans-serif hover:bg-darkRed h-12 px-5 py-2 ml-[57%] mt-1" key={`deleteButton${castFromList.id}`} onClick={() => handleDelete(castFromList)}>Delete</button>
         </>
         )}
       </div>
