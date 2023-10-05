@@ -5,7 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { motion } from "framer-motion";
 import { Cast } from "../interfaces/Cast.tsx";
 import { checkForDuplicateTitle } from "../services/utils.tsx"
-import { saveCastToDb } from "../services/saveCast.tsx";
+import { addCastToDb } from "../services/addCast.tsx";
 import { generatedCast } from "../services/generateCast.tsx"; 
 import Modal from "./Modal.tsx";
 import Loader from "./Loader.tsx";
@@ -80,7 +80,7 @@ const Dashboard = () => {
       return;
 
     } else {
-      saveCastToDb(cast, newTitle);
+      addCastToDb(cast, newTitle);
 
       showSuccessfulSaveAlert();
     }
