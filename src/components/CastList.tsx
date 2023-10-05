@@ -1,7 +1,7 @@
 // This file includes the code for the page with a list of saved casts.
 import React, { Fragment, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Cast } from "../interfaces/Cast.tsx";
 import { fetchCasts } from "../services/fetchCasts.tsx";
 import { handleDelete } from "../services/deleteCast.tsx";
@@ -26,6 +26,7 @@ const titleBumpVariants = {
   }
 }
 
+// Provides the "bump" animation on kola nut imagess
 const kolaVariants = {
   whileHover: {
     scale: 2,
@@ -59,18 +60,23 @@ const CastList = () => {
   // Provide the HTML for a the user's list of uniquely titled casts
   const renderListOfCasts = (uniqueCasts: Cast[]) => {
     return (
+      
       <div>{uniqueCasts && uniqueCasts?.map((castFromList: Cast, index:number) =>
-        <motion.div key={`cl${index}`} className="mt-16 mx-auto w-96 h-40 p-1.5 bg-forrest/60 border-2 border-forrest/60 rounded-tl-2xl shadow-md block"
-          variants={ bumpVariants }
-          whileHover="whileHover">
-          <div className="w-88 h-36 pt-12 pl-4 bg-forrest/20 rounded-lg border-2 border-forrest/40 flex justify-between" key={ castFromList.id } onClick={
-          () => setModuleCast(castFromList)}>
-            <h1 className="text-2xl text-ivory font-serif inline">{ castFromList.title }</h1>
-            <button onClick={ () => handleDelete(castFromList)} className="bg-red text-white font-sans-serif hover:bg-darkRed h-12 ml-0 mt-1 mb-1 mr-4 px-5 py-2 inline">Delete</button>
-          </div>
-        </motion.div>
+        <>
+        <div className="inline">
+          <motion.div key={`cl${index}`} className="mt-16 mx-auto w-96 h-40 p-1.5 bg-forrest/60 border-2 border-forrest/60 rounded-tl-2xl static shadow-md block"
+            variants={bumpVariants}
+            whileHover="whileHover">
+            <div className="w-88 h-36 pt-12 pl-4 bg-forrest/20 rounded-lg border-2 border-forrest/40 flex justify-between" key={`castListElements${castFromList.id}`} onClick={() => setModuleCast(castFromList)}>
+              <h1 className="text-2xl text-ivory font-serif inline">{castFromList.title}</h1>
+            </div>
+          </motion.div>
+        </div>
+        <button className="bg-red text-white font-sans-serif hover:bg-darkRed h-12 px-5 py-2 ml-[57%]" key={`deleteButton${castFromList.id}`} onClick={() => handleDelete(castFromList)}>Delete</button>
+        </>
         )}
       </div>
+    
     );
   }
 

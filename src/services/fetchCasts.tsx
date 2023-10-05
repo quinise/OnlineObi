@@ -4,6 +4,7 @@ import { auth } from "../../GoogleProvider.js";
 import { Cast } from "../interfaces/Cast.js";
 import { db } from "../../firebase.config.js";
 
+
 function fetchCasts (callback) {
     const castsRef = (collection(db, "casts"));
     const queryCasts = query(castsRef, where("user", "==", auth.currentUser?.uid));
@@ -15,7 +16,7 @@ function fetchCasts (callback) {
     
     snapshot.forEach((doc) => {
         const incommingCast: Cast = {
-            id: doc.data().id,
+            id: doc.id,
             odu: doc.data().odu,
             timestamp: doc.data().timestamp,
             answer: doc.data().answer,
