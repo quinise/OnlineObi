@@ -2,6 +2,7 @@
 import { auth, signInWithGoogle } from "./../../GoogleProvider.tsx";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { motion } from "framer-motion";
+import Loader from "./Loader.tsx";
 
 const logoAnimation = {
     animate: {
@@ -16,11 +17,11 @@ const Login = () => {
     const [user, loading, error] = useAuthState(auth);
 
     return (
-        // Displayed user information
+        // If there is a user, welcome them... If there is an error, show the message, if the page is loading show the loader
         <div className="bg-ivory h-screen">
             {user && <h2 className="text-3xl text-forrest font-serif flex items-center justify-center">Welcome, {user.displayName}!</h2>}
             {error && <h2 className="text-3xl text-forrest font-serif flex items-center justify-center">Error: {String(error)}</h2>}
-            {loading && <h2 className="text-2xl text-forrest font-serif mt-48 flex items-center justify-center">Loading...</h2>}
+            {loading && <Loader/>}
             {!user && !loading && !error && (
             <>
                 <h1 className='text-7xl text-forrest font-serif mt-10 mb-10 flex items-center justify-center'>Mobile Obi</h1>
