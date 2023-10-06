@@ -9,7 +9,7 @@ const Logout = () => {
 
     const handleLogout = () => {
         signOut(auth).then(() => {
-          // Successfull sign out
+          // Successfull Logout
           navigate('/');
           console.log("Signed out successfully")
         }).catch((error) => {
