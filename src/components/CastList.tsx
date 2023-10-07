@@ -54,9 +54,7 @@ const CastList = () => {
     title: ""
   });
 
-  const handleEdit = (castToEdit: Cast, editedTitle: string) => {
-    setNewTitle(editedTitle);
-    setCast(castToEdit);
+  const handleEdit = async () => {
     setShowModal(true);
     setShowInput(true);
   }
@@ -72,7 +70,6 @@ const CastList = () => {
   // Provide the HTML for a the user's list of uniquely titled casts
   const renderListOfCasts = (uniqueCasts: Cast[]) => {
     return (
-      
       <div>{uniqueCasts && uniqueCasts?.map((castFromList: Cast, index:number) =>
         <>
         <div className="inline">
@@ -86,7 +83,7 @@ const CastList = () => {
         </div>
         <motion.button className="bg-forrest rounded-md text-ivory font-sans-serif hover:bg-forrest/60 h-12 ml-[32%] xl:ml-[40%] mt-1 mb-1 mr-0 px-5 py-2 inline" key={`editButton${castFromList.id}`}
           variants={bumpVariants}
-          whileHover="whileHover" onClick={() => handleEdit(castFromList, castFromList.title)}
+          whileHover="whileHover" onClick={() => handleEdit()}
           >Edit Cast</motion.button>
         <motion.button className="bg-red text-white font-sans-serif hover:bg-darkRed h-12 px-5 py-2 ml-[18%] xl:ml-[9%]  mt-1 rounded-md" key={`deleteButton${castFromList.id}`} onClick={() => handleDelete(castFromList)}
           variants={bumpVariants}
@@ -113,7 +110,7 @@ const CastList = () => {
       </div>
         <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
           <div className="p-6">
-          {showInput ? <input className="text-forrest font-sans-serif mb-2 flex mx-auto" value={newTitle} onChange={(e) => setNewTitle(e.target.value)}/>
+          {showInput ? <input className="text-forrest font-sans-serif mb-2 flex mx-auto" placeholder={newTitle} value={newTitle} onChange={(e) => setNewTitle(e.target.value)}/>
           : <motion.h3 className="text-xl font-semibold text-forrest font-serif mb-5 flex justify-center"
               variants={titleBumpVariants}
               whileHover="whileHover"

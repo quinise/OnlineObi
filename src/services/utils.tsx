@@ -13,6 +13,5 @@ const checkForDuplicateTitle = async (newTitle: string) => {
 
     return false;
   }
-
-
+ 
 export { checkForDuplicateTitle }
