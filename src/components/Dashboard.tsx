@@ -68,6 +68,7 @@ const Dashboard = () => {
     // Prevents submission of blank casts and titles to the database
     if (!cast) return;
 
+    // Prevents saving a cast with an empty title
     if (!newTitle) {
       showEmptyTitleAlert();
 
@@ -81,11 +82,9 @@ const Dashboard = () => {
 
     } else {
       addCastToDb(cast, newTitle);
-
       showSuccessfulSaveAlert();
+      window.location.reload();
     }
-
-    
   }
 
   React.useEffect(() => {
@@ -95,7 +94,6 @@ const Dashboard = () => {
 
     return () => clearTimeout(delayNewTitle)
   }, [newTitle])
-
 
   const DisplayWithoutCast = () => {
     return (
@@ -128,7 +126,7 @@ const Dashboard = () => {
   const DisplayWithCast = () => {
     return (
       <>
-      <div className="mt-10">
+      <div className="mt-5">
         <h1 className="text-3xl text-forrest font-serif text-opacity-50 flex items-center justify-center">Dashboard</h1>
         {user && <h2 className="text-2xl text-mahogany font-sans-serif flex items-center justify-center">Welcome, {user.displayName}</h2>}
         {error && <h2 className="text-2xl text-forrest font-serif flex items-center justify-center">Error: {String(error)}</h2>}
@@ -145,7 +143,7 @@ const Dashboard = () => {
           {cast && <h1 className="text-2xl text-mahogany font-sans-serif mt-20 flex items-center justify-center"><b>Odu:&nbsp;</b>{cast.odu}</h1>}
           {cast && <h1 className="text-2xl text-mahogany font-sans-serif mt-5 flex items-center justify-center"><b>Date:&nbsp;</b>{new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(cast.timestamp)}</h1>}
           {cast && <h1 className="text-2xl text-mahogany font-sans-serif mt-5 flex items-center justify-center"><b>Answer:&nbsp;</b>{cast.answer}</h1>}
-          {cast && <h1 className="text-2xl text-mahogany font-sans-serif mt-5 flex items-center justify-center"><b>Interpretation:&nbsp;</b>{cast.interpretation}</h1>}
+          {cast && <h1 className="text-2xl text-mahogany font-sans-serif mt-5 ml-10 flex items-center justify-center"><b>Interpretation:&nbsp;</b>{cast.interpretation}</h1>}
           <div className="container mx-auto mt-10 mb-5 h-32 w-32 flex items-center justify-center">
             {cast && <motion.img className="object-scale-down h-64 w-64 inline" 
               variants={ kolaVariants }
@@ -168,7 +166,7 @@ const Dashboard = () => {
             <motion.input type="text" className="text-2xl border-2 border-forrest/60 rounded" 
               variants={buttonVariants}
               whileHover="whileHover"
-              placeholder=" add a title..." value={newTitle} onChange={(e) => setNewTitle(e.target.value)} autoFocus />
+              placeholder=" add a title..." value={ newTitle } onChange={(e) => setNewTitle(e.target.value)} autoFocus />
           </form>
           <div className="mt-10 mb-10 flex items-center justify-center">
             <motion.button className="bg-forrest text-ivory font-sans-serif rounded-xl hover:bg-forrest/60 px-5 py-5 shadow-md" 

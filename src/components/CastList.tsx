@@ -8,6 +8,7 @@ import { handleDelete } from "../services/deleteCast.tsx";
 import { auth } from "./../../GoogleProvider.tsx";
 import { uid } from "uid";
 import Modal from "./Modal.tsx";
+import EditCast from "./EditCast.tsx";
 
 // Provides the "bump" animation on hover
 const bumpVariants = {
@@ -72,7 +73,10 @@ const CastList = () => {
             </div>
           </motion.div>
         </div>
-        <motion.button className="bg-red text-white font-sans-serif hover:bg-darkRed h-12 px-5 py-2 ml-[57%] mt-1 rounded-md" key={`deleteButton${castFromList.id}`} onClick={() => handleDelete(castFromList)}
+        <span>
+          <EditCast />
+        </span>
+        <motion.button className="bg-red text-white font-sans-serif hover:bg-darkRed h-12 px-5 py-2 ml-[18%] xl:ml-[9%]  mt-1 rounded-md" key={`deleteButton${castFromList.id}`} onClick={() => handleDelete(castFromList)}
           variants={bumpVariants}
           whileHover="whileHover"
         >Delete</motion.button>
@@ -127,9 +131,10 @@ const CastList = () => {
               whileHover="whileHover"
               src={`src/assets/${cast.femaleObi2}`}/>
             </div>
-            <motion.button className="bg-forrest rounded-md text-ivory font-sans-serif hover:bg-forrest/60 h-12 ml-12 mt-1 mb-1 mr-4 px-5 py-2 inline"
+            {/* <motion.button className="bg-forrest rounded-md text-ivory font-sans-serif hover:bg-forrest/60 h-12 ml-12 mt-1 mb-1 mr-4 px-5 py-2 inline" key={`editButton${cast.id}`}
               variants={ bumpVariants }
-              whileHover="whileHover">Edit</motion.button>
+              whileHover="whileHover" onClick={() => handleEdit(cast)}
+              ></motion.button> */}
           </div>
         </Modal>
     </Fragment>
