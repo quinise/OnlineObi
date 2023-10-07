@@ -131,10 +131,6 @@ const CastList = () => {
               whileHover="whileHover"
               src={`src/assets/${cast.femaleObi2}`}/>
             </div>
-            {/* <motion.button className="bg-forrest rounded-md text-ivory font-sans-serif hover:bg-forrest/60 h-12 ml-12 mt-1 mb-1 mr-4 px-5 py-2 inline" key={`editButton${cast.id}`}
-              variants={ bumpVariants }
-              whileHover="whileHover" onClick={() => handleEdit(cast)}
-              ></motion.button> */}
           </div>
         </Modal>
     </Fragment>
