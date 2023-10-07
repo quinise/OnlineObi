@@ -51,7 +51,7 @@ const EditCast = () => {
           whileHover="whileHover" onClick={() => setShowModal(true)}
           >Edit Cast</motion.button>
     <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
-        <div className="pt-0 sm-w-[25%] mt-10">
+        <div className="p-6 sm:w-[25%] sm:h-[75%] mt-10">
           {cast && <h1 className="text-2xl text-mahogany font-sans-serif mt-5 flex items-center justify-center"><b>Current Title:&nbsp;</b>{cast.title}</h1>}
           {cast && <h1 className="text-2xl text-mahogany font-sans-serif mt-5 flex items-center justify-center"><b>Odu:&nbsp;</b>{cast.odu}</h1>}
           {cast && <h1 className="text-2xl text-mahogany font-sans-serif mt-5 flex items-center justify-center"><b>Date:&nbsp;</b>{new Intl.DateTimeFormat('en-US', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }).format(cast.timestamp)}</h1>}
