@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Cast } from "../interfaces/Cast.tsx";
 import { fetchCasts } from "../services/fetchCasts.tsx";
 import { handleDelete } from "../services/deleteCast.tsx";
+import { handleUpdate } from "../services/updateCast.tsx"
 // import EditCast from "../components/EditCast.tsx";
 import { auth } from "./../../GoogleProvider.tsx";
 import { uid } from "uid";
@@ -38,7 +39,7 @@ const CastList = () => {
   const [user] = useAuthState(auth);
   const [casts, setCasts] = useState<Cast[]>([]);
   const [newTitle, setNewTitle] = useState("");
-  const [show, setShow] = useState(false);
+  const [showInput, setShowInput] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [cast, setCast] = useState<Cast>({
     id: uid(), 
@@ -53,21 +54,18 @@ const CastList = () => {
     title: ""
   });
 
-  const handleEdit = (castFromList: Cast, editedTitle: string) => {
+  const handleEdit = (castToEdit: Cast, editedTitle: string) => {
     setNewTitle(editedTitle);
+    setCast(castToEdit);
     setShowModal(true);
-    setShow(true);
-  }
-
-  const handleUpdate = async (cast: Cast) => {
-
+    setShowInput(true);
   }
 
   // Provide the Module component with the selected cast
   function setModuleCast(inputCast: Cast) {
      setCast(inputCast);
      setShowModal(true)
-     setShow(false);
+     setShowInput(false);
      return cast;
   }
 
@@ -115,7 +113,7 @@ const CastList = () => {
       </div>
         <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
           <div className="p-6">
-          {show ? <input className="text-forrest font-sans-serif mb-2 flex mx-auto" placeholder={cast.title} value={newTitle} onChange={(e) => setNewTitle(e.target.value)}/>
+          {showInput ? <input className="text-forrest font-sans-serif mb-2 flex mx-auto" value={newTitle} onChange={(e) => setNewTitle(e.target.value)}/>
           : <motion.h3 className="text-xl font-semibold text-forrest font-serif mb-5 flex justify-center"
               variants={titleBumpVariants}
               whileHover="whileHover"
@@ -146,9 +144,9 @@ const CastList = () => {
               whileHover="whileHover"
               src={`src/assets/${cast.femaleObi2}`}/>
             </div>
-            {show && <motion.button className="bg-forrest rounded-md text-ivory font-sans-serif hover:bg-forrest/60 h-12 ml-[32%] xl:ml-[40%] mt-1 mb-1 mr-0 px-5 py-2 inline" key={`editButton${cast.id}`}
+            {showInput && <motion.button className="bg-forrest rounded-md text-ivory font-sans-serif hover:bg-forrest/60 h-12 ml-[32%] xl:ml-[40%] mt-1 mb-1 mr-0 px-5 py-2 inline" key={`editButton${cast.id}`}
               variants={bumpVariants}
-              whileHover="whileHover" onClick={() => handleUpdate(cast)}
+              whileHover="whileHover" onClick={() => handleUpdate(cast, newTitle)}
               >Save</motion.button>
             }
           </div>
