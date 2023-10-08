@@ -21,7 +21,7 @@ const loaderVariants = {
 const Loader = () => {
   return (
     <>
-    <motion.div className='loader bg-forrest rounded-md w-10 h-10 mx-auto'
+    <motion.div className='loader bg-forrest rounded-md w-10 h-10 mt-25 mx-auto'
         variants={loaderVariants}
         animate="animationOne"
     >
