@@ -60,76 +60,45 @@ const EditCast = () => {
           whileHover="whileHover" onClick={() => setShowModal(true)}
           >Edit Cast</motion.button>
     <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
-        {/* <div className="p-6 sm:w-[25%] sm:h-[75%] mt-10">
-          {cast && <h1 className="text-2xl text-mahogany font-sans-serif mt-5 flex items-center justify-center"><b>Current Title:&nbsp;</b>{cast.title}</h1>}
-          {cast && <h1 className="text-2xl text-mahogany font-sans-serif mt-5 flex items-center justify-center"><b>Odu:&nbsp;</b>{cast.odu}</h1>}
-          {cast && <h1 className="text-2xl text-mahogany font-sans-serif mt-5 flex items-center justify-center"><b>Date:&nbsp;</b>{new Intl.DateTimeFormat('en-US', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }).format(cast.timestamp)}</h1>}
-          {cast && <h1 className="text-2xl text-mahogany font-sans-serif mt-5 flex items-center justify-center"><b>Answer:&nbsp;</b>{cast.answer}</h1>}
-          {cast && <h1 className="text-2xl text-mahogany font-sans-serif mt-5 flex items-center justify-center"><b>Interpretation:&nbsp;</b>{cast.interpretation}</h1>}
-          <div className="container mx-auto mt-10 mb-5 h-32 w-32 flex items-center justify-center">
-            {cast && <motion.img className="object-scale-down h-64 w-64 inline"
-              variants={kolaVariants}
-              whileHover="whileHover"
-              src={`src/assets/${cast.maleObi1}`} />}
-            {cast && <motion.img className="object-scale-down h-64 w-64 inline"
-              variants={kolaVariants}
-              whileHover="whileHover"
-              src={`src/assets/${cast.maleObi2}`} />}
-            {cast && <motion.img className="object-scale-down h-64 w-64 inline"
-              variants={kolaVariants}
-              whileHover="whileHover"
-              src={`src/assets/${cast.femaleObi1}`} />}
-            {cast && <motion.img className="object-scale-down h-64 w-64 inline"
-              variants={kolaVariants}
-              whileHover="whileHover"
-              src={`src/assets/${cast.femaleObi2}`} />}
-          </div>
-          <form className="font-sans-serif mt-20 mb-20 flex items-center justify-center">
-            <motion.input type="text" className="text-2xl border-2 border-forrest/60 rounded"
-              variants={buttonVariants}
-              whileHover="whileHover"
-              placeholder="test" autoFocus />
-          </form> */}
-           <div className="p-6">
-            <motion.h3 className="text-xl font-semibold text-forrest font-serif mb-5 flex justify-center"
-              variants={titleBumpVariants}
-              whileHover="whileHover"
-            >{cast.title}</motion.h3>
-            <hr className="text-forrest rounded-lg md:w-[70%] md:mx-auto mb-8"/>
-            <div className="ml-12">
-              <p className="text-xl text-forrest font-sans-serif  mb-5 "><b>Odu:</b>  {cast.odu}</p>
-              <p className="text-xl text-forrest font-sans-serif mb-5 "><b>Date:</b>  {new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(cast.timestamp)}</p>
-              <p className="text-xl text-forrest font-sans-serif mb-5 "><b>Answer :</b> {cast.answer}</p>
-              <p className="text-xl text-forrest font-sans-serif mb-5 "><b>Interpretation:</b>  {cast.interpretation}</p>
-           </div>
-            <div className="mt-8 mb-8 flex justify-between">
-              <motion.img className="object-scale-down h-32 w-32 inline" 
-                variants={ kolaVariants }
-                whileHover="whileHover"
-                src={`src/assets/${cast.maleObi1}`}/>
-              <motion.img className="object-scale-down h-32 w-32 inline"
-                variants={ kolaVariants }
-                whileHover="whileHover"
-                src={`src/assets/${cast.maleObi2}`}/>
-              <motion.img className="object-scale-down h-32 w-32 inline" 
-                variants={ kolaVariants }
-                whileHover="whileHover"
-                src={`src/assets/${cast.femaleObi1}`}/>
-              <motion.img className="object-scale-down h-32 w-32 inline" 
-              variants={ kolaVariants }
-              whileHover="whileHover"
-              src={`src/assets/${cast.femaleObi2}`}/>
-            </div>
-          </div>
-          <div className="mt-10 mb-10 flex items-center justify-center">
-            <motion.button className="bg-forrest text-ivory font-sans-serif rounded-xl hover:bg-forrest/60 px-5 py-5 shadow-md"
-              variants={buttonVariants}
-              whileHover="whileHover"
-              >Save</motion.button>
-          </div>
-        {/* </div> */}
-      </Modal>
-      </>
+        <div className="p-6">
+        <motion.h3 className="text-xl font-semibold text-forrest font-serif mb-5 flex justify-center"
+          variants={titleBumpVariants}
+          whileHover="whileHover"
+        >{cast.title}</motion.h3>
+        <hr className="text-forrest rounded-lg md:w-[70%] md:mx-auto mb-8"/>
+        <div className="ml-12">
+          <p className="text-xl text-forrest font-sans-serif  mb-5 "><b>Odu:</b>  {cast.odu}</p>
+          <p className="text-xl text-forrest font-sans-serif mb-5 "><b>Date:</b>  {new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(cast.timestamp)}</p>
+          <p className="text-xl text-forrest font-sans-serif mb-5 "><b>Answer :</b> {cast.answer}</p>
+          <p className="text-xl text-forrest font-sans-serif mb-5 "><b>Interpretation:</b>  {cast.interpretation}</p>
+        </div>
+        <div className="mt-8 mb-8 flex justify-between">
+          <motion.img className="object-scale-down h-32 w-32 inline" 
+            variants={ kolaVariants }
+            whileHover="whileHover"
+            src={`src/assets/${cast.maleObi1}`}/>
+          <motion.img className="object-scale-down h-32 w-32 inline"
+            variants={ kolaVariants }
+            whileHover="whileHover"
+            src={`src/assets/${cast.maleObi2}`}/>
+          <motion.img className="object-scale-down h-32 w-32 inline" 
+            variants={ kolaVariants }
+            whileHover="whileHover"
+            src={`src/assets/${cast.femaleObi1}`}/>
+          <motion.img className="object-scale-down h-32 w-32 inline" 
+          variants={ kolaVariants }
+          whileHover="whileHover"
+          src={`src/assets/${cast.femaleObi2}`}/>
+        </div>
+      </div>
+      <div className="mt-10 mb-10 flex items-center justify-center">
+        <motion.button className="bg-forrest text-ivory font-sans-serif rounded-xl hover:bg-forrest/60 px-5 py-5 shadow-md"
+          variants={buttonVariants}
+          whileHover="whileHover"
+          >Save</motion.button>
+      </div>
+    </Modal>
+    </>
   )
 }
 

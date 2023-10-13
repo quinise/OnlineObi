@@ -24,8 +24,8 @@ const Modal = ({ isVisible, onClose, children }) => {
   return (
     <AnimatePresence mode="wait">
     <div className='fixed inset-0 bg-forrest bg-opacity-25 backdrop-blur-sm flex rounded-xl shadow-md justify-center items-center overflow-y-auto overflow-x-hidden' id='wrapper' onClick={handleClose}>
-      <div className='md:w-[50%] md:h-[40%]sm:h-[35%] mx-auto flex flex-col'>
-          <motion.button className='text-xl text-mahogany font-sans-serif place-self-end' 
+      <div className='md:w-[60%] md:max-h-[100%] sm:w-[10%] sm:max-h-[25%] mx-auto flex flex-col'>
+          <motion.button className='text-xl text-mahogany font-sans-serif sm:mt-20 place-self-end' 
             variants={buttonVariants}
             whileHover="whileHover"
             onClick={() => onClose()}>close</motion.button>
