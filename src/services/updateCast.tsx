@@ -12,6 +12,10 @@ function showDuplicateTitleAlert() {
     alert('A cast with this title has already been saved... Please choose a unique title.');
 }
 
+function showSuccessfullUpdateAlert(editedTitle: string) {
+    alert('Your cast, ' + editedTitle + ', has been saved!');
+}
+
 const handleUpdate = async (cast: Cast, editedTitle: string) => {    
     const updateCast = doc(db, "casts", cast.id)
 
@@ -26,6 +30,7 @@ const handleUpdate = async (cast: Cast, editedTitle: string) => {
     }
     
     await updateDoc(updateCast, {title: editedTitle})
+    showSuccessfullUpdateAlert(editedTitle);
 }
 
 export { handleUpdate }
