@@ -33,7 +33,7 @@ const authNavLinks = [
 
 const Navbar = () => {
    const [user, loading, error] = useAuthState(auth);
-   const [open, setOpen] = useState(false);
+   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   if (error) {
     return (
@@ -46,12 +46,12 @@ const Navbar = () => {
   if (user) {
     return (
       <div>
-        <nav className="pt-10 p-5 w-full flex items-center justify-center">
+        <nav className="w-full flex items-center justify-center inline">
           <WebMenu navLinks = { authNavLinks } />
           <div className="flex justify-end w-full sm:hidden">
-            <button className="bg-white text-forrest font-serif shadow-md px-5 py-2 rounded-full" onClick={() => {setOpen(true);}}>Menu</button>
+            <button className="bg-white text-forrest font-serif shadow-md px-5 py-2 rounded-full" onClick={() => {setMobileNavOpen(true);}}>Menu</button>
           </div>
-          {open ? (<MobileMenu navLinks={ authNavLinks } close={() => setOpen(false)} />) : (<></>)}
+          { mobileNavOpen ? (<MobileMenu navLinks={ authNavLinks } close={() => setMobileNavOpen(false)} />) : (<></>) }
         </nav>
       </div>
       

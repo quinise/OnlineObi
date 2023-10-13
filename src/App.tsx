@@ -9,6 +9,7 @@ import { Route, Routes } from "react-router-dom";
 import Logout from './components/Logout';
 import CastList from './components/CastList.tsx';
 import Navbar from './components/Navbar'
+import Settings from './components/Settings.tsx';
 
 function App() {
   const [user, loading, error] = useAuthState(auth);
@@ -29,6 +30,7 @@ function App() {
     return (
       // Navbar with a valid user, includes logout
       <div className="bg-ivory h-screen">
+        <Settings />
         <Navbar />
         <div>
           <Routes> 
