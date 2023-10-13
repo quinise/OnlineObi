@@ -108,46 +108,46 @@ const CastList = () => {
       <div className="pb-10">
         {renderListOfCasts(casts)}
       </div>
-        <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
-          <div className="p-6">
-          {showInput ? <input className="text-forrest font-sans-serif mb-2 flex mx-auto" placeholder={newTitle} value={newTitle} onChange={(e) => setNewTitle(e.target.value)}/>
-          : <motion.h3 className="text-xl font-semibold text-forrest font-serif mb-5 flex justify-center"
-              variants={titleBumpVariants}
-              whileHover="whileHover"
-            >{cast.title}</motion.h3>
-            }
-            <hr className="text-forrest rounded-lg md:w-[70%] md:mx-auto mb-8"/>
-            <div className="ml-12">
-              <p className="text-xl text-forrest font-sans-serif  mb-5 "><b>Odu:</b>  {cast.odu}</p>
-              <p className="text-xl text-forrest font-sans-serif mb-5 "><b>Date:</b>  {new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(cast.timestamp)}</p>
-              <p className="text-xl text-forrest font-sans-serif mb-5 "><b>Answer :</b> {cast.answer}</p>
-              <p className="text-xl text-forrest font-sans-serif mb-5 "><b>Interpretation:</b>  {cast.interpretation}</p>
-           </div>
-            <div className="mt-8 mb-8 flex justify-between">
-              <motion.img className="object-scale-down h-32 w-32 inline" 
-                variants={ kolaVariants }
-                whileHover="whileHover"
-                src={`src/assets/${cast.maleObi1}`}/>
-              <motion.img className="object-scale-down h-32 w-32 inline"
-                variants={ kolaVariants }
-                whileHover="whileHover"
-                src={`src/assets/${cast.maleObi2}`}/>
-              <motion.img className="object-scale-down h-32 w-32 inline" 
-                variants={ kolaVariants }
-                whileHover="whileHover"
-                src={`src/assets/${cast.femaleObi1}`}/>
-              <motion.img className="object-scale-down h-32 w-32 inline" 
+      <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
+        <div className="p-6">
+        {showInput ? <input className="text-forrest font-sans-serif mb-2 flex mx-auto" placeholder={newTitle} value={newTitle} onChange={(e) => setNewTitle(e.target.value)}/>
+        : <motion.h3 className="text-xl font-semibold text-forrest font-serif mb-5 flex justify-center"
+            variants={titleBumpVariants}
+            whileHover="whileHover"
+          >{cast.title}</motion.h3>
+          }
+          <hr className="text-forrest rounded-lg md:w-[70%] md:mx-auto mb-8"/>
+          <div className="ml-12">
+            <p className="text-xl text-forrest font-sans-serif  mb-5"><b>Odu:</b>  {cast.odu}</p>
+            <p className="text-xl text-forrest font-sans-serif mb-5"><b>Date:</b>  {new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(cast.timestamp)}</p>
+            <p className="text-xl text-forrest font-sans-serif mb-5"><b>Answer :</b> {cast.answer}</p>
+            <p className="text-xl text-forrest font-sans-serif mb-5"><b>Interpretation:</b>  {cast.interpretation}</p>
+          </div>
+          <div className="mt-8 mb-8 flex justify-between">
+            <motion.img className="object-scale-down h-32 w-32 inline" 
               variants={ kolaVariants }
               whileHover="whileHover"
-              src={`src/assets/${cast.femaleObi2}`}/>
-            </div>
-            {showInput && <motion.button className="bg-forrest rounded-md text-ivory font-sans-serif hover:bg-forrest/60 h-12 ml-[32%] xl:ml-[40%] mt-1 mb-1 mr-0 px-5 py-2 inline" key={`editButton${cast.id}`}
-              variants={bumpVariants}
-              whileHover="whileHover" onClick={() => handleUpdate(cast, newTitle)}
-              >Save</motion.button>
-            }
+              src={`src/assets/${cast.maleObi1}`}/>
+            <motion.img className="object-scale-down h-32 w-32 inline"
+              variants={ kolaVariants }
+              whileHover="whileHover"
+              src={`src/assets/${cast.maleObi2}`}/>
+            <motion.img className="object-scale-down h-32 w-32 inline" 
+              variants={ kolaVariants }
+              whileHover="whileHover"
+              src={`src/assets/${cast.femaleObi1}`}/>
+            <motion.img className="object-scale-down h-32 w-32 inline" 
+            variants={ kolaVariants }
+            whileHover="whileHover"
+            src={`src/assets/${cast.femaleObi2}`}/>
           </div>
-        </Modal>
+          {showInput && <motion.button className="bg-forrest rounded-md text-ivory font-sans-serif hover:bg-forrest/60 h-12 ml-[32%] xl:ml-[40%] mt-1 mb-1 mr-0 px-5 py-2 inline" key={`editButton${cast.id}`}
+            variants={bumpVariants}
+            whileHover="whileHover" onClick={() => handleUpdate(cast, newTitle)}
+            >Save</motion.button>
+          }
+        </div>
+      </Modal>
     </Fragment>
   )
 }
