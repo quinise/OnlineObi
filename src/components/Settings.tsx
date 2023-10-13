@@ -1,3 +1,4 @@
+// This file provides the codes for the Settings menu that appears when the user clicks on the gear icon in the top right corner
 import React, { useState } from 'react'
 import { motion } from "framer-motion";
 import { useNavigate } from 'react-router-dom';
@@ -12,6 +13,7 @@ function SettingsMenu ({ close }) {
     const [user, loading, error] = useAuthState(auth);
     const navigate = useNavigate();
 
+    // Deletes the logged in user or displays error message
     const handleDeleteAccount = () => {
         if (!user) {
             console.log("No User to delete");
@@ -55,7 +57,6 @@ function SettingsMenu ({ close }) {
                             }} className='bg-forrest rounded-md text-ivory font-"sans-serif" hover:bg-forrest/60 px-5 py-5' onClick={handleDeleteAccount}
                             >Delete Account</motion.button>
                     </div>
-                    
                 </div> 
         </div>
         </div>
