@@ -1,6 +1,6 @@
 # Online Obi
 
-Forgot your pennies or kola nuts? Don't want to crouch in the street? MObi casts IFA Obi divination on your phone! Each cast includes an Odu and it's interpretation, a yes/no/maybe result, and a set of four kola nuts. Casts can be saved (Core Data) for later recollection in this Swift application.
+Forgot your pennies or kola nuts? Online Obi casts IFA Obi divination on your phone! Each cast includes an Odu and it's interpretation, a yes/no/maybe result, and a set of four kola nuts. Casts can be saved (Core Data) for later recollection in this Swift application.
 
 ## Project Goals
 
