@@ -1,5 +1,5 @@
 // This file provides the code that reads all of the documents in the Firebase "casts" collection
-import { collection, onSnapshot, query, where } from "firebase/firestore";
+import { collection, limit, onSnapshot, orderBy, query, where } from "firebase/firestore";
 import { auth } from "../../GoogleProvider.js";
 import { Cast } from "../interfaces/Cast.js";
 import { db } from "../../firebase.config.js";
@@ -7,7 +7,7 @@ import { db } from "../../firebase.config.js";
 
 function fetchCasts (callback) {
     const castsRef = (collection(db, "casts"));
-    const queryCasts = query(castsRef, where("user", "==", auth.currentUser?.uid));
+    const queryCasts = query(castsRef, where("user", "==", auth.currentUser?.uid), limit(10));
     
     // Query the database for casts from the signed in user
     const unsubscribe = onSnapshot(queryCasts, (snapshot) => {

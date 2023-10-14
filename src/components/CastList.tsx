@@ -97,7 +97,9 @@ const CastList = () => {
 
   React.useEffect(() => {
     fetchCasts((data: Cast[]) => {
-      setCasts(data)
+      // Sort the casts by timestamp
+      const timestampDescending = [...data].sort((a, b) => b.timestamp - a.timestamp)
+      setCasts(timestampDescending)
     });
   }, []);
 
