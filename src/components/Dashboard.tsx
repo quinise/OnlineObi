@@ -1,5 +1,5 @@
 // This file includes the code for the Dashboard page=
-import React, { useState } from "react";
+import { useState } from "react";
 import { auth } from "./../../GoogleProvider.tsx";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { motion } from "framer-motion";
@@ -69,7 +69,10 @@ const Dashboard = () => {
     setShowModal(true);
   }
 
-  const handleSaveCast = async () => {
+
+  const handleSaveCast = async (e) => {
+    e.preventDefault();
+
     // Prevents submission of blank casts, blank titles, or duplicate titles to the database
     if (!cast) return;
 
@@ -87,27 +90,18 @@ const Dashboard = () => {
     } else {
       addCastToDb(cast, newTitle);
       showSuccessfulSaveAlert();
-      setShowModal(false);
     }
   }
 
-  React.useEffect(() => {
-    const delayNewTitle = setTimeout(() => {
-      setNewTitle(newTitle);
-    }, 10000)
-
-    return () => clearTimeout(delayNewTitle)
-  }, [newTitle])
-
-  const DisplayDashboard = () => {
-    return (
-      <>
-      <div className="mt-10">
+  return (
+    <>
+    <div className="mt-10">
       <motion.h1 className="text-3xl text-forrest text-opacity-50 font-serif mb-5 flex items-center justify-center"
         variants={ h1Variants }
         initial="initial"
         animate="animate"
-        >Dashboard</motion.h1>        {user && <h2 className="text-2xl text-mahogany font-sans-serif flex items-center justify-center">Welcome, {user.displayName}</h2>}
+        >Dashboard</motion.h1>
+        {user && <h2 className="text-2xl text-mahogany font-sans-serif flex items-center justify-center">Welcome, {user.displayName}</h2>}
         {error && <h2 className="text-2xl text-forrest font-serif flex items-center justify-center">Error: {String(error)}</h2>}
         {loading && <Loader />}
         <img className="object-scale-down h-64 w-64 mx-auto mt-10 mb-10" src="src/assets/favicon.png"/>
@@ -142,25 +136,22 @@ const Dashboard = () => {
               whileHover="whileHover"
               src={`src/assets/${cast.femaleObi2}`} />}
           </div>
-          <form className="font-sans-serif mt-20 mb-20 flex items-center justify-center" onSubmit={() => handleSaveCast()}>
+          <form onSubmit={ (e)=> handleSaveCast(e) } className="font-sans-serif mt-20 mb-20 flex items-center justify-center">
             <motion.input type="text" className="text-2xl border-2 border-forrest/60 rounded" 
               variants={buttonVariants}
               whileHover="whileHover"
               placeholder=" add a title..." value={ newTitle } onChange={(e) => setNewTitle(e.target.value)} autoFocus />
+              <div className="mt-10 mb-10 flex items-center justify-center">
+                <motion.button className="bg-forrest text-ivory font-sans-serif rounded-xl hover:bg-forrest/60 px-5 py-5 shadow-md"
+                  variants={ buttonVariants }
+                  whileHover="whileHover"
+                  >Save</motion.button>
+              </div>
           </form>
-          <div className="mt-10 mb-10 flex items-center justify-center">
-            <motion.button className="bg-forrest text-ivory font-sans-serif rounded-xl hover:bg-forrest/60 px-5 py-5 shadow-md" 
-            variants={ buttonVariants }
-            whileHover="whileHover"
-            onClick={() => handleSaveCast()}>Save</motion.button>
-          </div>
         </div>
       </Modal>
-      </>
-    )
-  } 
-
-  return <DisplayDashboard/>
+    </>
+  )
 }
 
 export default Dashboard

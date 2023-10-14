@@ -6,7 +6,6 @@ import { Cast } from "../interfaces/Cast.tsx";
 import { fetchCasts } from "../services/fetchCasts.tsx";
 import { handleDelete } from "../services/deleteCast.tsx";
 import { handleUpdate } from "../services/updateCast.tsx"
-// import EditCast from "../components/EditCast.tsx";
 import { auth } from "./../../GoogleProvider.tsx";
 import { uid } from "uid";
 import Modal from "./Modal.tsx";

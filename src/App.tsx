@@ -10,9 +10,14 @@ import Logout from './components/Logout';
 import CastList from './components/CastList.tsx';
 import Navbar from './components/Navbar'
 import Settings from './components/Settings.tsx';
+import Loader from './components/Loader.tsx';
 
 function App() {
   const [user, loading, error] = useAuthState(auth);
+
+  if (loading) {
+    return <Loader />
+  }
 
   if (error) {
     console.log("useAuthState Error: " + error);
