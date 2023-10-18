@@ -4,7 +4,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { motion } from "framer-motion";
 import { Cast } from "../interfaces/Cast.tsx";
 import { fetchCasts } from "../services/fetchCasts.tsx";
-import { queryCasts } from "../services/queryForCast.tsx";
 import { handleDelete } from "../services/deleteCast.tsx";
 import { handleUpdate } from "../services/updateCast.tsx"
 import { auth } from "./../../GoogleProvider.tsx";
@@ -40,7 +39,6 @@ const CastList = () => {
   const [casts, setCasts] = useState<Cast[]>([]);
   const [newTitle, setNewTitle] = useState("");
   const [searchValue, setSearchValue] = useState("");
-  const [searchResults, setSearchResults] = useState<Cast[]>([]);
   const [showInput, setShowInput] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [cast, setCast] = useState<Cast>({
