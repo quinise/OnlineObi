@@ -4,6 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { motion } from "framer-motion";
 import { Cast } from "../interfaces/Cast.tsx";
 import { fetchCasts } from "../services/fetchCasts.tsx";
+import { queryCasts } from "../services/queryForCast.tsx";
 import { handleDelete } from "../services/deleteCast.tsx";
 import { handleUpdate } from "../services/updateCast.tsx"
 import { auth } from "./../../GoogleProvider.tsx";
@@ -38,6 +39,8 @@ const CastList = () => {
   const [user] = useAuthState(auth);
   const [casts, setCasts] = useState<Cast[]>([]);
   const [newTitle, setNewTitle] = useState("");
+  const [searchValue, setSearchValue] = useState("");
+  const [searchResults, setSearchResults] = useState<Cast[]>([]);
   const [showInput, setShowInput] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [cast, setCast] = useState<Cast>({
@@ -61,7 +64,7 @@ const CastList = () => {
   // Provide the Module component with the selected cast
   function setModuleCast(inputCast: Cast) {
      setCast(inputCast);
-     setShowModal(true)
+     setShowModal(true);
      setShowInput(false);
      return cast;
   }
@@ -98,14 +101,58 @@ const CastList = () => {
   React.useEffect(() => {
     fetchCasts((data: Cast[]) => {
       // Sort the casts by timestamp
-      const timestampDescending = [...data].sort((a, b) => b.timestamp - a.timestamp)
-      setCasts(timestampDescending)
+      const timestampDescending = [...data].sort((a, b) => b.timestamp - a.timestamp);
+      setCasts(timestampDescending);
     });
   }, []);
 
   return (
     <Fragment>
       {user && <h2 className="text-3xl text-forrest font-serif mt-10 flex items-center justify-center">{user.displayName}'s Casts</h2>}
+      <div className="flex items-center justify-center">
+        <h3 className="text-2xl text-mahogany font-serif mt-10 flex items-center justify-center">Cast Search </h3>
+      </div>
+      <div className="flex items-center justify-center">
+        <input type="text" 
+          className="text-2xl text-mahogany font-serif mt-5 flex items-center justify-center border-2 border-forrest/60 rounded"
+          onChange={(e) => setSearchValue(e.target.value)}
+          value={ searchValue }
+          />
+      </div>
+      <div className="mt-10 flex flex-col items-center justify-center">
+        {searchValue && casts
+        .filter((searchCast) => {
+          return searchValue.toLowerCase() === ''
+          ? searchCast
+          : searchCast.title.toLowerCase().includes(searchValue.toLowerCase());
+        })
+        .map((castFromList: Cast, index: number) => 
+          <>
+          <ul className="flex items-center justify-center">
+            <li className="col">
+              <motion.div key={`rlElements${index}`} onClick={() => setModuleCast(castFromList)} className="mt-16 mx-auto w-96 h-40 p-1.5 bg-forrest/60 border-2 border-forrest/60 rounded-tl-2xl static shadow-md block"
+                variants={bumpVariants}
+                whileHover="whileHover">
+                <div className="w-88 h-36 pt-12 pl-4 bg-forrest/20 rounded-lg border-2 border-forrest/40 flex justify-between" key={`resultListElements${castFromList.id}`} onClick={() => setModuleCast(castFromList)}>
+                  <h1 className="text-2xl text-ivory font-serif inline">{castFromList.title}</h1>
+                </div>
+              </motion.div>
+              <div className="mb-5 flex justify-between">
+                <motion.button className="bg-forrest rounded-md text-ivory font-sans-serif hover:bg-forrest/60 h-12 ml-[2%] xl:ml-[40%] mt-1 mb-1 mr-0 px-5 py-2 inline" key={`resultEditButton${castFromList.id}`}
+                  variants={bumpVariants}
+                  whileHover="whileHover" onClick={() => handleEdit()}
+                >Edit Cast</motion.button>
+                <motion.button className="bg-red text-white font-sans-serif hover:bg-darkRed h-12 px-5 py-2  xl:ml-[9%] mt-1 rounded-md inline" key={`resultDeleteButton${castFromList.id}`} onClick={() => handleDelete(castFromList)}
+                  variants={bumpVariants}
+                  whileHover="whileHover"
+                >Delete</motion.button>
+              </div>
+            </li>
+          </ul>
+          </>
+        )}
+      </div>
+      <hr className="text-forrest rounded-lg md:w-[70%] md:mx-auto mb-8 "/>
       <div className="pb-10">
         {renderListOfCasts(casts)}
       </div>
