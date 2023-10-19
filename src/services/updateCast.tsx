@@ -16,11 +16,22 @@ function showSuccessfullUpdateAlert(editedTitle: string) {
     alert('Your cast, ' + editedTitle + ', has been saved!');
 }
 
+function showInvalidTitleAlert() {
+    alert('The cast title may only contain letters')
+}
+
 const handleUpdate = async (cast: Cast, editedTitle: string) => {    
     const updateCast = doc(db, "casts", cast.id)
 
+    // Alert the user if there is no title string entered
     if (!editedTitle) {
         return showEmptyTitleAlert()
+    }
+
+    // Cast title can only use letters
+    if (!editedTitle.match(/^[a-zA-Z]+$/)) {
+        showInvalidTitleAlert();
+        return;
     }
 
     if (await checkForDuplicateTitle(editedTitle)) {
