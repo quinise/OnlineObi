@@ -55,6 +55,10 @@ const Dashboard = () => {
   function showEmptyTitleAlert() {
     alert('The cast title may not be empty.');
   }
+
+  function showInvalidTitleAlert() {
+    alert('The cast title may only contain letters')
+  }
   
   const handleGenerateCast = () => {
     if (isCastGenerated) {
@@ -78,7 +82,12 @@ const Dashboard = () => {
 
     if (!newTitle) {
       showEmptyTitleAlert();
+      return;
+    }
 
+    // Cast title can only use letters
+    if (!newTitle.match(/^[a-zA-Z]+$/)) {
+      showInvalidTitleAlert();
       return;
     }
 
@@ -136,17 +145,17 @@ const Dashboard = () => {
               whileHover="whileHover"
               src={`src/assets/${cast.femaleObi2}`} />}
           </div>
-          <form onSubmit={ (e)=> handleSaveCast(e) } className="font-sans-serif mt-20 mb-20 flex items-center justify-center">
+          <form onSubmit={(e) => handleSaveCast(e) } className="font-sans-serif mt-20 mb-20 flex flex-col items-center justify-center">
             <motion.input type="text" className="text-2xl border-2 border-forrest/60 rounded" 
               variants={buttonVariants}
               whileHover="whileHover"
               placeholder=" add a title..." value={ newTitle } onChange={(e) => setNewTitle(e.target.value)} autoFocus />
-              <div className="mt-10 mb-10 flex items-center justify-center">
-                <motion.button className="bg-forrest text-ivory font-sans-serif rounded-xl hover:bg-forrest/60 px-5 py-5 shadow-md"
-                  variants={ buttonVariants }
-                  whileHover="whileHover"
-                  >Save</motion.button>
-              </div>
+            <div className="mt-10 mb-10 flex items-center justify-center">
+              <motion.button className="bg-forrest text-ivory font-sans-serif rounded-xl hover:bg-forrest/60 px-5 py-5 shadow-md"
+                variants={ buttonVariants }
+                whileHover="whileHover"
+                >Save</motion.button>
+            </div>
           </form>
         </div>
       </Modal>
