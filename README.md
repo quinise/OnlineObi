@@ -100,13 +100,27 @@ firebase deploy
 
 ---
 
-## 🖼️ Screenshots
+## 🖼️ Screenshots & Demo
 
-[Screenshot Placeholder 1] – Homepage with “Generate Result” button and animations
+<p align="center">
+  <img src="src/assets/homepage.png" alt="Homepage with Generate Result button" width="700"/><br/>
+  <em>Homepage – Generate Result button with animations</em>
+</p>
 
-[Screenshot Placeholder 2] – History page showing saved casts with edit/delete options
+<p align="center">
+  <img src="src/assets/history.png" alt="History page with saved casts" width="700"/><br/>
+  <em>History – Saved casts with edit & delete options</em>
+</p>
 
-[GIF Placeholder] – Short animation of generating a cast
+<p align="center">
+  <img src="src/assets/details.png" alt="Details view of a saved cast" width="700"/><br/>
+  <em>Details – Expanded view of a single cast</em>
+</p>
+
+<p align="center">
+  <img src="src/assets/cast.gif" alt="Animation of generating a cast" width="700"/><br/>
+  <em>Demo – Short animation of generating a cast</em>
+</p>
 
 ## 🤝 Contributing
 Contributions, issues, and feature requests are welcome!  
