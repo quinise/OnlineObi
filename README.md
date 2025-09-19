@@ -3,13 +3,27 @@
 ## 🛠️ Built With  
 
 <p align="center">
-  <img src="https://img.shields.io/badge/react-18-61dafb?logo=react&logoColor=white" alt="React" />
-  <img src="https://img.shields.io/badge/tailwindcss-3.3-06B6D4?logo=tailwindcss&logoColor=white" alt="TailwindCSS" />
-  <img src="https://img.shields.io/badge/firebase-10-ffca28?logo=firebase&logoColor=black" alt="Firebase" />
-  <img src="https://img.shields.io/badge/framer--motion-10.16-0055ff?logo=framer&logoColor=white" alt="Framer Motion" />
-  <img src="https://img.shields.io/badge/vite-4.4-646cff?logo=vite&logoColor=yellow" alt="Vite" />
-  <img src="https://img.shields.io/badge/typescript-5.0-3178c6?logo=typescript&logoColor=white" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/license-MIT-blue" alt="License" />
+  <a href="https://react.dev/">
+    <img src="https://img.shields.io/badge/react-18-61dafb?logo=react&logoColor=white" alt="React" />
+  </a>
+  <a href="https://tailwindcss.com/">
+    <img src="https://img.shields.io/badge/tailwindcss-3.3-06B6D4?logo=tailwindcss&logoColor=white" alt="TailwindCSS" />
+  </a>
+  <a href="https://firebase.google.com/">
+    <img src="https://img.shields.io/badge/firebase-10-ffca28?logo=firebase&logoColor=black" alt="Firebase" />
+  </a>
+  <a href="https://www.framer.com/motion/">
+    <img src="https://img.shields.io/badge/framer--motion-10.16-0055ff?logo=framer&logoColor=white" alt="Framer Motion" />
+  </a>
+  <a href="https://vitejs.dev/">
+    <img src="https://img.shields.io/badge/vite-4.4-646cff?logo=vite&logoColor=yellow" alt="Vite" />
+  </a>
+  <a href="https://www.typescriptlang.org/">
+    <img src="https://img.shields.io/badge/typescript-5.0-3178c6?logo=typescript&logoColor=white" alt="TypeScript" />
+  </a>
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/license-MIT-blue" alt="License" />
+  </a>
 </p>
 
 A modern React application that simulates a casting experience directly in the browser. Each randomized cast produces:
