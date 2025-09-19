@@ -44,11 +44,21 @@ I set out on this coding endeavor to learn how to use **ReactJS, Vite, Figma, OA
 ## ✨ Features  
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Authentication-Firebase-orange?style=flat-square&logo=firebase&logoColor=white" alt="Authentication" />
-  <img src="https://img.shields.io/badge/Animations-FramerMotion-purple?style=flat-square&logo=framer&logoColor=white" alt="Animations" />
-  <img src="https://img.shields.io/badge/Responsive-TailwindCSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Responsive Design" />
-  <img src="https://img.shields.io/badge/History-Save%2C%20Edit%2C%20Delete-blue?style=flat-square&logo=react&logoColor=white" alt="History Management" />
-  <img src="https://img.shields.io/badge/Deployment-FirebaseHosting-yellow?style=flat-square&logo=firebase&logoColor=black" alt="Deployment" />
+  <a href="https://firebase.google.com/docs/auth">
+    <img src="https://img.shields.io/badge/Authentication-Firebase-orange?style=flat-square&logo=firebase&logoColor=white" alt="Authentication" />
+  </a>
+  <a href="https://www.framer.com/motion/">
+    <img src="https://img.shields.io/badge/Animations-FramerMotion-purple?style=flat-square&logo=framer&logoColor=white" alt="Animations" />
+  </a>
+  <a href="https://tailwindcss.com/docs/responsive-design">
+    <img src="https://img.shields.io/badge/Responsive-TailwindCSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Responsive Design" />
+  </a>
+  <a href="https://react.dev/learn/state-a-components-memory#preserving-and-resetting-state">
+    <img src="https://img.shields.io/badge/History-Save%2C%20Edit%2C%20Delete-blue?style=flat-square&logo=react&logoColor=white" alt="History Management" />
+  </a>
+  <a href="https://firebase.google.com/docs/hosting">
+    <img src="https://img.shields.io/badge/Deployment-FirebaseHosting-yellow?style=flat-square&logo=firebase&logoColor=black" alt="Deployment" />
+  </a>
 </p>
 
 ## ⚙️ Prerequisites
