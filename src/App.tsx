@@ -10,6 +10,7 @@ import Login from './components/Login';
 import Logout from './components/Logout';
 import Navbar from './components/Navbar';
 import Settings from './components/Settings.tsx';
+import Footer from './components/Footer';
 import './css/App.css';
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route path="/" element={ <Login /> } /> 
           <Route path="/login" element={ <Login /> } />
         </Routes>
+        <Footer />
       </div>
   )}
 
@@ -61,6 +63,7 @@ function App() {
             } />
           </Routes>
         </div>
+        <Footer />
       </div>
     );
   } else {
@@ -72,6 +75,7 @@ function App() {
           <Route path="/login" element={ <Login /> } 
           />
         </Routes>
+        <Footer />
       </div>
     )
   }
