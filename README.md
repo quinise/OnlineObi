@@ -17,3 +17,8 @@ npm run dev
 ```
 
 3. Navigate to http://localhost:5173
+
+## Recommended VS Code extensions
+
+- `Tailwind CSS IntelliSense` (`bradlc.vscode-tailwindcss`) — provides autocomplete, linting, and class inspections for Tailwind projects. The workspace recommends this extension in `.vscode/extensions.json`.
+- Workspace CSS setting: this project adds a workspace setting to suppress "Unknown at rule" diagnostics for PostCSS/Tailwind directives (`.vscode/settings.json`). Install the Tailwind extension for full IntelliSense and then you can remove or keep the setting as desired.

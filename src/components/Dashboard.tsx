@@ -1,14 +1,14 @@
 // This file includes the code for the Dashboard page=
-import { useState } from "react";
-import { auth } from "./../../GoogleProvider.tsx";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../firebase.config";
 import { Cast } from "../interfaces/Cast.tsx";
-import { checkForDuplicateTitle } from "../services/utils.tsx"
 import { addCastToDb } from "../services/addCast.tsx";
-import { generateCast } from "../services/generateCast.tsx"; 
-import Modal from "./Modal.tsx";
+import { generateCast } from "../services/generateCast.tsx";
+import { checkForDuplicateTitle } from "../services/utils.tsx";
 import Loader from "./Loader.tsx";
+import Modal from "./Modal.tsx";
 
 const h1Variants = {
   initial: {
@@ -74,7 +74,7 @@ const Dashboard = () => {
   }
 
 
-  const handleSaveCast = async (e) => {
+  const handleSaveCast = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     // Prevents submission of blank casts, blank titles, or duplicate titles to the database
@@ -113,7 +113,7 @@ const Dashboard = () => {
         {user && <h2 className="text-2xl text-mahogany font-sans-serif flex items-center justify-center">Welcome, {user.displayName}</h2>}
         {error && <h2 className="text-2xl text-forrest font-serif flex items-center justify-center">Error: {String(error)}</h2>}
         {loading && <Loader />}
-        <img className="object-scale-down h-64 w-64 mx-auto mt-10 mb-10" src="src/assets/favicon.png"/>
+        <img className="object-scale-down h-64 w-64 mx-auto mt-10 mb-10" src="../assets/favicon.png"/>
         <p className="text-mahogany font-sans-serif mt-10 mb-10 flex items-center justify-center">Would you like to divine something new?</p>
         <div className="mt-10 mb-10 flex items-center justify-center">
           <button className="bg-forrest text-ivory font-sans-serif rounded-xl hover:bg-forrest/60 px-5 py-5 shadow-md" onClick={() => handleGenerateCast()}>Cast</button>
@@ -131,19 +131,19 @@ const Dashboard = () => {
             {cast && <motion.img className="object-scale-down h-64 w-64 inline" 
               variants={ kolaVariants }
               whileHover="whileHover"
-              src={`src/assets/${cast.maleObi1}`} />}
+              src={`assets/${cast.maleObi1}`} />}
             {cast && <motion.img className="object-scale-down h-64 w-64 inline" 
               variants={ kolaVariants }
               whileHover="whileHover"
-              src={`src/assets/${cast.maleObi2}`} />}
+              src={`assets/${cast.maleObi2}`} />}
             {cast && <motion.img className="object-scale-down h-64 w-64 inline" 
               variants={ kolaVariants }
               whileHover="whileHover"
-              src={`src/assets/${cast.femaleObi1}`} />}
+              src={`assets/${cast.femaleObi1}`} />}
             {cast && <motion.img className="object-scale-down h-64 w-64 inline" 
               variants={ kolaVariants }
               whileHover="whileHover"
-              src={`src/assets/${cast.femaleObi2}`} />}
+              src={`assets/${cast.femaleObi2}`} />}
           </div>
           <form onSubmit={(e) => handleSaveCast(e) } className="font-sans-serif mt-20 mb-20 flex flex-col items-center justify-center">
             <motion.input type="text" className="text-2xl border-2 border-forrest/60 rounded" 

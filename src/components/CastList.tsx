@@ -1,13 +1,13 @@
 // This file includes the code for the page with a list of saved casts.
+import { motion } from "framer-motion";
 import React, { Fragment, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { motion } from "framer-motion";
-import { Cast } from "../interfaces/Cast.tsx";
-import { fetchCasts } from "../services/fetchCasts.tsx";
-import { handleDelete } from "../services/deleteCast.tsx";
-import { handleUpdate } from "../services/updateCast.tsx"
-import { auth } from "./../../GoogleProvider.tsx";
 import { uid } from "uid";
+import { auth } from "../../firebase.config";
+import { Cast } from "../interfaces/Cast.tsx";
+import { handleDelete } from "../services/deleteCast.tsx";
+import { fetchCasts } from "../services/fetchCasts.tsx";
+import { handleUpdate } from "../services/updateCast.tsx";
 import Modal from "./Modal.tsx";
 
 // Provides the "bump" animation on hover
@@ -173,19 +173,19 @@ const CastList = () => {
             <motion.img className="object-scale-down h-32 w-32 inline" 
               variants={ kolaVariants }
               whileHover="whileHover"
-              src={`src/assets/${cast.maleObi1}`}/>
+              src={`../assets/${cast.maleObi1}`}/>
             <motion.img className="object-scale-down h-32 w-32 inline"
               variants={ kolaVariants }
               whileHover="whileHover"
-              src={`src/assets/${cast.maleObi2}`}/>
+              src={`../assets/${cast.maleObi2}`}/>
             <motion.img className="object-scale-down h-32 w-32 inline" 
               variants={ kolaVariants }
               whileHover="whileHover"
-              src={`src/assets/${cast.femaleObi1}`}/>
+              src={`../assets/${cast.femaleObi1}`}/>
             <motion.img className="object-scale-down h-32 w-32 inline" 
             variants={ kolaVariants }
             whileHover="whileHover"
-            src={`src/assets/${cast.femaleObi2}`}/>
+            src={`../assets/${cast.femaleObi2}`}/>
           </div>
           {showInput && <motion.button className="bg-forrest rounded-md text-ivory font-sans-serif hover:bg-forrest/60 h-12 ml-[32%] xl:ml-[40%] mt-1 mb-1 mr-0 px-5 py-2 inline" key={`editButton${cast.id}`}
             variants={bumpVariants}

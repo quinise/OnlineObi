@@ -1,8 +1,8 @@
 // This file provides the code that edits a cast entry from the Cast List page
-import { db } from "./../../firebase.config.js";
 import { doc, updateDoc } from "firebase/firestore";
+import { db } from "../../firebase.config";
 import { Cast } from "../interfaces/Cast.js";
-import { checkForDuplicateTitle } from "../services/utils.tsx"
+import { checkForDuplicateTitle } from "../services/utils.tsx";
 
 function showEmptyTitleAlert() {
     alert('The cast title may not be empty.');
@@ -44,4 +44,4 @@ const handleUpdate = async (cast: Cast, editedTitle: string) => {
     showSuccessfullUpdateAlert(editedTitle);
 }
 
-export { handleUpdate }
+export { handleUpdate };

@@ -1,9 +1,10 @@
 // This file includes the middleware for the Googe Provider
-import { auth } from "./../../GoogleProvider.tsx";
+import React from 'react';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Navigate } from "react-router-dom";
- 
-const Auth =({ children }) => {
+import { auth } from "../../firebase.config";
+
+const Auth =({ children }: { children: React.ReactNode }) => {
     const [user, loading, error] = useAuthState(auth);
 
     if (error) {
