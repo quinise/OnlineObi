@@ -1,11 +1,10 @@
 // This file provides the code that reads all of the documents in the Firebase "casts" collection
-import { collection, limit, onSnapshot, query, where } from "firebase/firestore";
-import { auth } from "../../GoogleProvider.js";
+import { collection, onSnapshot, query, where } from "firebase/firestore";
+import { auth, db } from "../../firebase.config";
 import { Cast } from "../interfaces/Cast.js";
-import { db } from "../../firebase.config.js";
 
 
-function fetchCasts (callback) {
+function fetchCasts (callback: (casts: any[]) => void) {
     const castsRef = (collection(db, "casts"));
     const queryCasts = query(castsRef, where("user", "==", auth.currentUser?.uid));
     
@@ -40,4 +39,4 @@ function fetchCasts (callback) {
 
 }
 
-export { fetchCasts }
+export { fetchCasts };

@@ -1,8 +1,8 @@
 // This file includes the code for the Logout page
+import { signOut } from "firebase/auth";
 import { motion } from "framer-motion";
 import { useNavigate } from 'react-router-dom';
-import { auth } from "./../../GoogleProvider.tsx";
-import {  signOut } from "firebase/auth";
+import { auth } from "../../firebase.config";
 
 const Logout = () => {
     const navigate = useNavigate();
