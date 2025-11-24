@@ -1,16 +1,16 @@
 // This file includes the App's routes and provides the navigation across each page
-import './css/App.css'
-import { auth } from "./../GoogleProvider.tsx";
 import { useAuthState } from "react-firebase-hooks/auth";
-import Auth from './components/Auth';
-import Login from './components/Login';
-import Dashboard from './components/Dashboard';
 import { Route, Routes } from "react-router-dom";
-import Logout from './components/Logout';
+import { auth } from "../firebase.config";
+import Auth from './components/Auth';
 import CastList from './components/CastList.tsx';
-import Navbar from './components/Navbar'
-import Settings from './components/Settings.tsx';
+import Dashboard from './components/Dashboard';
 import Loader from './components/Loader.tsx';
+import Login from './components/Login';
+import Logout from './components/Logout';
+import Navbar from './components/Navbar';
+import Settings from './components/Settings.tsx';
+import './css/App.css';
 
 function App() {
   const [user, loading, error] = useAuthState(auth);

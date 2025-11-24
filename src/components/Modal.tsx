@@ -1,5 +1,6 @@
 // This file provides a Modal that blurs original window and focuses on an Ivory box with a "close" option
 import { AnimatePresence, motion } from "framer-motion";
+import React from 'react';
 
 const buttonVariants = {
   whileHover: {
@@ -13,12 +14,13 @@ const backdropVariants = {
   hidden: {opacity: 0}
 }
 
-const Modal = ({ isVisible, onClose, children }) => {
+const Modal = ({ isVisible, onClose, children }: { isVisible: boolean; onClose: () => void; children?: React.ReactNode }) => {
 
-  if ( !isVisible ) return null;
-  
-  const handleClose = (e) => {
-    if (e.target.id === 'wrapper') onClose();
+  if (!isVisible) return null;
+
+  const handleClose = (e: React.MouseEvent<HTMLDivElement>) => {
+    const target = e.target as HTMLElement;
+    if (target.id === 'wrapper') onClose();
   }
 
   return (
