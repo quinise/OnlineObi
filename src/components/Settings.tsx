@@ -35,8 +35,8 @@ function SettingsMenu ({ close }: { close: () => void }) {
 
     return (
     <div>
-        <div className="top-0 1-0 h-screen w-full backdrop-blur-sm bg-forrest bg-opacity-60 fixed inset-0"></div>
-        <div className="fixed inset-0 top 1-0 p-5">
+        <div className="fixed inset-0 h-screen w-full backdrop-blur-sm bg-forrest bg-opacity-60"></div>
+        <div className="fixed inset-0 p-5">
             <div className={`w-full bg-ivory rounded-xl p-5 transition-all ${animation ? "scale-100" : "scale-95"}`}>
                 <div className="flex items-center justify-between">
                     <h1 className="text-forrest font-serif">Settings</h1>
@@ -69,7 +69,7 @@ const Settings = ()  => {
 
   return (
     <>
-    <div className="mt-5 mb-0 flex justify-end w-full inline">
+    <div className="mt-5 mb-0 flex justify-end w-full">
         <button className="bg-white text-forrest font-serif shadow-md px-5 py-2 rounded-full" onClick={() => { setSettingsMenuOpen(true); } }><img src="../assets/settings.png" /></button>
     </div>
     <div>

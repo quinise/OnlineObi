@@ -47,7 +47,7 @@ const Navbar = () => {
   if (user) {
     return (
       <div>
-        <nav className="w-full flex items-center justify-center inline">
+        <nav className="w-full flex items-center justify-center">
           <WebMenu navLinks = { authNavLinks } />
           <div className="flex justify-end w-full sm:hidden">
             <button className="bg-white text-forrest font-serif shadow-md px-5 py-2 rounded-full" onClick={() => {setMobileNavOpen(true);}}>Menu</button>

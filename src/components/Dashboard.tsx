@@ -128,19 +128,19 @@ const Dashboard = () => {
             {cast && <p className="text-xl text-mahogany font-sans-serif mt-5 flex items-center justify-center"><b>Interpretation:&nbsp;</b>{cast.interpretation}</p>}
           </div>
           <div className="mx-auto mt-10 mb-5 h-32 w-32 flex items-center justify-center">
-            {cast && <motion.img className="object-scale-down h-64 w-64 inline" 
+            {cast && <motion.img className="object-scale-down h-64 w-64 inline-block" 
               variants={ kolaVariants }
               whileHover="whileHover"
               src={`assets/${cast.maleObi1}`} />}
-            {cast && <motion.img className="object-scale-down h-64 w-64 inline" 
+            {cast && <motion.img className="object-scale-down h-64 w-64 inline-block" 
               variants={ kolaVariants }
               whileHover="whileHover"
               src={`assets/${cast.maleObi2}`} />}
-            {cast && <motion.img className="object-scale-down h-64 w-64 inline" 
+            {cast && <motion.img className="object-scale-down h-64 w-64 inline-block" 
               variants={ kolaVariants }
               whileHover="whileHover"
               src={`assets/${cast.femaleObi1}`} />}
-            {cast && <motion.img className="object-scale-down h-64 w-64 inline" 
+            {cast && <motion.img className="object-scale-down h-64 w-64 inline-block" 
               variants={ kolaVariants }
               whileHover="whileHover"
               src={`assets/${cast.femaleObi2}`} />}
