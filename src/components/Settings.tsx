@@ -1,14 +1,14 @@
 // This file provides the codes for the Settings menu that appears when the user clicks on the gear icon in the top right corner
-import React, { useState } from 'react'
-import { motion } from "framer-motion";
-import { useNavigate } from 'react-router-dom';
-import { useAuthState } from "react-firebase-hooks/auth";
-import { IoCloseOutline } from "react-icons/io5"
-import { auth } from "./../../GoogleProvider.tsx";
 import { deleteUser } from "firebase/auth";
+import { motion } from "framer-motion";
+import React, { useState } from 'react';
+import { useAuthState } from "react-firebase-hooks/auth";
+import { IoCloseOutline } from "react-icons/io5";
+import { useNavigate } from 'react-router-dom';
+import { auth } from "../../firebase.config";
 import Loader from './Loader.tsx';
 
-function SettingsMenu ({ close }) {
+function SettingsMenu ({ close }: { close: () => void }) {
     const [animation, setAnimation] = useState(false);
     const [user, loading, error] = useAuthState(auth);
     const navigate = useNavigate();
@@ -70,7 +70,7 @@ const Settings = ()  => {
   return (
     <>
     <div className="mt-5 mb-0 flex justify-end w-full inline">
-        <button className="bg-white text-forrest font-serif shadow-md px-5 py-2 rounded-full" onClick={() => { setSettingsMenuOpen(true); } }><img src="src/assets/settings.png" /></button>
+        <button className="bg-white text-forrest font-serif shadow-md px-5 py-2 rounded-full" onClick={() => { setSettingsMenuOpen(true); } }><img src="../assets/settings.png" /></button>
     </div>
     <div>
     { settingsMenuOpen ? (<SettingsMenu close={() => setSettingsMenuOpen(false)} />) : (<></>) }
