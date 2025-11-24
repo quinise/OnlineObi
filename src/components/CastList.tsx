@@ -72,16 +72,16 @@ const CastList = () => {
     return (
       <div>{uniqueCasts && uniqueCasts?.map((castFromList: Cast, index:number) =>
         <>
-        <div className="inline">
+        <div>
           <motion.div key={`cl${index}`} className="mt-16 mx-auto w-96 h-40 p-1.5 bg-forrest/60 border-2 border-forrest/60 rounded-tl-2xl static shadow-md block"
             variants={bumpVariants}
             whileHover="whileHover">
             <div className="w-88 h-36 pt-12 pl-4 bg-forrest/20 rounded-lg border-2 border-forrest/40 flex justify-between" key={`castListElements${castFromList.id}`} onClick={() => setModuleCast(castFromList)}>
-              <h1 className="text-2xl text-ivory font-serif inline">{castFromList.title}</h1>
+                  <h1 className="text-2xl text-ivory font-serif">{castFromList.title}</h1>
             </div>
           </motion.div>
         </div>
-        <motion.button className="bg-forrest rounded-md text-ivory font-sans-serif hover:bg-forrest/60 h-12 ml-[32%] xl:ml-[40%] mt-1 mb-1 mr-0 px-5 py-2 inline" key={`editButton${castFromList.id}`}
+        <motion.button className="bg-forrest rounded-md text-ivory font-sans-serif hover:bg-forrest/60 h-12 ml-[32%] xl:ml-[40%] mt-1 mb-1 mr-0 px-5 py-2" key={`editButton${castFromList.id}`}
           variants={bumpVariants}
           whileHover="whileHover" onClick={() => handleEdit()}
           >Edit Cast</motion.button>
@@ -132,15 +132,15 @@ const CastList = () => {
                 variants={bumpVariants}
                 whileHover="whileHover">
                 <div className="w-88 h-36 pt-12 pl-4 bg-forrest/20 rounded-lg border-2 border-forrest/40 flex justify-between" key={`resultListElements${castFromList.id}`} onClick={() => setModuleCast(castFromList)}>
-                  <h1 className="text-2xl text-ivory font-serif inline">{castFromList.title}</h1>
+                  <h1 className="text-2xl text-ivory font-serif">{castFromList.title}</h1>
                 </div>
               </motion.div>
               <div className="mb-5 flex justify-between">
-                <motion.button className="bg-forrest rounded-md text-ivory font-sans-serif hover:bg-forrest/60 h-12 ml-[2%] xl:ml-[40%] mt-1 mb-1 mr-0 px-5 py-2 inline" key={`resultEditButton${castFromList.id}`}
+                <motion.button className="bg-forrest rounded-md text-ivory font-sans-serif hover:bg-forrest/60 h-12 ml-[2%] xl:ml-[40%] mt-1 mb-1 mr-0 px-5 py-2" key={`resultEditButton${castFromList.id}`}
                   variants={bumpVariants}
                   whileHover="whileHover" onClick={() => handleEdit()}
                 >Edit Cast</motion.button>
-                <motion.button className="bg-red text-white font-sans-serif hover:bg-darkRed h-12 px-5 py-2  xl:ml-[9%] mt-1 rounded-md inline" key={`resultDeleteButton${castFromList.id}`} onClick={() => handleDelete(castFromList)}
+                <motion.button className="bg-red text-white font-sans-serif hover:bg-darkRed h-12 px-5 py-2  xl:ml-[9%] mt-1 rounded-md" key={`resultDeleteButton${castFromList.id}`} onClick={() => handleDelete(castFromList)}
                   variants={bumpVariants}
                   whileHover="whileHover"
                 >Delete</motion.button>
@@ -170,24 +170,24 @@ const CastList = () => {
             <p className="text-xl text-forrest font-sans-serif mb-5"><b>Interpretation:</b>  {cast.interpretation}</p>
           </div>
           <div className="mt-8 mb-8 flex justify-between">
-            <motion.img className="object-scale-down h-32 w-32 inline" 
+            <motion.img className="object-scale-down h-32 w-32 inline-block" 
               variants={ kolaVariants }
               whileHover="whileHover"
               src={`../assets/${cast.maleObi1}`}/>
-            <motion.img className="object-scale-down h-32 w-32 inline"
+            <motion.img className="object-scale-down h-32 w-32 inline-block"
               variants={ kolaVariants }
               whileHover="whileHover"
               src={`../assets/${cast.maleObi2}`}/>
-            <motion.img className="object-scale-down h-32 w-32 inline" 
+            <motion.img className="object-scale-down h-32 w-32 inline-block" 
               variants={ kolaVariants }
               whileHover="whileHover"
               src={`../assets/${cast.femaleObi1}`}/>
-            <motion.img className="object-scale-down h-32 w-32 inline" 
+            <motion.img className="object-scale-down h-32 w-32 inline-block" 
             variants={ kolaVariants }
             whileHover="whileHover"
             src={`../assets/${cast.femaleObi2}`}/>
           </div>
-          {showInput && <motion.button className="bg-forrest rounded-md text-ivory font-sans-serif hover:bg-forrest/60 h-12 ml-[32%] xl:ml-[40%] mt-1 mb-1 mr-0 px-5 py-2 inline" key={`editButton${cast.id}`}
+          {showInput && <motion.button className="bg-forrest rounded-md text-ivory font-sans-serif hover:bg-forrest/60 h-12 ml-[32%] xl:ml-[40%] mt-1 mb-1 mr-0 px-5 py-2" key={`editButton${cast.id}`}
             variants={bumpVariants}
             whileHover="whileHover" onClick={() => handleUpdate(cast, newTitle)}
             >Save</motion.button>

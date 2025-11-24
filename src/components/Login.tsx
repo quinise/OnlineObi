@@ -36,9 +36,12 @@ const Login = () => {
                 <p className="text-1xl text-mahogany/90 font-sans-serif w-2/5 mb-10 mx-auto"><b>Obi is a divination system used in the spiritual science, IFA. To cast, the diviner throws kola nut, coconut pieces, or even pennies on the ground; then interprets an answer based on how the pieces land...</b></p>
                 <div className="bg-forrest/60 border-2 border-forrest/50 rounded-md p-5 h-48 w-2/5 mb-12 mx-auto shadow-md">
                     <h2 className='text-3xl text-forrest font-sans-serif mb-2 flex items-center justify-center'><b>Login to Online Obi</b></h2>
-                    <div className='mt-5 mb-10 pb-8 flex items-center justify-center'>
-                        <button className='bg-googleBlue px-5 py-5' onClick={signInWithGoogle}><img className="object-cover h-10 w-10 mr-4 inline" src="../assets/GoogleIcon.png"/><p className="text-white font-bold inline">Sign in with Google</p></button>
-                    </div>
+                                        <div className='mt-5 mb-10 pb-8 flex items-center justify-center'>
+                                                <button className='bg-googleBlue px-5 py-5 flex items-center gap-3' onClick={signInWithGoogle}>
+                                                    <img className="object-cover h-10 w-10" src="../assets/GoogleIcon.png"/>
+                                                    <p className="text-white font-bold">Sign in with Google</p>
+                                                </button>
+                                        </div>
                 </div>
                 <div className="pb-10">
                     <h3 className="text-2xl text-mahogany w-full mt-5 mb-5 font-serif flex items-center justify-center">Why Online Obi?</h3>
