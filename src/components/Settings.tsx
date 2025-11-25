@@ -1,12 +1,12 @@
 // This file provides the codes for the Settings menu that appears when the user clicks on the gear icon in the top right corner
 import { deleteUser } from "firebase/auth";
-import { motion } from "framer-motion";
 import React, { useState } from 'react';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { IoCloseOutline } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
 import { auth } from "../../firebase.config";
 import Loader from './Loader.tsx';
+import Button from './ui/Button';
 
 function SettingsMenu ({ close }: { close: () => void }) {
     const [animation, setAnimation] = useState(false);
@@ -49,13 +49,11 @@ function SettingsMenu ({ close }: { close: () => void }) {
                     {loading && <Loader/>}
                     </div>
 
-                    <div className='mt-5 flex items-center justify-center'>
-                        <motion.button whileHover={{ 
-                            scale: 1.1,
-                            boxShadow: "0px 0px 8px rgb(255, 255, 255)",
-                            }} className='bg-forrest rounded-md text-ivory font-"sans-serif" hover:bg-forrest/60 px-5 py-5' onClick={handleDeleteAccount}
-                            >Delete Account</motion.button>
-                    </div>
+                                        <div className='mt-5 flex items-center justify-center'>
+                                                <Button variant="primary" size="md" className="px-5 py-5" onClick={handleDeleteAccount}>
+                                                    Delete Account
+                                                </Button>
+                                        </div>
                 </div> 
         </div>
         </div>

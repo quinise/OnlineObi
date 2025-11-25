@@ -9,14 +9,9 @@ import { handleDelete } from "../services/deleteCast.tsx";
 import { fetchCasts } from "../services/fetchCasts.tsx";
 import { handleUpdate } from "../services/updateCast.tsx";
 import Modal from "./Modal.tsx";
+import Button from "./ui/Button";
 
-// Provides the "bump" animation on hover
-const bumpVariants = {
-  whileHover: {
-    scale: 1.1,
-    boxShadow: "0px 0px 8px rgb(255, 255, 255)",
-  }
-}
+// Note: hover effects for cast list are implemented with Tailwind CSS (hover:scale, hover:shadow)
 
 // Provides the "bump" animation on Title
 const titleBumpVariants = {
@@ -198,11 +193,19 @@ const CastList = () => {
             whileHover="whileHover"
             src={`../assets/${cast.femaleObi2}`}/>
           </div>
-          {showInput && <motion.button className="bg-forrest rounded-md text-ivory font-sans-serif hover:bg-forrest/60 h-12 ml-[32%] xl:ml-[40%] mt-1 mb-1 mr-0 px-5 py-2" key={`editButton${cast.id}`}
-            variants={bumpVariants}
-            whileHover="whileHover" onClick={() => handleUpdate(cast, newTitle)}
-            >Save</motion.button>
-          }
+          {showInput && (
+            <div className="flex justify-center">
+              <Button
+                className="ml-0 mt-1 mb-1 mr-0"
+                variant="primary"
+                size="md"
+                onClick={() => handleUpdate(cast, newTitle)}
+              >
+                Save
+              </Button>
+            </div>
+          )}
+          
         </div>
       </Modal>
     </Fragment>
