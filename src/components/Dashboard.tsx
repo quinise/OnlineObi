@@ -9,6 +9,7 @@ import { generateCast } from "../services/generateCast.tsx";
 import { checkForDuplicateTitle } from "../services/utils.tsx";
 import Loader from "./Loader.tsx";
 import Modal from "./Modal.tsx";
+import Button from "./ui/Button";
 
 const h1Variants = {
   initial: {
@@ -116,7 +117,9 @@ const Dashboard = () => {
         <img className="object-scale-down h-64 w-64 mx-auto mt-10 mb-10" src="../assets/favicon.png"/>
         <p className="text-mahogany font-sans-serif mt-10 mb-10 flex items-center justify-center">Would you like to divine something new?</p>
         <div className="mt-10 mb-10 flex items-center justify-center">
-          <button className="bg-forrest text-ivory font-sans-serif rounded-xl hover:bg-forrest/60 px-5 py-5 shadow-md" onClick={() => handleGenerateCast()}>Cast</button>
+          <Button onClick={() => handleGenerateCast()} variant="primary" size="lg">
+            Cast
+          </Button>
         </div>
       </div>
       <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
@@ -145,16 +148,15 @@ const Dashboard = () => {
               whileHover="whileHover"
               src={`assets/${cast.femaleObi2}`} />}
           </div>
-          <form onSubmit={(e) => handleSaveCast(e) } className="font-sans-serif mt-20 mb-20 flex flex-col items-center justify-center">
+            <form onSubmit={(e) => handleSaveCast(e) } className="font-sans-serif mt-20 mb-20 flex flex-col items-center justify-center">
             <motion.input type="text" className="text-2xl border-2 border-forrest/60 rounded" 
               variants={buttonVariants}
               whileHover="whileHover"
               placeholder=" add a title..." value={ newTitle } onChange={(e) => setNewTitle(e.target.value)} autoFocus />
             <div className="mt-10 mb-10 flex items-center justify-center">
-              <motion.button className="bg-forrest text-ivory font-sans-serif rounded-xl hover:bg-forrest/60 px-5 py-5 shadow-md"
-                variants={ buttonVariants }
-                whileHover="whileHover"
-                >Save</motion.button>
+              <Button type="submit" variant="secondary" size="md">
+                Save
+              </Button>
             </div>
           </form>
         </div>

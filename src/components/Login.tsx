@@ -4,6 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase.config";
 import { signInWithGoogle } from "./../../GoogleProvider";
 import Loader from "./Loader.tsx";
+import Button from "./ui/Button";
 
 const logoAnimation = {
     animate: {
@@ -37,10 +38,10 @@ const Login = () => {
                 <div className="bg-forrest/60 border-2 border-forrest/50 rounded-md p-5 h-48 max-w-md w-full mb-12 mx-auto shadow-md">
                     <h2 className='text-3xl text-forrest font-sans-serif mb-2 flex items-center justify-center'><b>Login to Online Obi</b></h2>
                                         <div className='mt-5 mb-10 pb-8 flex items-center justify-center'>
-                                                <button className='bg-googleBlue px-5 py-5 flex items-center gap-3' onClick={signInWithGoogle}>
-                                                    <img className="object-cover h-10 w-10" src="../assets/GoogleIcon.png"/>
-                                                    <p className="text-white font-bold">Sign in with Google</p>
-                                                </button>
+                                            <Button onClick={signInWithGoogle} variant="primary" size="md" className="flex items-center gap-3 px-6">
+                                                <img className="object-cover h-6 w-6" src="../assets/GoogleIcon.png" alt="Google logo" />
+                                                <span className="font-bold">Sign in with Google</span>
+                                            </Button>
                                         </div>
                 </div>
                 <div className="pb-10 max-w-prose px-4 text-center">
