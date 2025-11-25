@@ -24,18 +24,7 @@ const h1Variants = {
   }
 }
 
-const buttonVariants = {
-  whileHover: {
-    scale: 1.1,
-    boxShadow: "0px 0px 8px rgb(255, 255, 255)",
-  }
-}
-
-const kolaVariants = {
-  whileHover: {
-    scale: 2,
-  }
-}
+// Keep the h1 mount fade in Motion; convert input and images hovers to Tailwind utilities
 
 const Dashboard = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -129,28 +118,14 @@ const Dashboard = () => {
             {cast && <p className="text-xl text-mahogany font-sans-serif mt-5 flex items-center justify-center"><b>Answer:&nbsp;</b>{cast.answer}</p>}
             {cast && <p className="text-xl text-mahogany font-sans-serif mt-5 flex items-center justify-center"><b>Interpretation:&nbsp;</b>{cast.interpretation}</p>}
           </div>
-          <div className="mx-auto mt-10 mb-5 h-32 w-32 flex items-center justify-center">
-            {cast && <motion.img className="object-scale-down h-64 w-64 inline-block" 
-              variants={ kolaVariants }
-              whileHover="whileHover"
-              src={`assets/${cast.maleObi1}`} />}
-            {cast && <motion.img className="object-scale-down h-64 w-64 inline-block" 
-              variants={ kolaVariants }
-              whileHover="whileHover"
-              src={`assets/${cast.maleObi2}`} />}
-            {cast && <motion.img className="object-scale-down h-64 w-64 inline-block" 
-              variants={ kolaVariants }
-              whileHover="whileHover"
-              src={`assets/${cast.femaleObi1}`} />}
-            {cast && <motion.img className="object-scale-down h-64 w-64 inline-block" 
-              variants={ kolaVariants }
-              whileHover="whileHover"
-              src={`assets/${cast.femaleObi2}`} />}
+            <div className="mx-auto mt-10 mb-5 h-32 w-32 flex items-center justify-center">
+            {cast && <img className="object-scale-down h-64 w-64 inline-block transform transition-transform hover:scale-125" src={`assets/${cast.maleObi1}`} />}
+            {cast && <img className="object-scale-down h-64 w-64 inline-block transform transition-transform hover:scale-125" src={`assets/${cast.maleObi2}`} />}
+            {cast && <img className="object-scale-down h-64 w-64 inline-block transform transition-transform hover:scale-125" src={`assets/${cast.femaleObi1}`} />}
+            {cast && <img className="object-scale-down h-64 w-64 inline-block transform transition-transform hover:scale-125" src={`assets/${cast.femaleObi2}`} />}
           </div>
             <form onSubmit={(e) => handleSaveCast(e) } className="font-sans-serif mt-20 mb-20 flex flex-col items-center justify-center">
-            <motion.input type="text" className="text-2xl border-2 border-forrest/60 rounded" 
-              variants={buttonVariants}
-              whileHover="whileHover"
+            <input type="text" className="text-2xl border-2 border-forrest/60 rounded" 
               placeholder=" add a title..." value={ newTitle } onChange={(e) => setNewTitle(e.target.value)} autoFocus />
             <div className="mt-10 mb-10 flex items-center justify-center">
               <Button
