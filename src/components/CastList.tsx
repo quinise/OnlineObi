@@ -1,5 +1,4 @@
 // This file includes the code for the page with a list of saved casts.
-import { motion } from "framer-motion";
 import React, { Fragment, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { uid } from "uid";
@@ -20,12 +19,7 @@ const titleBumpVariants = {
   }
 }
 
-// Provides the "bump" animation on kola nut imagess
-const kolaVariants = {
-  whileHover: {
-    scale: 2,
-  }
-}
+// Micro-interactions are implemented with Tailwind (hover:scale + transition)
 
 const CastList = () => {
   const [user] = useAuthState(auth);
@@ -34,6 +28,7 @@ const CastList = () => {
   const [searchValue, setSearchValue] = useState("");
   const [showInput, setShowInput] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [confirmDeleteCast, setConfirmDeleteCast] = useState<Cast | null>(null);
   const [cast, setCast] = useState<Cast>({
     id: uid(), 
     odu:" Aalaffia - Ogbe",
@@ -92,6 +87,7 @@ const CastList = () => {
                 variant="secondary"
                 size="md"
                 className="!bg-red !text-white font-sans-serif hover:bg-darkRed hover:scale-105 hover:shadow-lg transition-transform h-12 px-5 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-red-300"
+                onClick={() => setConfirmDeleteCast(castFromList)}
                 onClick={() => handleDelete(castFromList)}
                 aria-label={`Delete cast ${castFromList.title}`}
               >
@@ -159,6 +155,7 @@ const CastList = () => {
                   variant="secondary"
                   size="md"
                   className="!bg-red !text-white font-sans-serif hover:bg-darkRed hover:scale-105 hover:shadow-lg transition-transform h-12 px-5 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-red-300"
+                  onClick={() => setConfirmDeleteCast(castFromList)}
                   onClick={() => handleDelete(castFromList)}
                 >
                   Delete
@@ -175,10 +172,8 @@ const CastList = () => {
       <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
         <div className="p-6">
         {showInput ? <input className="text-forrest font-sans-serif mb-2 flex mx-auto" placeholder={newTitle} value={newTitle} onChange={(e) => setNewTitle(e.target.value)}/>
-        : <motion.h3 className="text-xl font-semibold text-forrest font-serif mb-5 flex justify-center"
-            variants={titleBumpVariants}
-            whileHover="whileHover"
-          >{cast.title}</motion.h3>
+        : <h3 className="text-xl font-semibold text-forrest font-serif mb-5 flex justify-center"
+          >{cast.title}</h3>
           }
           <hr className="text-forrest rounded-lg md:w-[70%] md:mx-auto mb-8"/>
           <div className="ml-12">
@@ -188,22 +183,44 @@ const CastList = () => {
             <p className="text-xl text-forrest font-sans-serif mb-5"><b>Interpretation:</b>  {cast.interpretation}</p>
           </div>
           <div className="mt-8 mb-8 flex justify-between">
-            <motion.img className="object-scale-down h-32 w-32 inline-block" 
-              variants={ kolaVariants }
-              whileHover="whileHover"
-              src={`../assets/${cast.maleObi1}`}/>
-            <motion.img className="object-scale-down h-32 w-32 inline-block"
-              variants={ kolaVariants }
-              whileHover="whileHover"
-              src={`../assets/${cast.maleObi2}`}/>
-            <motion.img className="object-scale-down h-32 w-32 inline-block" 
-              variants={ kolaVariants }
-              whileHover="whileHover"
-              src={`../assets/${cast.femaleObi1}`}/>
-            <motion.img className="object-scale-down h-32 w-32 inline-block" 
-            variants={ kolaVariants }
-            whileHover="whileHover"
-            src={`../assets/${cast.femaleObi2}`}/>
+            <img className="object-scale-down h-32 w-32 inline-block transform transition-transform hover:scale-125" src={`../assets/${cast.maleObi1}`}/>
+            <img className="object-scale-down h-32 w-32 inline-block transform transition-transform hover:scale-125" src={`../assets/${cast.maleObi2}`}/>
+            <img className="object-scale-down h-32 w-32 inline-block transform transition-transform hover:scale-125" src={`../assets/${cast.femaleObi1}`}/>
+            <img className="object-scale-down h-32 w-32 inline-block transform transition-transform hover:scale-125" src={`../assets/${cast.femaleObi2}`}/>
+          </div>
+          {showInput && (
+            <div className="flex justify-center">
+              <Button
+                className="ml-0 mt-1 mb-1 mr-0 !bg-forrest !text-ivory"
+                variant="primary"
+                size="md"
+                onClick={() => handleUpdate(cast, newTitle)}
+              >
+                Save
+              </Button>
+            </div>
+          )}
+          
+        </div>
+      </Modal>
+      {/* Confirm delete modal */}
+      <Modal isVisible={!!confirmDeleteCast} onClose={() => setConfirmDeleteCast(null)}>
+        <div className="p-6">
+          <h3 className="text-xl text-forrest font-serif mb-4">Confirm deletion</h3>
+          <p className="mb-6">Are you sure you want to delete "{confirmDeleteCast?.title}"? This action cannot be undone.</p>
+          <div className="flex justify-center gap-4">
+            <Button variant="ghost" size="md" onClick={() => setConfirmDeleteCast(null)}>Cancel</Button>
+            <Button
+              variant="secondary"
+              size="md"
+              className="!bg-red !text-white hover:bg-darkRed hover:scale-105 hover:shadow-lg transition-transform focus:outline-none focus:ring-2 focus:ring-red-300"
+              onClick={() => {
+                if (confirmDeleteCast) handleDelete(confirmDeleteCast);
+                setConfirmDeleteCast(null);
+              }}
+            >
+              Delete
+            </Button>
           </div>
           {showInput && (
             <div className="flex justify-center">
