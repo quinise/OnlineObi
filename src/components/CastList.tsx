@@ -1,5 +1,4 @@
 // This file includes the code for the page with a list of saved casts.
-import { motion } from "framer-motion";
 import React, { Fragment, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { uid } from "uid";
@@ -13,19 +12,7 @@ import Button from "./ui/Button";
 
 // Note: hover effects for cast list are implemented with Tailwind CSS (hover:scale, hover:shadow)
 
-// Provides the "bump" animation on Title
-const titleBumpVariants = {
-  whileHover: { 
-    scale: 1.1,
-  }
-}
-
-// Provides the "bump" animation on kola nut imagess
-const kolaVariants = {
-  whileHover: {
-    scale: 2,
-  }
-}
+// Micro-interactions are implemented with Tailwind (hover:scale + transition)
 
 const CastList = () => {
   const [user] = useAuthState(auth);
@@ -176,10 +163,8 @@ const CastList = () => {
       <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
         <div className="p-6">
         {showInput ? <input className="text-forrest font-sans-serif mb-2 flex mx-auto" placeholder={newTitle} value={newTitle} onChange={(e) => setNewTitle(e.target.value)}/>
-        : <motion.h3 className="text-xl font-semibold text-forrest font-serif mb-5 flex justify-center"
-            variants={titleBumpVariants}
-            whileHover="whileHover"
-          >{cast.title}</motion.h3>
+        : <h3 className="text-xl font-semibold text-forrest font-serif mb-5 flex justify-center"
+          >{cast.title}</h3>
           }
           <hr className="text-forrest rounded-lg md:w-[70%] md:mx-auto mb-8"/>
           <div className="ml-12">
@@ -189,22 +174,10 @@ const CastList = () => {
             <p className="text-xl text-forrest font-sans-serif mb-5"><b>Interpretation:</b>  {cast.interpretation}</p>
           </div>
           <div className="mt-8 mb-8 flex justify-between">
-            <motion.img className="object-scale-down h-32 w-32 inline-block" 
-              variants={ kolaVariants }
-              whileHover="whileHover"
-              src={`../assets/${cast.maleObi1}`}/>
-            <motion.img className="object-scale-down h-32 w-32 inline-block"
-              variants={ kolaVariants }
-              whileHover="whileHover"
-              src={`../assets/${cast.maleObi2}`}/>
-            <motion.img className="object-scale-down h-32 w-32 inline-block" 
-              variants={ kolaVariants }
-              whileHover="whileHover"
-              src={`../assets/${cast.femaleObi1}`}/>
-            <motion.img className="object-scale-down h-32 w-32 inline-block" 
-            variants={ kolaVariants }
-            whileHover="whileHover"
-            src={`../assets/${cast.femaleObi2}`}/>
+            <img className="object-scale-down h-32 w-32 inline-block transform transition-transform hover:scale-125" src={`../assets/${cast.maleObi1}`}/>
+            <img className="object-scale-down h-32 w-32 inline-block transform transition-transform hover:scale-125" src={`../assets/${cast.maleObi2}`}/>
+            <img className="object-scale-down h-32 w-32 inline-block transform transition-transform hover:scale-125" src={`../assets/${cast.femaleObi1}`}/>
+            <img className="object-scale-down h-32 w-32 inline-block transform transition-transform hover:scale-125" src={`../assets/${cast.femaleObi2}`}/>
           </div>
           {showInput && (
             <div className="flex justify-center">

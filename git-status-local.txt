@@ -1,0 +1,16 @@
+ M src/components/CastList.tsx
+BRANCH: confirm-delete-cast
+---DIFF: src/components/CastList.tsx---
+diff --git a/src/components/CastList.tsx b/src/components/CastList.tsx
+index e4939fa..c42e072 100644
+--- a/src/components/CastList.tsx
++++ b/src/components/CastList.tsx
+@@ -231,7 +231,7 @@ const CastList = () => {
+             <Button
+               variant="secondary"
+               size="md"
+-              className="!bg-red !text-white"
++              className="!bg-red !text-white hover:bg-darkRed hover:scale-105 hover:shadow-lg transition-transform focus:outline-none focus:ring-2 focus:ring-red-300"
+               onClick={() => {
+                 if (confirmDeleteCast) handleDelete(confirmDeleteCast);
+                 setConfirmDeleteCast(null);
