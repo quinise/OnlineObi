@@ -34,6 +34,7 @@ const CastList = () => {
   const [searchValue, setSearchValue] = useState("");
   const [showInput, setShowInput] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [confirmDeleteCast, setConfirmDeleteCast] = useState<Cast | null>(null);
   const [cast, setCast] = useState<Cast>({
     id: uid(), 
     odu:" Aalaffia - Ogbe",
@@ -92,7 +93,7 @@ const CastList = () => {
                 variant="secondary"
                 size="md"
                 className="!bg-red !text-white font-sans-serif hover:bg-darkRed hover:scale-105 hover:shadow-lg transition-transform h-12 px-5 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-red-300"
-                onClick={() => handleDelete(castFromList)}
+                onClick={() => setConfirmDeleteCast(castFromList)}
                 aria-label={`Delete cast ${castFromList.title}`}
               >
                 Delete
@@ -159,7 +160,7 @@ const CastList = () => {
                   variant="secondary"
                   size="md"
                   className="!bg-red !text-white font-sans-serif hover:bg-darkRed hover:scale-105 hover:shadow-lg transition-transform h-12 px-5 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-red-300"
-                  onClick={() => handleDelete(castFromList)}
+                  onClick={() => setConfirmDeleteCast(castFromList)}
                 >
                   Delete
                 </Button>
@@ -218,6 +219,27 @@ const CastList = () => {
             </div>
           )}
           
+        </div>
+      </Modal>
+      {/* Confirm delete modal */}
+      <Modal isVisible={!!confirmDeleteCast} onClose={() => setConfirmDeleteCast(null)}>
+        <div className="p-6">
+          <h3 className="text-xl text-forrest font-serif mb-4">Confirm deletion</h3>
+          <p className="mb-6">Are you sure you want to delete "{confirmDeleteCast?.title}"? This action cannot be undone.</p>
+          <div className="flex justify-center gap-4">
+            <Button variant="ghost" size="md" onClick={() => setConfirmDeleteCast(null)}>Cancel</Button>
+            <Button
+              variant="secondary"
+              size="md"
+              className="!bg-red !text-white"
+              onClick={() => {
+                if (confirmDeleteCast) handleDelete(confirmDeleteCast);
+                setConfirmDeleteCast(null);
+              }}
+            >
+              Delete
+            </Button>
+          </div>
         </div>
       </Modal>
     </Fragment>
