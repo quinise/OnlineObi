@@ -76,7 +76,10 @@ const CastList = () => {
               onClick={() => setModuleCast(castFromList)}
             >
               <div className="w-88 h-36 pt-12 pl-4 bg-forrest/20 rounded-lg border-2 border-forrest/40 flex justify-between">
-                <h1 className="text-2xl text-ivory font-serif">{castFromList.title}</h1>
+                <div>
+                  <h1 className="text-2xl text-ivory font-serif">{castFromList.title}</h1>
+                  <p className="text-sm text-ivory/80 mt-1">Created on {new Intl.DateTimeFormat('en-US', { month: 'short', day: '2-digit', year: 'numeric' }).format(new Date(castFromList.timestamp))}</p>
+                </div>
               </div>
             </div>
 
@@ -138,7 +141,10 @@ const CastList = () => {
                 className="mt-6 mx-auto w-full h-40 p-1.5 bg-forrest/60 border-2 border-forrest/60 rounded-tl-2xl shadow-md block transform transition-transform hover:scale-105 hover:shadow-lg cursor-pointer"
               >
                 <div className="w-full h-36 pt-12 pl-4 bg-forrest/20 rounded-lg border-2 border-forrest/40 flex justify-between">
-                  <h1 className="text-2xl text-ivory font-serif">{castFromList.title}</h1>
+                  <div>
+                    <h1 className="text-2xl text-ivory font-serif">{castFromList.title}</h1>
+                    <p className="text-sm text-ivory/80 mt-1">{new Intl.DateTimeFormat('en-US', { month: 'short', day: '2-digit', year: 'numeric' }).format(new Date(castFromList.timestamp))}</p>
+                  </div>
                 </div>
               </div>
               <div className="mb-5 flex gap-4 justify-center mt-2">

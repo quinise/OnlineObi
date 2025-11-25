@@ -52,7 +52,6 @@ function SettingsMenu ({ close }: { close: () => void }) {
                     <div className='mt-5 flex items-center justify-center'>
                         <motion.button whileHover={{ 
                             scale: 1.1,
-                            textShadow: "0px 0px 8px rgb(255, 255, 255)",
                             boxShadow: "0px 0px 8px rgb(255, 255, 255)",
                             }} className='bg-forrest rounded-md text-ivory font-"sans-serif" hover:bg-forrest/60 px-5 py-5' onClick={handleDeleteAccount}
                             >Delete Account</motion.button>
@@ -69,9 +68,15 @@ const Settings = ()  => {
 
   return (
     <>
-    <div className="mt-5 mb-0 flex justify-end w-full">
-        <button className="bg-white text-forrest font-serif shadow-md px-5 py-2 rounded-full" onClick={() => { setSettingsMenuOpen(true); } }><img src="../assets/settings.png" /></button>
-    </div>
+        <div className="mt-5 mb-0 flex justify-end w-full">
+                <button
+                    aria-label="Open settings"
+                    className="bg-white text-forrest font-serif shadow-md px-5 py-2 rounded-full transition transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-forrest"
+                    onClick={() => { setSettingsMenuOpen(true); } }
+                >
+                    <img src="../assets/settings.png" alt="settings" className="w-5 h-5 transition-opacity hover:opacity-90" />
+                </button>
+        </div>
     <div>
     { settingsMenuOpen ? (<SettingsMenu close={() => setSettingsMenuOpen(false)} />) : (<></>) }
     </div>
