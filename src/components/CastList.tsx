@@ -14,7 +14,6 @@ import Modal from "./Modal.tsx";
 const bumpVariants = {
   whileHover: {
     scale: 1.1,
-    textShadow: "0px 0px 8px rgb(255, 255, 255)",
     boxShadow: "0px 0px 8px rgb(255, 255, 255)",
   }
 }
@@ -23,7 +22,6 @@ const bumpVariants = {
 const titleBumpVariants = {
   whileHover: { 
     scale: 1.1,
-    textShadow: "0px 0px 8px rgb(255, 255, 255)",
   }
 }
 
@@ -70,29 +68,40 @@ const CastList = () => {
   // Provide the HTML for a the user's list of uniquely titled casts
   const renderListOfCasts = (uniqueCasts: Cast[]) => {
     return (
-      <div>{uniqueCasts && uniqueCasts?.map((castFromList: Cast, index:number) =>
-        <>
-        <div>
-          <motion.div key={`cl${index}`} className="mt-16 mx-auto w-96 h-40 p-1.5 bg-forrest/60 border-2 border-forrest/60 rounded-tl-2xl static shadow-md block"
-            variants={bumpVariants}
-            whileHover="whileHover">
-            <div className="w-88 h-36 pt-12 pl-4 bg-forrest/20 rounded-lg border-2 border-forrest/40 flex justify-between" key={`castListElements${castFromList.id}`} onClick={() => setModuleCast(castFromList)}>
+      <div>
+        {uniqueCasts && uniqueCasts.map((castFromList: Cast) => (
+          <div key={castFromList.id} className="mb-6">
+            <div
+              className="mt-6 mx-auto w-96 h-40 p-1.5 bg-forrest/60 border-2 border-forrest/60 rounded-tl-2xl shadow-md block transform transition-transform hover:scale-105 hover:shadow-lg cursor-pointer"
+              onClick={() => setModuleCast(castFromList)}
+            >
+              <div className="w-88 h-36 pt-12 pl-4 bg-forrest/20 rounded-lg border-2 border-forrest/40 flex justify-between">
+                <div>
                   <h1 className="text-2xl text-ivory font-serif">{castFromList.title}</h1>
+                  <p className="text-sm text-ivory/80 mt-1">Created on {new Intl.DateTimeFormat('en-US', { month: 'short', day: '2-digit', year: 'numeric' }).format(new Date(castFromList.timestamp))}</p>
+                </div>
+              </div>
             </div>
-          </motion.div>
-        </div>
-        <motion.button className="bg-forrest rounded-md text-ivory font-sans-serif hover:bg-forrest/60 h-12 ml-[32%] xl:ml-[40%] mt-1 mb-1 mr-0 px-5 py-2" key={`editButton${castFromList.id}`}
-          variants={bumpVariants}
-          whileHover="whileHover" onClick={() => handleEdit()}
-          >Edit Cast</motion.button>
-        <motion.button className="bg-red text-white font-sans-serif hover:bg-darkRed h-12 px-5 py-2 ml-[18%] xl:ml-[9%]  mt-1 rounded-md" key={`deleteButton${castFromList.id}`} onClick={() => handleDelete(castFromList)}
-          variants={bumpVariants}
-          whileHover="whileHover"
-        >Delete</motion.button>
-        </>
-        )}
+
+            <div className="flex gap-4 justify-center mt-2">
+              <button
+                className="bg-forrest rounded-md text-ivory font-sans-serif hover:bg-forrest/60 h-12 px-5 py-2"
+                onClick={() => handleEdit()}
+                aria-label={`Edit cast ${castFromList.title}`}
+              >
+                Edit Cast
+              </button>
+              <button
+                className="bg-red text-white font-sans-serif hover:bg-darkRed h-12 px-5 py-2 rounded-md"
+                onClick={() => handleDelete(castFromList)}
+                aria-label={`Delete cast ${castFromList.title}`}
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
-    
     );
   }
 
@@ -124,31 +133,33 @@ const CastList = () => {
           ? searchCast
           : searchCast.title.toLowerCase().includes(searchValue.toLowerCase());
         })
-        .map((castFromList: Cast, index: number) => 
-          <>
-          <ul className="flex items-center justify-center">
-            <li className="col">
-              <motion.div key={`rlElements${index}`} onClick={() => setModuleCast(castFromList)} className="mt-16 mx-auto w-96 h-40 p-1.5 bg-forrest/60 border-2 border-forrest/60 rounded-tl-2xl static shadow-md block"
-                variants={bumpVariants}
-                whileHover="whileHover">
-                <div className="w-88 h-36 pt-12 pl-4 bg-forrest/20 rounded-lg border-2 border-forrest/40 flex justify-between" key={`resultListElements${castFromList.id}`} onClick={() => setModuleCast(castFromList)}>
-                  <h1 className="text-2xl text-ivory font-serif">{castFromList.title}</h1>
+        .map((castFromList: Cast) => (
+          <div key={castFromList.id} className="w-full flex items-center justify-center">
+            <div className="max-w-[28rem] w-full">
+              <div
+                onClick={() => setModuleCast(castFromList)}
+                className="mt-6 mx-auto w-full h-40 p-1.5 bg-forrest/60 border-2 border-forrest/60 rounded-tl-2xl shadow-md block transform transition-transform hover:scale-105 hover:shadow-lg cursor-pointer"
+              >
+                <div className="w-full h-36 pt-12 pl-4 bg-forrest/20 rounded-lg border-2 border-forrest/40 flex justify-between">
+                  <div>
+                    <h1 className="text-2xl text-ivory font-serif">{castFromList.title}</h1>
+                    <p className="text-sm text-ivory/80 mt-1">{new Intl.DateTimeFormat('en-US', { month: 'short', day: '2-digit', year: 'numeric' }).format(new Date(castFromList.timestamp))}</p>
+                  </div>
                 </div>
-              </motion.div>
-              <div className="mb-5 flex justify-between">
-                <motion.button className="bg-forrest rounded-md text-ivory font-sans-serif hover:bg-forrest/60 h-12 ml-[2%] xl:ml-[40%] mt-1 mb-1 mr-0 px-5 py-2" key={`resultEditButton${castFromList.id}`}
-                  variants={bumpVariants}
-                  whileHover="whileHover" onClick={() => handleEdit()}
-                >Edit Cast</motion.button>
-                <motion.button className="bg-red text-white font-sans-serif hover:bg-darkRed h-12 px-5 py-2  xl:ml-[9%] mt-1 rounded-md" key={`resultDeleteButton${castFromList.id}`} onClick={() => handleDelete(castFromList)}
-                  variants={bumpVariants}
-                  whileHover="whileHover"
-                >Delete</motion.button>
               </div>
-            </li>
-          </ul>
-          </>
-        )}
+              <div className="mb-5 flex gap-4 justify-center mt-2">
+                <button
+                  className="bg-forrest rounded-md text-ivory font-sans-serif hover:bg-forrest/60 h-12 px-5 py-2"
+                  onClick={() => handleEdit()}
+                >Edit Cast</button>
+                <button
+                  className="bg-red text-white font-sans-serif hover:bg-darkRed h-12 px-5 py-2 rounded-md"
+                  onClick={() => handleDelete(castFromList)}
+                >Delete</button>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
       <hr className="text-forrest rounded-lg md:w-[70%] md:mx-auto mb-8 "/>
       <div className="pb-10">
