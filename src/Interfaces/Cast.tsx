@@ -2,7 +2,7 @@
 export interface Cast {
     id: string,
     odu: string,
-    timestamp: Date,
+    timestamp: number,
     answer: string,
     maleObi1: string,
     maleObi2: string,
