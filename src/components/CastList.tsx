@@ -79,20 +79,24 @@ const CastList = () => {
             </div>
 
             <div className="flex gap-4 justify-center mt-2">
-              <button
-                className="bg-forrest rounded-md text-ivory font-sans-serif hover:bg-forrest/60 h-12 px-5 py-2"
+              <Button
+                variant="primary"
+                size="md"
+                className="h-12 px-5 py-2 font-sans-serif rounded-md"
                 onClick={() => handleEdit()}
                 aria-label={`Edit cast ${castFromList.title}`}
               >
                 Edit Cast
-              </button>
-              <button
+              </Button>
+              <Button
+                variant="secondary"
+                size="md"
                 className="bg-red text-white font-sans-serif hover:bg-darkRed h-12 px-5 py-2 rounded-md"
                 onClick={() => handleDelete(castFromList)}
                 aria-label={`Delete cast ${castFromList.title}`}
               >
                 Delete
-              </button>
+              </Button>
             </div>
           </div>
         ))}
@@ -143,14 +147,22 @@ const CastList = () => {
                 </div>
               </div>
               <div className="mb-5 flex gap-4 justify-center mt-2">
-                <button
-                  className="bg-forrest rounded-md text-ivory font-sans-serif hover:bg-forrest/60 h-12 px-5 py-2"
+                <Button
+                  variant="primary"
+                  size="md"
+                  className="h-12 px-5 py-2 font-sans-serif rounded-md"
                   onClick={() => handleEdit()}
-                >Edit Cast</button>
-                <button
+                >
+                  Edit Cast
+                </Button>
+                <Button
+                  variant="secondary"
+                  size="md"
                   className="bg-red text-white font-sans-serif hover:bg-darkRed h-12 px-5 py-2 rounded-md"
                   onClick={() => handleDelete(castFromList)}
-                >Delete</button>
+                >
+                  Delete
+                </Button>
               </div>
             </div>
           </div>
