@@ -38,10 +38,10 @@ function SettingsMenu ({ close }: { close: () => void }) {
         <div className="fixed inset-0 h-screen w-full backdrop-blur-sm bg-forrest bg-opacity-60"></div>
         <div className="fixed inset-0 p-5">
             <div className={`w-full bg-ivory rounded-xl p-5 transition-all ${animation ? "scale-100" : "scale-95"}`}>
-                <div className="flex items-center justify-between">
-                    <h1 className="text-forrest font-serif">Settings</h1>
+                <div className="relative flex items-center justify-between">
+                    <h1 className="text-3xl text-forrest font-serif absolute left-1/2 transform -translate-x-1/2">Settings</h1>
                     <IoCloseOutline className="text-forrest w-7 h-7 hover:scale-110 transition-all cursor-pointer" onClick={() => {close()}}/>
-                </div> 
+                </div>
                 <div className="mt-5">
                     <p className='flex items-center justify-center'>Would you like to delete your account?</p>
                     <div>
