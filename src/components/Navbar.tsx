@@ -5,6 +5,7 @@ import { auth } from "../../firebase.config";
 import { NavLink } from '../interfaces/NavLink';
 import MobileMenu from './../components/MobileMenu';
 import WebMenu from './../components/WebMenu';
+import Button from "./ui/Button";
      
 // Defining routes links
 const signInNavLinks: NavLink[] = [
@@ -50,7 +51,7 @@ const Navbar = () => {
         <nav className="w-full flex items-center justify-center">
           <WebMenu navLinks = { authNavLinks } />
           <div className="flex justify-end w-full sm:hidden">
-            <button className="bg-white text-forrest font-serif shadow-md px-5 py-2 rounded-full" onClick={() => {setMobileNavOpen(true);}}>Menu</button>
+            <Button variant="ghost" size="md" className="rounded-full px-5 py-2" onClick={() => {setMobileNavOpen(true);}}>Menu</Button>
           </div>
           { mobileNavOpen ? (<MobileMenu navLinks={ authNavLinks } close={() => setMobileNavOpen(false)} />) : (<></>) }
         </nav>

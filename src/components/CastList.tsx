@@ -9,14 +9,9 @@ import { handleDelete } from "../services/deleteCast.tsx";
 import { fetchCasts } from "../services/fetchCasts.tsx";
 import { handleUpdate } from "../services/updateCast.tsx";
 import Modal from "./Modal.tsx";
+import Button from "./ui/Button";
 
-// Provides the "bump" animation on hover
-const bumpVariants = {
-  whileHover: {
-    scale: 1.1,
-    boxShadow: "0px 0px 8px rgb(255, 255, 255)",
-  }
-}
+// Note: hover effects for cast list are implemented with Tailwind CSS (hover:scale, hover:shadow)
 
 // Provides the "bump" animation on Title
 const titleBumpVariants = {
@@ -84,20 +79,24 @@ const CastList = () => {
             </div>
 
             <div className="flex gap-4 justify-center mt-2">
-              <button
-                className="bg-forrest rounded-md text-ivory font-sans-serif hover:bg-forrest/60 h-12 px-5 py-2"
+              <Button
+                variant="primary"
+                size="md"
+                className="h-12 px-5 py-2 font-sans-serif rounded-md"
                 onClick={() => handleEdit()}
                 aria-label={`Edit cast ${castFromList.title}`}
               >
                 Edit Cast
-              </button>
-              <button
-                className="bg-red text-white font-sans-serif hover:bg-darkRed h-12 px-5 py-2 rounded-md"
+              </Button>
+              <Button
+                variant="secondary"
+                size="md"
+                className="!bg-red !text-white font-sans-serif hover:bg-darkRed hover:scale-105 hover:shadow-lg transition-transform h-12 px-5 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-red-300"
                 onClick={() => handleDelete(castFromList)}
                 aria-label={`Delete cast ${castFromList.title}`}
               >
                 Delete
-              </button>
+              </Button>
             </div>
           </div>
         ))}
@@ -148,14 +147,22 @@ const CastList = () => {
                 </div>
               </div>
               <div className="mb-5 flex gap-4 justify-center mt-2">
-                <button
-                  className="bg-forrest rounded-md text-ivory font-sans-serif hover:bg-forrest/60 h-12 px-5 py-2"
+                <Button
+                  variant="primary"
+                  size="md"
+                  className="h-12 px-5 py-2 font-sans-serif rounded-md"
                   onClick={() => handleEdit()}
-                >Edit Cast</button>
-                <button
-                  className="bg-red text-white font-sans-serif hover:bg-darkRed h-12 px-5 py-2 rounded-md"
+                >
+                  Edit Cast
+                </Button>
+                <Button
+                  variant="secondary"
+                  size="md"
+                  className="!bg-red !text-white font-sans-serif hover:bg-darkRed hover:scale-105 hover:shadow-lg transition-transform h-12 px-5 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-red-300"
                   onClick={() => handleDelete(castFromList)}
-                >Delete</button>
+                >
+                  Delete
+                </Button>
               </div>
             </div>
           </div>
@@ -198,11 +205,19 @@ const CastList = () => {
             whileHover="whileHover"
             src={`../assets/${cast.femaleObi2}`}/>
           </div>
-          {showInput && <motion.button className="bg-forrest rounded-md text-ivory font-sans-serif hover:bg-forrest/60 h-12 ml-[32%] xl:ml-[40%] mt-1 mb-1 mr-0 px-5 py-2" key={`editButton${cast.id}`}
-            variants={bumpVariants}
-            whileHover="whileHover" onClick={() => handleUpdate(cast, newTitle)}
-            >Save</motion.button>
-          }
+          {showInput && (
+            <div className="flex justify-center">
+              <Button
+                className="ml-0 mt-1 mb-1 mr-0 !bg-forrest !text-ivory"
+                variant="primary"
+                size="md"
+                onClick={() => handleUpdate(cast, newTitle)}
+              >
+                Save
+              </Button>
+            </div>
+          )}
+          
         </div>
       </Modal>
     </Fragment>
