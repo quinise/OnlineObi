@@ -12,6 +12,13 @@ import Button from "./ui/Button";
 
 // Note: hover effects for cast list are implemented with Tailwind CSS (hover:scale, hover:shadow)
 
+// Provides the "bump" animation on Title
+const titleBumpVariants = {
+  whileHover: { 
+    scale: 1.1,
+  }
+}
+
 // Micro-interactions are implemented with Tailwind (hover:scale + transition)
 
 const CastList = () => {
@@ -81,6 +88,7 @@ const CastList = () => {
                 size="md"
                 className="!bg-red !text-white font-sans-serif hover:bg-darkRed hover:scale-105 hover:shadow-lg transition-transform h-12 px-5 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-red-300"
                 onClick={() => setConfirmDeleteCast(castFromList)}
+                onClick={() => handleDelete(castFromList)}
                 aria-label={`Delete cast ${castFromList.title}`}
               >
                 Delete
@@ -148,6 +156,7 @@ const CastList = () => {
                   size="md"
                   className="!bg-red !text-white font-sans-serif hover:bg-darkRed hover:scale-105 hover:shadow-lg transition-transform h-12 px-5 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-red-300"
                   onClick={() => setConfirmDeleteCast(castFromList)}
+                  onClick={() => handleDelete(castFromList)}
                 >
                   Delete
                 </Button>
@@ -213,6 +222,19 @@ const CastList = () => {
               Delete
             </Button>
           </div>
+          {showInput && (
+            <div className="flex justify-center">
+              <Button
+                className="ml-0 mt-1 mb-1 mr-0 !bg-forrest !text-ivory"
+                variant="primary"
+                size="md"
+                onClick={() => handleUpdate(cast, newTitle)}
+              >
+                Save
+              </Button>
+            </div>
+          )}
+          
         </div>
       </Modal>
     </Fragment>
