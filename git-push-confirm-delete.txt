@@ -1,0 +1,9 @@
+remote: This repository moved. Please use the new location:        
+remote:   https://github.com/quinise/OnlineObi.git        
+remote: 
+remote: Create a pull request for 'confirm-delete-cast' on GitHub by visiting:        
+remote:      https://github.com/quinise/OnlineObi/pull/new/confirm-delete-cast        
+remote: 
+To https://github.com/quinise/MobileObi.git
+ * [new branch]      confirm-delete-cast -> confirm-delete-cast
+branch 'confirm-delete-cast' set up to track 'origin/confirm-delete-cast'.

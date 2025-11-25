@@ -1,0 +1,4 @@
+remote: This repository moved. Please use the new location:        
+remote:   https://github.com/quinise/OnlineObi.git        
+To https://github.com/quinise/MobileObi.git
+ + 28d3633...dec7eaf feat/ui-buttons -> feat/ui-buttons (forced update)
