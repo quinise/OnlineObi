@@ -4,7 +4,7 @@ import { BaseCastArray } from "../interfaces/BaseCastArray.tsx";
 // Generates a random index to use on the BaseCase Array 
 function generateRandomNumber(arrayLength: number) {
     return Math.floor(Math.random() * arrayLength)
-  }
+}
 
 // Generates a random index in the BaseCastArray
 const generateTargetIndex = () => {
@@ -16,7 +16,7 @@ const createCast = (targetIndex: number) => {
     const result: Cast = {
       id: BaseCastArray[targetIndex].id,
       odu: BaseCastArray[targetIndex].odu,
-      timestamp: new Date(),
+      timestamp: Date.now(),
       answer: BaseCastArray[targetIndex].answer,
       maleObi1: BaseCastArray[targetIndex].maleObi1,
       maleObi2: BaseCastArray[targetIndex].maleObi2,
@@ -29,7 +29,10 @@ const createCast = (targetIndex: number) => {
     return result;
 }
 
-const generatedCast = createCast(generateTargetIndex())
+const generateCast = () => {
+  return createCast(generateTargetIndex())
+}
 
 
-export { generatedCast };
+
+export { generateCast };

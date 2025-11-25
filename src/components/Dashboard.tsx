@@ -1,14 +1,15 @@
 // This file includes the code for the Dashboard page=
-import React, { useState } from "react";
-import { auth } from "./../../GoogleProvider.tsx";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../firebase.config";
 import { Cast } from "../interfaces/Cast.tsx";
-import { checkForDuplicateTitle } from "../services/utils.tsx"
 import { addCastToDb } from "../services/addCast.tsx";
-import { generatedCast } from "../services/generateCast.tsx"; 
-import Modal from "./Modal.tsx";
+import { generateCast } from "../services/generateCast.tsx";
+import { checkForDuplicateTitle } from "../services/utils.tsx";
 import Loader from "./Loader.tsx";
+import Modal from "./Modal.tsx";
+import Button from "./ui/Button";
 
 const h1Variants = {
   initial: {
@@ -26,7 +27,6 @@ const h1Variants = {
 const buttonVariants = {
   whileHover: {
     scale: 1.1,
-    textShadow: "0px 0px 8px rgb(255, 255, 255)",
     boxShadow: "0px 0px 8px rgb(255, 255, 255)",
   }
 }
@@ -44,14 +44,6 @@ const Dashboard = () => {
   const [newTitle, setNewTitle] = useState("");
   const [showModal, setShowModal] = useState(false);
 
-  const generateCast = () => {
-    const castResult = generatedCast;
-
-    setCast(castResult);
-    setIsCastGenerated(true);
-    setShowModal(true);
-  }
-
   function showSuccessfulSaveAlert() {
     alert('Your cast, ' + newTitle + ', has been saved!')
   }
@@ -63,14 +55,39 @@ const Dashboard = () => {
   function showEmptyTitleAlert() {
     alert('The cast title may not be empty.');
   }
+
+  function showInvalidTitleAlert() {
+    alert('The cast title may only contain letters')
+  }
   
-  const handleSaveCast = async () => {
-    // Prevents submission of blank casts and titles to the database
+  const handleGenerateCast = () => {
+    if (isCastGenerated) {
+      setIsCastGenerated(false);
+    }
+
+    const castResult = generateCast();
+
+    setCast(castResult);
+    setIsCastGenerated(true);
+
+    setShowModal(true);
+  }
+
+
+  const handleSaveCast = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    // Prevents submission of blank casts, blank titles, or duplicate titles to the database
     if (!cast) return;
 
     if (!newTitle) {
       showEmptyTitleAlert();
+      return;
+    }
 
+    // Cast title can only use letters
+    if (!newTitle.match(/^[a-zA-Z]+$/)) {
+      showInvalidTitleAlert();
       return;
     }
 
@@ -81,112 +98,75 @@ const Dashboard = () => {
 
     } else {
       addCastToDb(cast, newTitle);
-
       showSuccessfulSaveAlert();
     }
-
-    
   }
 
-  React.useEffect(() => {
-    const delayNewTitle = setTimeout(() => {
-      setNewTitle(newTitle);
-    }, 10000)
-
-    return () => clearTimeout(delayNewTitle)
-  }, [newTitle])
-
-
-  const DisplayWithoutCast = () => {
-    return (
-      <div className="mt-10 pb-10">
+  return (
+    <>
+    <div className="mt-10">
       <motion.h1 className="text-3xl text-forrest text-opacity-50 font-serif mb-5 flex items-center justify-center"
         variants={ h1Variants }
         initial="initial"
         animate="animate"
         >Dashboard</motion.h1>
-      <div className="card">
-          {user &&  <>
-                      <h2 className="text-2xl text-mahogany font-sans-serif flex items-center justify-center">Welcome, {user.displayName}</h2>
-                      <img className="object-scale-down h-64 w-64 mx-auto mt-10 mb-10" src="src/assets/favicon.png"/>
-                      <p className="text-mahogany font-sans-serif mt-10 mb-10 flex items-center justify-center"><b>Would you like to divine something new?</b></p>
-                    </>
-          }
-          {error && <h2 className="text-2xl text-forrest font-serif flex items-center justify-center">Error: {String(error)}</h2>}
-          {loading && <Loader />}
-          <div className="mt-5 flex items-center justify-center">
-            <motion.button className="bg-forrest text-ivory font-sans-serif rounded-xl hover:bg-forrest/60 px-5 py-4 shadow-mds" 
-              variants={ buttonVariants } 
-              whileHover="whileHover"
-              onClick={() => generateCast()}>Cast</motion.button>
-          </div>
-      </div>
-    </div>
-    )
-  }
-
-  const DisplayWithCast = () => {
-    return (
-      <>
-      <div className="mt-10">
-        <h1 className="text-3xl text-forrest font-serif text-opacity-50 flex items-center justify-center">Dashboard</h1>
         {user && <h2 className="text-2xl text-mahogany font-sans-serif flex items-center justify-center">Welcome, {user.displayName}</h2>}
         {error && <h2 className="text-2xl text-forrest font-serif flex items-center justify-center">Error: {String(error)}</h2>}
         {loading && <Loader />}
-        <img className="object-scale-down h-64 w-64 mx-auto mt-10 mb-10" src="src/assets/favicon.png"/>
+        <img className="object-scale-down h-64 w-64 mx-auto mt-10 mb-10" src="../assets/favicon.png"/>
         <p className="text-mahogany font-sans-serif mt-10 mb-10 flex items-center justify-center">Would you like to divine something new?</p>
         <div className="mt-10 mb-10 flex items-center justify-center">
-          <button className="bg-forrest text-ivory font-sans-serif rounded-xl hover:bg-forrest/60 px-5 py-5 shadow-md" onClick={() => generateCast()}>Cast</button>
+          <Button onClick={() => handleGenerateCast()} variant="primary" size="lg">
+            Cast
+          </Button>
         </div>
       </div>
-      
       <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
-      <div className="h-100 w-2/3 mt-10 mx-auto">
-          {cast && <h1 className="text-2xl text-mahogany font-sans-serif mt-20 flex items-center justify-center"><b>Odu:&nbsp;</b>{cast.odu}</h1>}
-          {cast && <h1 className="text-2xl text-mahogany font-sans-serif mt-5 flex items-center justify-center"><b>Date:&nbsp;</b>{cast.timestamp.toLocaleDateString()}</h1>}
-          {cast && <h1 className="text-2xl text-mahogany font-sans-serif mt-5 flex items-center justify-center"><b>Answer:&nbsp;</b>{cast.answer}</h1>}
-          {cast && <h1 className="text-2xl text-mahogany font-sans-serif mt-5 flex items-center justify-center"><b>Interpretation:&nbsp;</b>{cast.interpretation}</h1>}
-          <div className="container mx-auto mt-10 mb-5 h-32 w-32 flex items-center justify-center">
-            {cast && <motion.img className="object-scale-down h-64 w-64 inline" 
-              variants={ kolaVariants }
-              whileHover="whileHover"
-              src={`src/assets/${cast.maleObi1}`} />}
-            {cast && <motion.img className="object-scale-down h-64 w-64 inline" 
-              variants={ kolaVariants }
-              whileHover="whileHover"
-              src={`src/assets/${cast.maleObi2}`} />}
-            {cast && <motion.img className="object-scale-down h-64 w-64 inline" 
-              variants={ kolaVariants }
-              whileHover="whileHover"
-              src={`src/assets/${cast.femaleObi1}`} />}
-            {cast && <motion.img className="object-scale-down h-64 w-64 inline" 
-              variants={ kolaVariants }
-              whileHover="whileHover"
-              src={`src/assets/${cast.femaleObi2}`} />}
+        <div className="p-6">
+          <div className="">
+            {cast && <p className="text-xl text-mahogany font-sans-serif mt-5 flex items-center justify-center"><b>Odu:&nbsp;</b>{cast.odu}</p>}
+            {cast && <p className="text-xl text-mahogany font-sans-serif mt-5 flex items-center justify-center"><b>Date:&nbsp;</b>{new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(cast.timestamp)}</p>}
+            {cast && <p className="text-xl text-mahogany font-sans-serif mt-5 flex items-center justify-center"><b>Answer:&nbsp;</b>{cast.answer}</p>}
+            {cast && <p className="text-xl text-mahogany font-sans-serif mt-5 flex items-center justify-center"><b>Interpretation:&nbsp;</b>{cast.interpretation}</p>}
           </div>
-          <form className="font-sans-serif mt-20 mb-20 flex items-center justify-center" onSubmit={() => handleSaveCast()}>
+          <div className="mx-auto mt-10 mb-5 h-32 w-32 flex items-center justify-center">
+            {cast && <motion.img className="object-scale-down h-64 w-64 inline-block" 
+              variants={ kolaVariants }
+              whileHover="whileHover"
+              src={`assets/${cast.maleObi1}`} />}
+            {cast && <motion.img className="object-scale-down h-64 w-64 inline-block" 
+              variants={ kolaVariants }
+              whileHover="whileHover"
+              src={`assets/${cast.maleObi2}`} />}
+            {cast && <motion.img className="object-scale-down h-64 w-64 inline-block" 
+              variants={ kolaVariants }
+              whileHover="whileHover"
+              src={`assets/${cast.femaleObi1}`} />}
+            {cast && <motion.img className="object-scale-down h-64 w-64 inline-block" 
+              variants={ kolaVariants }
+              whileHover="whileHover"
+              src={`assets/${cast.femaleObi2}`} />}
+          </div>
+            <form onSubmit={(e) => handleSaveCast(e) } className="font-sans-serif mt-20 mb-20 flex flex-col items-center justify-center">
             <motion.input type="text" className="text-2xl border-2 border-forrest/60 rounded" 
               variants={buttonVariants}
               whileHover="whileHover"
-              placeholder=" add a title..." value={newTitle} onChange={(e) => setNewTitle(e.target.value)} autoFocus />
+              placeholder=" add a title..." value={ newTitle } onChange={(e) => setNewTitle(e.target.value)} autoFocus />
+            <div className="mt-10 mb-10 flex items-center justify-center">
+              <Button
+                type="submit"
+                variant="secondary"
+                size="md"
+                className="!bg-forrest !text-ivory hover:scale-105 hover:shadow-lg transition-transform focus:outline-none focus:ring-2 focus:ring-forrest"
+              >
+                Save
+              </Button>
+            </div>
           </form>
-          <div className="mt-10 mb-10 flex items-center justify-center">
-            <motion.button className="bg-forrest text-ivory font-sans-serif rounded-xl hover:bg-forrest/60 px-5 py-5 shadow-md" 
-            variants={ buttonVariants }
-            whileHover="whileHover"
-            onClick={() => handleSaveCast()}>Save</motion.button>
-          </div>
         </div>
       </Modal>
-      </>
-    )
-  }
-
-  if (isCastGenerated) {
-    return <DisplayWithCast/>
-  } else {
-    return <DisplayWithoutCast/>
-  }
+    </>
+  )
 }
 
 export default Dashboard

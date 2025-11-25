@@ -1,6 +1,5 @@
-import { auth } from "./../../GoogleProvider.tsx";
-import { collection, query, where, getDocs } from "firebase/firestore";
-import { db } from "../../firebase.config.tsx"
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { auth, db } from "../../firebase.config";
 
 // Verify that for a signed in user is not a title that matches the input string
 const checkForDuplicateTitle = async (newTitle: string) => {
@@ -13,6 +12,5 @@ const checkForDuplicateTitle = async (newTitle: string) => {
 
     return false;
   }
-
-
-export { checkForDuplicateTitle }
+ 
+export { checkForDuplicateTitle };

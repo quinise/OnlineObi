@@ -1,3 +1,4 @@
+// This file provides the code for the loading animation
 import { motion } from 'framer-motion'
 
 const loaderVariants = {
@@ -21,7 +22,7 @@ const loaderVariants = {
 const Loader = () => {
   return (
     <>
-    <motion.div className='loader bg-forrest rounded-md w-10 h-10 mx-auto'
+    <motion.div className='loader bg-forrest rounded-md w-10 h-10 mt-25 mx-auto'
         variants={loaderVariants}
         animate="animationOne"
     >

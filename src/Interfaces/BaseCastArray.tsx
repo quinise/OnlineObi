@@ -4,7 +4,7 @@ import { Cast } from "./Cast";
 const aalaffiaOgbe: Cast = {
     id: "0",
     odu: "Aalaffia - Ogbe", 
-    timestamp: new Date(), 
+    timestamp: Date.now(), 
     answer: "Yes", 
     maleObi1: "Male1Up.png", 
     maleObi2: "Male2Up.png", 
@@ -17,7 +17,7 @@ const aalaffiaOgbe: Cast = {
 const yekuOyeku: Cast = {
     id: "1",
     odu: "Yeku - Oyeku", 
-    timestamp: new Date(), 
+    timestamp: Date.now(), 
     answer: "No", 
     maleObi1: "Male1Down.png", 
     maleObi2: "Male2Down.png", 
@@ -30,7 +30,7 @@ const yekuOyeku: Cast = {
 const okanranIleraOne: Cast = {
     id: "2",
     odu: "Okanran - Ilera", 
-    timestamp: new Date(), 
+    timestamp: Date.now(), 
     answer: "Maybe", 
     maleObi1: "Male1Up.png", 
     maleObi2: "Male2Down.png", 
@@ -43,7 +43,7 @@ const okanranIleraOne: Cast = {
 const okanranIleraTwo: Cast = {
     id: "3",
     odu: "Okanran - Ilera", 
-    timestamp: new Date(), 
+    timestamp: Date.now(), 
     answer: "Maybe", 
     maleObi1: "Male1Down.png", 
     maleObi2: "Male2Up.png", 
@@ -56,7 +56,7 @@ const okanranIleraTwo: Cast = {
 const okanranAjeOne: Cast = {
     id: "4",
     odu: "Okanran-Aje", 
-    timestamp: new Date(), 
+    timestamp: Date.now(), 
     answer: "No", 
     maleObi1: "Male1Down.png", 
     maleObi2: "Male2Up.png", 
@@ -70,7 +70,7 @@ const okanranAjeOne: Cast = {
 const okanranAjeTwo: Cast = {
     id: "5",
     odu: "Okanran-Aje", 
-    timestamp: new Date(), 
+    timestamp: Date.now(), 
     answer: "No", 
     maleObi1: "Male1Up.png", 
     maleObi2: "Male2Down.png", 
@@ -82,7 +82,7 @@ const okanranAjeTwo: Cast = {
 const okanranAjeThree: Cast = {
     id: "6",
     odu: "Okanran-Aje", 
-    timestamp: new Date(), 
+    timestamp: Date.now(), 
     answer: "No", 
     maleObi1: "Male1Down.png", 
     maleObi2: "Male2Down.png", 
@@ -95,7 +95,7 @@ const okanranAjeThree: Cast = {
 const okanranAjeFour: Cast = {
     id: "7",
     odu: "Okanran-Aje", 
-    timestamp: new Date(), 
+    timestamp: Date.now(), 
     answer: "No", 
     maleObi1: "Male1Down.png", 
     maleObi2: "Male2Down.png", 
@@ -108,7 +108,7 @@ const okanranAjeFour: Cast = {
 const eifeEjire: Cast = {
     id: "8",
     odu: "Ejife-Ejire", 
-    timestamp: new Date(), 
+    timestamp: Date.now(), 
     answer: "Yes", 
     maleObi1: "Male1Down.png", 
     maleObi2: "Male2Down.png", 
@@ -121,7 +121,7 @@ const eifeEjire: Cast = {
 const ejifeEroOne: Cast = {
     id: "9",
     odu: "Ejife-Ero", 
-    timestamp: new Date(), 
+    timestamp: Date.now(), 
     answer: "Maybe", 
     maleObi1: "Male1Up.png", 
     maleObi2: "Male2Down.png", 
@@ -134,7 +134,7 @@ const ejifeEroOne: Cast = {
 const ejifeEroTwo: Cast = {
     id: "10",
     odu: "Ejife-Ero", 
-    timestamp: new Date(), 
+    timestamp: Date.now(), 
     answer: "Maybe", 
     maleObi1: "Male1Down.png", 
     maleObi2: "Male2Up.png", 
@@ -147,7 +147,7 @@ const ejifeEroTwo: Cast = {
 const obitaEtawaOne: Cast = {
     id: "11",
     odu: "Obita-Etawa", 
-    timestamp: new Date(), 
+    timestamp: Date.now(), 
     answer: "Maybe", 
     maleObi1: "Male1Down.png", 
     maleObi2: "Male2Up.png", 
@@ -160,7 +160,7 @@ const obitaEtawaOne: Cast = {
 const obitaEtawaTwo: Cast = {
     id: "12",
     odu: "Obita-Etawa", 
-    timestamp: new Date(), 
+    timestamp: Date.now(), 
     answer: "Maybe", 
     maleObi1: "Male1Up.png", 
     maleObi2: "Male2Down.png", 
@@ -173,7 +173,7 @@ const obitaEtawaTwo: Cast = {
 const akitaEtawaOne: Cast = {
     id: "13",
     odu: "Akita-Etawa", 
-    timestamp: new Date(), 
+    timestamp: Date.now(), 
     answer: "Maybe", 
     maleObi1: "Male1Up.png", 
     maleObi2: "Male2Up.png", 
@@ -186,7 +186,7 @@ const akitaEtawaOne: Cast = {
 const akitaEtawaTwo: Cast = {
     id: "14",
     odu: "Akita-Etawa", 
-    timestamp: new Date(), 
+    timestamp: Date.now(), 
     answer: "Maybe", 
     maleObi1: "Male1Up.png", 
     maleObi2: "Male2Up.png", 

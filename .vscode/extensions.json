@@ -1,0 +1,6 @@
+{
+  // Recommended extensions for this workspace
+  "recommendations": [
+    "bradlc.vscode-tailwindcss"
+  ]
+}
