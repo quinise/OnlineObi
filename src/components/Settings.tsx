@@ -67,13 +67,15 @@ const Settings = ()  => {
   return (
     <>
         <div className="mt-5 mb-0 flex justify-end w-full">
-                <button
+                <Button
                     aria-label="Open settings"
+                    variant="ghost"
+                    size="md"
                     className="bg-white text-forrest font-serif shadow-md px-5 py-2 rounded-full transition transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-forrest"
                     onClick={() => { setSettingsMenuOpen(true); } }
                 >
                     <img src="../assets/settings.png" alt="settings" className="w-5 h-5 transition-opacity hover:opacity-90" />
-                </button>
+                </Button>
         </div>
     <div>
     { settingsMenuOpen ? (<SettingsMenu close={() => setSettingsMenuOpen(false)} />) : (<></>) }
