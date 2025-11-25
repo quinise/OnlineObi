@@ -153,7 +153,12 @@ const Dashboard = () => {
               whileHover="whileHover"
               placeholder=" add a title..." value={ newTitle } onChange={(e) => setNewTitle(e.target.value)} autoFocus />
             <div className="mt-10 mb-10 flex items-center justify-center">
-              <Button type="submit" variant="secondary" size="md">
+              <Button
+                type="submit"
+                variant="secondary"
+                size="md"
+                className="!bg-forrest !text-ivory hover:scale-105 hover:shadow-lg transition-transform focus:outline-none focus:ring-2 focus:ring-forrest"
+              >
                 Save
               </Button>
             </div>

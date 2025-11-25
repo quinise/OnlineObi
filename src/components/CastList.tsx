@@ -91,7 +91,7 @@ const CastList = () => {
               <Button
                 variant="secondary"
                 size="md"
-                className="bg-red text-white font-sans-serif hover:bg-darkRed h-12 px-5 py-2 rounded-md"
+                className="!bg-red !text-white font-sans-serif hover:bg-darkRed hover:scale-105 hover:shadow-lg transition-transform h-12 px-5 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-red-300"
                 onClick={() => handleDelete(castFromList)}
                 aria-label={`Delete cast ${castFromList.title}`}
               >
@@ -158,7 +158,7 @@ const CastList = () => {
                 <Button
                   variant="secondary"
                   size="md"
-                  className="bg-red text-white font-sans-serif hover:bg-darkRed h-12 px-5 py-2 rounded-md"
+                  className="!bg-red !text-white font-sans-serif hover:bg-darkRed hover:scale-105 hover:shadow-lg transition-transform h-12 px-5 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-red-300"
                   onClick={() => handleDelete(castFromList)}
                 >
                   Delete
@@ -208,7 +208,7 @@ const CastList = () => {
           {showInput && (
             <div className="flex justify-center">
               <Button
-                className="ml-0 mt-1 mb-1 mr-0"
+                className="ml-0 mt-1 mb-1 mr-0 !bg-forrest !text-ivory"
                 variant="primary"
                 size="md"
                 onClick={() => handleUpdate(cast, newTitle)}
