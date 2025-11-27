@@ -1,5 +1,0 @@
-remote: This repository moved. Please use the new location:        
-remote:   https://github.com/quinise/OnlineObi.git        
-To https://github.com/quinise/MobileObi.git
-   7fbfc7c..95a1309  confirm-delete-cast -> confirm-delete-cast
-branch 'confirm-delete-cast' set up to track 'origin/confirm-delete-cast'.
