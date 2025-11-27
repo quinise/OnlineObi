@@ -19,23 +19,25 @@ const Modal = ({ isVisible, onClose, children }: { isVisible: boolean; onClose: 
 
   return (
     <AnimatePresence mode="wait">
-    <div className='fixed inset-0 bg-forrest bg-opacity-25 backdrop-blur-sm flex rounded-xl shadow-md justify-center items-center overflow-y-auto overflow-x-hidden' id='wrapper' onClick={handleClose}>
-      <div className='md:w-[60%] md:max-h-[100%] sm:w-[10%] sm:max-h-[25%] mx-auto flex flex-col'>
-          <Button
-            variant="ghost"
-            size="sm"
-            className="text-xl text-mahogany font-sans-serif sm:mt-20 place-self-end"
-            onClick={() => onClose()}
-          >
-            close
-          </Button>
-          <motion.div className='bg-ivory/90 rounded-lg'
-            variants={backdropVariants}
-            initial="hidden"
-            animate="visible"
-          >{ children }</motion.div>
+    <div className='fixed inset-0 bg-forrest bg-opacity-25 backdrop-blur-sm flex items-center justify-center overflow-y-auto px-4 py-8' id='wrapper' onClick={handleClose}>
+        <div className='w-full max-w-4xl mx-auto flex flex-col'>
+            <div className="flex justify-end">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="text-xl text-mahogany font-sans-serif"
+                onClick={() => onClose()}
+              >
+                close
+              </Button>
+            </div>
+            <motion.div className='bg-ivory/90 rounded-lg p-6 max-h-[80vh] overflow-y-auto w-full'
+              variants={backdropVariants}
+              initial="hidden"
+              animate="visible"
+            >{ children }</motion.div>
+        </div>
       </div>
-    </div>
     </AnimatePresence>
     )
 }
