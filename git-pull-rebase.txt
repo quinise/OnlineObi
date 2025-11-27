@@ -1,0 +1,6 @@
+From https://github.com/quinise/MobileObi
+ * branch            confirm-delete-cast -> FETCH_HEAD
+warning: skipped previously applied commit c55412a
+hint: use --reapply-cherry-picks to include skipped commits
+hint: Disable this message with "git config set advice.skippedCherryPicks false"
+Rebasing (1/1)Successfully rebased and updated refs/heads/confirm-delete-cast.
