@@ -25,4 +25,4 @@ dist-ssr
 *.env
 
 # Firebase Configurations
-firebase.config.tsx
+firebase.config.tsxsrc/shims/
