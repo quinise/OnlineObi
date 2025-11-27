@@ -34,8 +34,19 @@ const authNavLinks: NavLink[] = [
 ];
 
 const Navbar = () => {
-  const [user, , error] = useAuthState(auth);
-   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [user, loading, error] = useAuthState(auth);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+
+  // While the auth state is initializing, avoid showing the login link
+  // which would flash briefly before the auth hook resolves.
+  if (loading) {
+    return (
+      <nav className="pt-10 p-5 w-full flex items-center justify-center">
+        {/* keep the same spacing but show nothing while loading */}
+        <div style={{ width: '100%', height: 1 }} />
+      </nav>
+    );
+  }
 
   if (error) {
     return (

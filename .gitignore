@@ -25,7 +25,8 @@ dist-ssr
 *.env
 
 # Firebase Configurations
-firebase.config.tsxsrc/shims/
+firebase.config.tsx
+src/shims/
 
 # Local debug / temporary output files
 eslint-output.txt

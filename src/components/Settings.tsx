@@ -3,7 +3,6 @@ import { deleteUser } from "firebase/auth";
 import React, { useState } from 'react';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { IoCloseOutline } from "react-icons/io5";
-import { useNavigate } from 'react-router-dom';
 import { auth } from "../../firebase.config";
 import Loader from './Loader.tsx';
 import Button from './ui/Button';
@@ -11,7 +10,6 @@ import Button from './ui/Button';
 function SettingsMenu ({ close }: { close: () => void }) {
     const [animation, setAnimation] = useState(false);
     const [user, loading, error] = useAuthState(auth);
-    const navigate = useNavigate();
 
     // Deletes the logged in user or displays error message
     const handleDeleteAccount = () => {
@@ -19,8 +17,9 @@ function SettingsMenu ({ close }: { close: () => void }) {
             console.log("No User to delete");
         } else {
             deleteUser(user).then(() => {
-                // Successfull Logout
-                navigate('/');
+                // Successful deletion — navigate without importing react-router-dom
+                window.history.pushState({}, '', '/');
+                window.dispatchEvent(new PopStateEvent('popstate'));
                 console.log("Deleted user successfully")
               }).catch((error) => {
                 // Logout unsuccessfull
