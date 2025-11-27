@@ -1,5 +1,6 @@
 // This file includes the code for the Login page
 import { motion } from "framer-motion";
+import React from 'react';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase.config";
 import { signInWithGoogle } from "./../../GoogleProvider";
@@ -17,6 +18,18 @@ const logoAnimation = {
 
 const Login = () => {
     const [user, loading, error] = useAuthState(auth);
+
+    React.useEffect(() => {
+        // After successful sign-in, navigate to the dashboard using history API
+        if (user) {
+            try {
+                window.history.pushState({}, '', '/dashboard');
+                window.dispatchEvent(new PopStateEvent('popstate'));
+            } catch (e) {
+                // ignore if environment blocks programmatic navigation
+            }
+        }
+    }, [user]);
 
     return (
         // If there is a user, welcome them... If there is an error, show the message, if the page is loading show the loader
@@ -46,9 +59,8 @@ const Login = () => {
                 </div>
                 <div className="pb-10 max-w-prose px-4 text-center">
                     <h3 className="text-2xl text-mahogany w-full mt-5 mb-5 font-serif flex items-center justify-center">Why Online Obi?</h3>
-                    <p className="text-1xl text-mahogany/90 font-sans-serif mb-5"><b>Forgot your pennies or kola nuts? Online Obi casts Obi divination online! Each cast includes an Odu and it's interpretation, a yes/no/maybe result, and a set of four kola nuts. Casts can be saved with a title and a note for later recollection.</b></p>
+                    <p className="text-1xl text-mahogany/90 font-sans-serif mb-5"><b>Forgot your pennies or coconut shells? Online Obi casts Obi divination online! Each cast includes an Odu and it's interpretation, a yes/no/maybe result, and a set of four kola nuts. Casts can be saved with a title and a note for later recollection.</b></p>
                 </div>
-                
             </>
             )}
         </div>
