@@ -26,3 +26,10 @@ dist-ssr
 
 # Firebase Configurations
 firebase.config.tsx
+src/shims/
+
+# Local debug / temporary output files
+eslint-output.txt
+git-status.txt
+tsc-output.txt
+tsc2-output.txt

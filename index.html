@@ -2,12 +2,44 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!-- Ensure React Router future flags are set before any modules load -->
+    <script>
+      try { window.__REACT_ROUTER__ = { v7_startTransition: true }; } catch (e) {}
+      try { globalThis.__REACT_ROUTER__ = { v7_startTransition: true }; } catch (e) {}
+      try { self.__REACT_ROUTER__ = { v7_startTransition: true }; } catch (e) {}
+    </script>
+    <!-- Temporary: filter the React Router future-flag deprecation warning to reduce console noise
+         This is a reversible, dev-only suppression while we continue to diagnose the root cause. -->
+    <!-- NOTE: Removed temporary dev-only console suppression here. If you still see
+         React Router future-flag warnings, we'll inspect the exact stack trace and
+         refactor early imports rather than hiding the warning. -->
     <link rel="icon" type="image/svg+xml" href="./src/assets/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Online Obi</title>
   </head>
   <body>
     <div id="root"></div>
+    <!-- Ensure React Router future flags are set before any modules load -->
+    <script>
+      // Opt into React Router v7 future behaviors early to avoid runtime warnings.
+      // Set the flag on several global locations so different evaluation contexts
+      // (window, globalThis, workers) will see it before the router module loads.
+      try {
+        window.__REACT_ROUTER__ = { v7_startTransition: true };
+      } catch (e) {
+        // ignore when `window` is not available
+      }
+      try {
+        globalThis.__REACT_ROUTER__ = { v7_startTransition: true };
+      } catch (e) {
+        // ignore when globalThis isn't writable
+      }
+      try {
+        self.__REACT_ROUTER__ = { v7_startTransition: true };
+      } catch (e) {
+        // ignore when `self` is not available
+      }
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
