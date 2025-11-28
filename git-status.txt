@@ -1,0 +1,9 @@
+ M src/components/CastList.tsx
+ M src/components/Logout.tsx
+ M src/components/Modal.tsx
+ M src/components/Navbar.tsx
+ M src/components/Settings.tsx
+?? eslint-output.txt
+?? git-status.txt
+?? tsc-output.txt
+?? tsc2-output.txt
