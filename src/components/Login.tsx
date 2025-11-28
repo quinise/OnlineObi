@@ -2,7 +2,6 @@
 import { auth, signInWithGoogle } from "./../../GoogleProvider.tsx";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase.config";
-import { getRedirectResult } from 'firebase/auth';
 import { signInWithGoogle } from "./../../GoogleProvider";
 import { motion } from "framer-motion";
 import Loader from "./Loader.tsx";
@@ -31,38 +30,6 @@ const Login = () => {
         }
     }, [user]);
 
-    // Check for redirect result on mount (handles signInWithRedirect flow)
-    React.useEffect(() => {
-        let mounted = true;
-        (async () => {
-            try {
-                console.log('[Login] getRedirectResult: checking for redirect result...');
-                const res = await getRedirectResult(auth as any);
-                console.log('[Login] getRedirectResult raw:', res);
-                if (!mounted) return;
-                if (res && (res as any).user) {
-                    console.log('[Login] getRedirectResult: got user, navigating to /dashboard');
-                    try {
-                        window.history.pushState({}, '', '/dashboard');
-                        window.dispatchEvent(new PopStateEvent('popstate'));
-                    } catch (e) {
-                        console.error('[Login] navigation after redirect result failed', e);
-                    }
-                } else {
-                    console.log('[Login] getRedirectResult: no result. sessionStorage pendingRedirect=', sessionStorage.getItem('firebase:pendingRedirect'));
-                }
-            } catch (err) {
-                console.error('[Login] getRedirectResult error:', err);
-                try {
-                    console.log('[Login] sessionStorage pendingRedirect=', sessionStorage.getItem('firebase:pendingRedirect'));
-                } catch (e) {
-                    // ignore
-                }
-            }
-        })();
-        return () => { mounted = false; };
-    }, []);
-
     return (
         // If there is a user, welcome them... If there is an error, show the message, if the page is loading show the loader
         <div className="bg-ivory h-screen">
@@ -80,12 +47,12 @@ const Login = () => {
                 </div>
                 <div className="bg-forrest border-2 border-forrest/60 rounded-md p-6 h-40 max-w-md w-full mb-12 mx-auto shadow-md">
                     <h2 className='text-3xl text-ivory font-sans-serif mb-2 flex items-center justify-center'><b>Login to Online Obi</b></h2>
-                                                                                <div className='mt-6 mb-8 pb-2 flex flex-col items-center justify-center'>
-                                                                                        <Button onClick={signInWithGoogle} variant="secondary" size="md" className="flex items-center gap-3 px-6 !text-forrest">
-                                                                                                <img className="object-cover h-6 w-6" src="../assets/GoogleIcon.png" alt="Google logo" />
-                                                                                                <span className="font-bold text-forrest">Sign in with Google</span>
-                                                                                        </Button>
-                                                                                </div>
+                                        <div className='mt-6 mb-6 pb-9 flex items-center justify-center'>
+                                            <Button onClick={signInWithGoogle} variant="secondary" size="md" className="flex items-center gap-3 px-6 !text-forrest">
+                                                <img className="object-cover h-6 w-6" src="../assets/GoogleIcon.png" alt="Google logo" />
+                                                <span className="font-bold text-forrest">Sign in with Google</span>
+                                            </Button>
+                                        </div>
                 </div>
                 <div className="pb-10">
                     <h3 className="text-2xl text-mahogany w-full mt-5 mb-5 font-serif flex items-center justify-center">Why Online Obi?</h3>
