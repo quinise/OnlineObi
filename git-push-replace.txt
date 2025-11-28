@@ -1,5 +1,0 @@
-remote: This repository moved. Please use the new location:        
-remote:   https://github.com/quinise/OnlineObi.git        
-To https://github.com/quinise/MobileObi.git
-   6df668c..5b3ea85  feat/ui-buttons -> feat/ui-buttons
-branch 'feat/ui-buttons' set up to track 'origin/feat/ui-buttons'.
