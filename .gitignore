@@ -106,3 +106,6 @@ tsc-output.txt
 tsc2-output.txt
 verify-eslint.txt
 verify-tsc.txt
+
+# Ignore PR body / temporary markdown files
+PR_BODY_confirm-delete.md
