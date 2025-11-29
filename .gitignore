@@ -109,3 +109,6 @@ verify-tsc.txt
 
 # Ignore PR body / temporary markdown files
 PR_BODY_confirm-delete.md
+
+# Ignore all .txt files
+*.txt
