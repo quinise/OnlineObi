@@ -1,0 +1,6 @@
+# robots.txt for Online Obi
+# Allow all crawler
+User-agent: *
+Allow: /
+
+Sitemap: https://obi-project-397801.web.app

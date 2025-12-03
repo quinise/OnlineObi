@@ -8,14 +8,23 @@
       try { globalThis.__REACT_ROUTER__ = { v7_startTransition: true }; } catch (e) {}
       try { self.__REACT_ROUTER__ = { v7_startTransition: true }; } catch (e) {}
     </script>
-    <!-- Temporary: filter the React Router future-flag deprecation warning to reduce console noise
-         This is a reversible, dev-only suppression while we continue to diagnose the root cause. -->
-    <!-- NOTE: Removed temporary dev-only console suppression here. If you still see
-         React Router future-flag warnings, we'll inspect the exact stack trace and
-         refactor early imports rather than hiding the warning. -->
     <link rel="icon" type="image/svg+xml" href="./src/assets/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Online Obi</title>
+    <title>Online Obi — Virtual divination casts</title>
+    <meta name="description" content="Online Obi — perform Obi divination online, save casts with interpretations, and review previous readings. Quick, private, and accessible divination results." />
+    <!-- Social / Open Graph -->
+    <meta property="og:title" content="Online Obi — Virtual divination casts" />
+    <meta property="og:description" content="Perform Obi divination online. Each cast includes an Odu, interpretation, and a set of kola nut results you can save for later." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://obi-project-397801.web.app/" />
+    <meta property="og:image" content="/assets/favicon.png" />
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Online Obi — Virtual divination casts" />
+    <meta name="twitter:description" content="Perform Obi divination online. Each cast includes an Odu, interpretation, and a set of kola nut results you can save for later." />
+    <meta name="twitter:image" content="/assets/favicon.png" />
+    <link rel="canonical" href="https://obi-project-397801.web.app/" />
+    <meta name="theme-color" content="#0b6623" />
   </head>
   <body>
     <div id="root"></div>
