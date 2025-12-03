@@ -10,10 +10,6 @@ import { handleUpdate } from "../services/updateCast.tsx";
 import Modal from "./Modal.tsx";
 import Button from "./ui/Button";
 
-// Note: hover effects for cast list are implemented with Tailwind CSS (hover:scale, hover:shadow)
-
-// Micro-interactions are implemented with Tailwind (hover:scale + transition)
-
 const CastList = () => {
   const [user] = useAuthState(auth);
   const [casts, setCasts] = useState<Cast[]>([]);
@@ -49,23 +45,25 @@ const CastList = () => {
   }
 
   // Provide the HTML for a the user's list of uniquely titled casts
-  const renderListOfCasts = (uniqueCasts: Cast[]) => {
+      const renderListOfCasts = (uniqueCasts: Cast[]) => {
     return (
       <div>
         {uniqueCasts && uniqueCasts.map((castFromList: Cast) => (
-          <div key={castFromList.id} className="mb-6">
-            <div
-              className="mt-6 mx-auto w-96 h-40 p-1.5 bg-forrest/60 border-2 border-forrest/60 rounded-tl-2xl shadow-md block transform transition-transform hover:scale-105 hover:shadow-lg cursor-pointer"
-              onClick={() => setModuleCast(castFromList)}
-            >
-              <div className="w-88 h-36 pt-12 pl-4 bg-forrest/20 rounded-lg border-2 border-forrest/40 flex justify-between">
-                <div>
-                  <h1 className="text-2xl text-ivory font-serif">{castFromList.title}</h1>
-                  <p className="text-sm text-ivory/80 mt-1">Created on {new Intl.DateTimeFormat('en-US', { month: 'short', day: '2-digit', year: 'numeric' }).format(new Date(castFromList.timestamp))}</p>
+          <div key={castFromList.id} className="mb-6 px-4">
+              <div className="max-w-full md:max-w-[24rem] w-3/4 md:w-full mx-auto">
+              <div
+                className="w-full mt-6 mx-auto h-40 p-1.5 bg-forrest/60 border-2 border-forrest/60 rounded-tl-2xl shadow-md block transform transition-transform hover:scale-105 hover:shadow-lg cursor-pointer"
+                onClick={() => setModuleCast(castFromList)}
+              >
+                <div className="w-full h-36 pt-12 pl-4 bg-forrest/20 rounded-lg border-2 border-forrest/40 flex justify-between">
+                  <div>
+                    <h1 className="text-2xl text-ivory font-serif">{castFromList.title}</h1>
+                    <p className="text-sm text-ivory/80 mt-1">Created on {new Intl.DateTimeFormat('en-US', { month: 'short', day: '2-digit', year: 'numeric' }).format(new Date(castFromList.timestamp))}</p>
+                  </div>
                 </div>
               </div>
             </div>
-
+            {/* Edit and Delete Buttons */}
             <div className="flex gap-4 justify-center mt-2">
               <Button
                 variant="primary"
@@ -101,6 +99,7 @@ const CastList = () => {
   }, []);
 
   return (
+    // Render the list of casts with search functionality
     <Fragment>
       {user && <h2 className="text-3xl text-forrest font-serif mt-10 flex items-center justify-center">{user.displayName}'s Casts</h2>}
       <div className="flex items-center justify-center">
@@ -121,11 +120,11 @@ const CastList = () => {
           : searchCast.title.toLowerCase().includes(searchValue.toLowerCase());
         })
         .map((castFromList: Cast) => (
-          <div key={castFromList.id} className="w-full flex items-center justify-center">
-            <div className="max-w-[28rem] w-full">
+          <div key={castFromList.id} className="w-full flex items-center justify-center px-4">
+              <div className="max-w-full md:max-w-[28rem] w-3/4 md:w-full mx-auto">
               <div
                 onClick={() => setModuleCast(castFromList)}
-                className="mt-6 mx-auto w-full h-40 p-1.5 bg-forrest/60 border-2 border-forrest/60 rounded-tl-2xl shadow-md block transform transition-transform hover:scale-105 hover:shadow-lg cursor-pointer"
+                className="mt-6 mx-auto md:w-full h-40 p-1.5 bg-forrest/60 border-2 border-forrest/60 rounded-tl-2xl shadow-md block transform transition-transform hover:scale-105 hover:shadow-lg cursor-pointer"
               >
                 <div className="w-full h-36 pt-12 pl-4 bg-forrest/20 rounded-lg border-2 border-forrest/40 flex justify-between">
                   <div>
@@ -134,6 +133,7 @@ const CastList = () => {
                   </div>
                 </div>
               </div>
+              {/* Edit and Delete Buttons */}
               <div className="mb-5 flex gap-4 justify-center mt-2">
                 <Button
                   variant="primary"
@@ -156,24 +156,27 @@ const CastList = () => {
           </div>
         ))}
       </div>
-      <hr className="text-forrest rounded-lg md:w-[70%] md:mx-auto mb-8 "/>
+      <hr className="text-forrest rounded-lg bold md:w-[70%] lg:w-[70%] md:mx-auto lg:mx-auto mb-8 "/>
       <div className="pb-10">
         {renderListOfCasts(casts)}
       </div>
+      {/* View/Edit Cast Modal */}
       <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
         <div className="p-6">
-        {showInput ? <input className="text-forrest font-sans-serif mb-2 flex mx-auto" placeholder={newTitle} value={newTitle} onChange={(e) => setNewTitle(e.target.value)}/>
-        : <h3 className="text-xl font-semibold text-forrest font-serif mb-5 flex justify-center"
-          >{cast.title}</h3>
-          }
-          <hr className="text-forrest rounded-lg md:w-[70%] md:mx-auto mb-8"/>
-          <div className="ml-12">
-            <p className="text-xl text-forrest font-sans-serif  mb-5"><b>Odu:</b>  {cast.odu}</p>
-            <p className="text-xl text-forrest font-sans-serif mb-5"><b>Date:</b>  {new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(cast.timestamp)}</p>
-            <p className="text-xl text-forrest font-sans-serif mb-5"><b>Answer :</b> {cast.answer}</p>
-            <p className="text-xl text-forrest font-sans-serif mb-5"><b>Interpretation:</b>  {cast.interpretation}</p>
+          <div className="mx-auto md:mx-auto ml:mx-auto">
+          {showInput ? <input className="text-forrest font-sans-serif mb-2 flex mx-auto" placeholder={newTitle} value={newTitle} onChange={(e) => setNewTitle(e.target.value)}/>
+          : <h3 className="text-xl font-semibold text-forrest font-serif mb-5 flex justify-center"
+            >{cast.title}</h3>
+            }
+            <hr className="h-0.5 bg-forrest rounded-lg w-3/4 mx-auto md:w-[70%] md:mx-auto mb-8" />
           </div>
-          <div className="mt-8 mb-8 flex justify-between">
+          <div className="">
+            <p className="text-xl text-forrest font-serif mb-5"><b>Odu:</b>  {cast.odu}</p>
+            <p className="text-xl text-forrest font-serif mb-5"><b>Date:</b>  {new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(cast.timestamp)}</p>
+            <p className="text-xl text-forrest font-serif mb-5"><b>Answer :</b> {cast.answer}</p>
+            <p className="text-xl text-forrest font-serif mb-5"><b>Interpretation:</b>  {cast.interpretation}</p>
+          </div>
+          <div className="md:w-[100%] lg:w-[100%] mt-8 mb-8 flex justify-center">
             <img className="object-scale-down h-32 w-32 inline-block transform transition-transform hover:scale-125" src={`../assets/${cast.maleObi1}`}/>
             <img className="object-scale-down h-32 w-32 inline-block transform transition-transform hover:scale-125" src={`../assets/${cast.maleObi2}`}/>
             <img className="object-scale-down h-32 w-32 inline-block transform transition-transform hover:scale-125" src={`../assets/${cast.femaleObi1}`}/>
@@ -191,7 +194,6 @@ const CastList = () => {
               </Button>
             </div>
           )}
-          
         </div>
       </Modal>
       {/* Confirm delete modal */}
