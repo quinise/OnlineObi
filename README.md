@@ -1,6 +1,6 @@
 # Online Obi
 
-## 🛠️ Built With  
+## 🛠️ Built With
 
 <p align="center">
   <a href="https://react.dev/">
@@ -39,9 +39,10 @@ Users can log in, save their casts, edit details, and revisit past results. Orig
 ## 🎯 Project Goals
 
 I set out on this coding endeavor to learn how to use **ReactJS, Vite, Figma, OAuth, and TailwindCSS**.
-   
+
 ---
-## ✨ Features  
+
+## ✨ Features
 
 <p align="center">
   <a href="https://firebase.google.com/docs/auth">
@@ -65,30 +66,52 @@ I set out on this coding endeavor to learn how to use **ReactJS, Vite, Figma, OA
 
 Before you begin, ensure you have the following installed:
 
-- [Node.js](https://nodejs.org/)  
-- [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)  
-- [Firebase CLI](https://firebase.google.com/docs/cli) (`npm install -g firebase-tools`)  
+- [Node.js](https://nodejs.org/)
+- [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+- [Firebase CLI](https://firebase.google.com/docs/cli) (`npm install -g firebase-tools`)
 - A Firebase project created in the [Firebase Console](https://console.firebase.google.com/)
 
 ## 📦 Dependencies
 
 ```json
-"firebase": "^10.4.0",         
-"framer-motion": "^10.16.4",     
-"react": "^18.2.0",              
-"tailwindcss": "^3.3.3",         
-"typescript": "^5.0.2",         
-"vite": "^4.4.5"             
+"firebase": "^12.6.0",
+"framer-motion": "^10.16.4",
+"react": "^18.2.0",
+"react-dom": "^18.2.0",
+"react-firebase-hooks": "^5.1.1",
+"react-icons": "^4.11.0",
+"uid": "^2.0.2",
+"tailwindcss": "^3.3.3",
+"typescript": "^5.0.2",
+"vite": "^7.2.4"
+```
+
+## 🧰 Dev & Tooling
+
+- Recommended Node.js: 18.x or newer
+- Firebase CLI: `firebase-tools` (used for deployment) — install with `npm i -g firebase-tools`
+- Linting: ESLint with the provided workspace config (`npm run lint`)
+
+### Useful scripts
+
+```bash
+npm run dev      # start Vite dev server
+npm run build    # build for production
+npm run preview  # preview production build
+npm run lint     # run ESLint checks
 ```
 
 ## 🚀 Getting Started
+
 ### 1. Clone the repo
+
 ```bash
 git clone https://github.com/quinise/OnlineObi.git
 cd OnlineObi
 ```
 
 ### 2. Install dependencies
+
 ```bash
 npm install
 ```
@@ -98,6 +121,7 @@ npm install
 Create a `firebase.config.tsx` file in the root of your project and add your Firebase project keys from the Firebase Console.
 
 Example:
+
 ```ts
 // firebase.config.tsx
 export const firebaseConfig = {
@@ -106,10 +130,12 @@ export const firebaseConfig = {
   projectId: "YOUR_PROJECT_ID",
   storageBucket: "YOUR_STORAGE_BUCKET",
   messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  appId: "YOUR_APP_ID",
 };
 ```
+
 ### 4. Run locally
+
 ```bash
 npm run dev
 ```
@@ -120,9 +146,11 @@ npm run dev
 
 - `Tailwind CSS IntelliSense` (`bradlc.vscode-tailwindcss`) — provides autocomplete, linting, and class inspections for Tailwind projects. The workspace recommends this extension in `.vscode/extensions.json`.
 - Workspace CSS setting: this project adds a workspace setting to suppress "Unknown at rule" diagnostics for PostCSS/Tailwind directives (`.vscode/settings.json`). Install the Tailwind extension for full IntelliSense and then you can remove or keep the setting as desired.
+
 ### 5. Navigate to http://localhost:5173
 
 ### 6. Build and deploy
+
 ```bash
 npm run build
 firebase deploy
@@ -152,10 +180,12 @@ firebase deploy
   <em>Demo – Short animation of generating a cast</em>
 </p>
 
-## 🤝 Contributing
-Contributions, issues, and feature requests are welcome!  
+## 🫱🏾‍🫲🏿 Contributing
+
+Issues, and feature requests are welcome!
 
 ---
+
 ## 📄 License
 
 This project is licensed under the MIT License.
