@@ -30,3 +30,4 @@ src/shims/
 
 # Ignore all .txt files (Local debug / temporary output files)
 debug_logs
+
