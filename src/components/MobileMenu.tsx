@@ -43,7 +43,13 @@ function MobileMenu({ navLinks, close }: { navLinks: NavLink[]; close: () => voi
                     };
                     return (
                         <div key={path ?? `mobileNav${index}`} className="transform transition-transform hover:scale-110 origin-left">
-                            <a className="block py-2 text-forrest font-serif" href={path} onClick={handleNav}>{ text }</a>
+                            <a
+                                className="block py-2 text-forrest font-serif hover:underline active:underline focus:underline underline-offset-4 transition-all"
+                                href={path}
+                                onClick={handleNav}
+                            >
+                                { text }
+                            </a>
                         </div>
                     );
                 })}

@@ -65,7 +65,7 @@ const Settings = ()  => {
 
   return (
     <>
-        <div className="mt-5 mb-0 flex justify-end w-full">
+        <div className="mt-5 mb-6 sm:mb-0 flex justify-end w-full">
                 <Button
                     aria-label="Open settings"
                     variant="ghost"

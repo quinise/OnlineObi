@@ -110,34 +110,39 @@ const Dashboard = () => {
           </Button>
         </div>
       </div>
+      {/*  */}
       <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
         <div className="p-6">
-          <div className="">
-            {cast && <p className="text-xl text-mahogany font-sans-serif mt-5 flex items-center justify-center"><b>Odu:&nbsp;</b>{cast.odu}</p>}
-            {cast && <p className="text-xl text-mahogany font-sans-serif mt-5 flex items-center justify-center"><b>Date:&nbsp;</b>{new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(cast.timestamp)}</p>}
-            {cast && <p className="text-xl text-mahogany font-sans-serif mt-5 flex items-center justify-center"><b>Answer:&nbsp;</b>{cast.answer}</p>}
-            {cast && <p className="text-xl text-mahogany font-sans-serif mt-5 flex items-center justify-center"><b>Interpretation:&nbsp;</b>{cast.interpretation}</p>}
+          <div className="text-left w-full">
+            {cast && <p className="text-xl text-mahogany font-serif mt-5 w-full"><span className="font-serif font-semibold">Odu:</span>&nbsp;{cast.odu}</p>}
+            {cast && <p className="text-xl text-mahogany font-serif mt-5 w-full"><span className="font-serif font-semibold">Date:</span>&nbsp;{new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(cast.timestamp)}</p>}
+            {cast && <p className="text-xl text-mahogany font-serif mt-5 w-full"><span className="font-serif font-semibold">Answer:</span>&nbsp;{cast.answer}</p>}
+            {cast && <p className="text-xl text-mahogany font-serif mt-5 w-full"><span className="font-serif font-semibold">Interpretation:</span>&nbsp;{cast.interpretation}</p>}
           </div>
-            <div className="mx-auto mt-10 mb-5 h-32 w-32 flex items-center justify-center">
-            {cast && <img className="object-scale-down h-64 w-64 inline-block transform transition-transform hover:scale-125" src={`assets/${cast.maleObi1}`} />}
-            {cast && <img className="object-scale-down h-64 w-64 inline-block transform transition-transform hover:scale-125" src={`assets/${cast.maleObi2}`} />}
-            {cast && <img className="object-scale-down h-64 w-64 inline-block transform transition-transform hover:scale-125" src={`assets/${cast.femaleObi1}`} />}
-            {cast && <img className="object-scale-down h-64 w-64 inline-block transform transition-transform hover:scale-125" src={`assets/${cast.femaleObi2}`} />}
+          <div className="mx-auto mt-6 mb-5 flex justify-center">
+            {cast && <img className="object-scale-down h-32 w-32 inline-block transform transition-transform hover:scale-125" src={`../assets/${cast.maleObi1}`} />}
+            {cast && <img className="object-scale-down h-32 w-32 inline-block transform transition-transform hover:scale-125" src={`../assets/${cast.maleObi2}`} />}
+            {cast && <img className="object-scale-down h-32 w-32 inline-block transform transition-transform hover:scale-125" src={`../assets/${cast.femaleObi1}`} />}
+            {cast && <img className="object-scale-down h-32 w-32 inline-block transform transition-transform hover:scale-125" src={`../assets/${cast.femaleObi2}`} />}
           </div>
-            <form onSubmit={(e) => handleSaveCast(e) } className="font-sans-serif mt-20 mb-20 flex flex-col items-center justify-center">
-            <input type="text" className="text-2xl border-2 border-forrest/60 rounded" 
-              placeholder=" add a title..." value={ newTitle } onChange={(e) => setNewTitle(e.target.value)} autoFocus />
-            <div className="mt-10 mb-10 flex items-center justify-center">
-              <Button
-                type="submit"
-                variant="secondary"
-                size="md"
-                className="!bg-forrest !text-ivory hover:scale-105 hover:shadow-lg transition-transform focus:outline-none focus:ring-2 focus:ring-forrest"
-              >
-                Save
-              </Button>
-            </div>
-          </form>
+          <div className="justify-items-center">
+            <form onSubmit={(e) => handleSaveCast(e) } className="font-sans-serif mt-20 mb-20 flex flex-col items-start">
+              <input type="text" className="text-2xl border-2 border-forrest/60 rounded w-full max-w-md" 
+                placeholder=" add a title..." value={ newTitle } onChange={(e) => setNewTitle(e.target.value)} autoFocus />
+              <div className="mt-10 mb-10 w-full flex justify-center">
+                <div className="w-full max-w-md flex justify-center">
+                  <Button
+                    type="submit"
+                    variant="secondary"
+                    size="md"
+                    className="!bg-forrest !text-ivory hover:scale-105 hover:shadow-lg transition-transform focus:outline-none focus:ring-2 focus:ring-forrest"
+                  >
+                    Save
+                  </Button>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
       </Modal>
     </>
