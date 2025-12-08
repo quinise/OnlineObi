@@ -88,7 +88,9 @@ Before you begin, ensure you have the following installed:
 
 ## 🧰 Dev & Tooling
 
-- Recommended Node.js: 18.x or newer
+- Node.js: `20.19.5`
+- npm: `>=9`
+
 - Firebase CLI: `firebase-tools` (used for deployment) — install with `npm i -g firebase-tools`
 - Linting: ESLint with the provided workspace config (`npm run lint`)
 
