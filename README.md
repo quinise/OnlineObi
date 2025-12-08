@@ -76,7 +76,7 @@ Before you begin, ensure you have the following installed:
 ```json
 "firebase": "^12.6.0",
 "framer-motion": "^10.16.4",
-"react": "^18.2.0",
+"react": "^19.2.1",
 "react-dom": "^18.2.0",
 "react-firebase-hooks": "^5.1.1",
 "react-icons": "^4.11.0",
