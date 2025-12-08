@@ -1,6 +1,5 @@
 // This file includes the code for the Dashboard page=
-import { motion } from "framer-motion";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase.config";
 import { Cast } from "../interfaces/Cast.tsx";
@@ -10,21 +9,6 @@ import { checkForDuplicateTitle } from "../services/utils.tsx";
 import Loader from "./Loader.tsx";
 import Modal from "./Modal.tsx";
 import Button from "./ui/Button";
-
-const h1Variants = {
-  initial: {
-    opacity: 0
-  },
-  animate: {
-    opacity: 1,
-    transition: {
-      delay: .3, 
-      duration: 1
-    }
-  }
-}
-
-// Keep the h1 mount fade in Motion; convert input and images hovers to Tailwind utilities
 
 const Dashboard = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -94,11 +78,8 @@ const Dashboard = () => {
   return (
     <>
     <div className="mt-10">
-      <motion.h1 className="text-3xl text-forrest text-opacity-50 font-serif mb-5 flex items-center justify-center"
-        variants={ h1Variants }
-        initial="initial"
-        animate="animate"
-        >Dashboard</motion.h1>
+      <h1 className="text-3xl text-forrest text-opacity-50 font-serif mb-5 flex items-center justify-center"
+        >Dashboard</h1>
         {user && <h2 className="text-2xl text-mahogany font-sans-serif flex items-center justify-center">Welcome, {user.displayName}</h2>}
         {error && <h2 className="text-2xl text-forrest font-serif flex items-center justify-center">Error: {String(error)}</h2>}
         {loading && <Loader />}
