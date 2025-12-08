@@ -91,12 +91,28 @@ const CastList = () => {
   }
 
   React.useEffect(() => {
-    fetchCasts((data: Cast[]) => {
-      // Sort the casts by timestamp
-      const timestampDescending = [...data].sort((a, b) => b.timestamp - a.timestamp);
-      setCasts(timestampDescending);
-    });
-  }, []);
+    // Attach casts listener only when a user is signed in and clean up on sign-out/unmount.
+    let unsubscribe: (() => void) | undefined = undefined;
+
+    if (user?.uid) {
+      unsubscribe = fetchCasts((data: Cast[]) => {
+        // Sort the casts by timestamp
+        const timestampDescending = [...data].sort((a, b) => b.timestamp - a.timestamp);
+        setCasts(timestampDescending);
+      });
+    } else {
+      // Clear list when no user is present
+      setCasts([]);
+    }
+
+    return () => {
+      try {
+        if (unsubscribe) unsubscribe();
+      } catch (e) {
+        // ignore cleanup errors
+      }
+    };
+  }, [user]);
 
   return (
     // Render the list of casts with search functionality
