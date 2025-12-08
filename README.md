@@ -66,10 +66,6 @@ I set out on this coding endeavor to learn how to use **ReactJS, Vite, Figma, OA
 
 Before you begin, ensure you have the following installed:
 
-- [Node.js](https://nodejs.org/)
-- [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
-- [Firebase CLI](https://firebase.google.com/docs/cli) (`npm install -g firebase-tools`)
-- A Firebase project created in the [Firebase Console](https://console.firebase.google.com/)
 
 ## 📦 Dependencies
 
@@ -86,7 +82,8 @@ Before you begin, ensure you have the following installed:
 "vite": "^7.2.4"
 ```
 
-## 🧰 Dev & Tooling
+ **Node**: `lts/*` (use latest LTS; `.nvmrc` updated on upgrade branch)
+ **npm**: `>=9` (recommended)
 
 - Recommended Node.js: 18.x or newer
 - Firebase CLI: `firebase-tools` (used for deployment) — install with `npm i -g firebase-tools`
