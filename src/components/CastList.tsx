@@ -10,6 +10,7 @@ import { handleUpdate } from "../services/updateCast.tsx";
 import Loader from "./Loader.tsx";
 import Modal from "./Modal.tsx";
 import Button from "./ui/Button";
+import Loader from "./Loader.tsx";
 
 const CastList = () => {
   const [user] = useAuthState(auth);
