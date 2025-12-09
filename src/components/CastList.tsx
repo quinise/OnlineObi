@@ -9,10 +9,12 @@ import { fetchCasts } from "../services/fetchCasts.tsx";
 import { handleUpdate } from "../services/updateCast.tsx";
 import Modal from "./Modal.tsx";
 import Button from "./ui/Button";
+import Loader from "./Loader.tsx";
 
 const CastList = () => {
   const [user] = useAuthState(auth);
   const [casts, setCasts] = useState<Cast[]>([]);
+  const [loading, setLoading] = useState(true);
   const [newTitle, setNewTitle] = useState("");
   const [searchValue, setSearchValue] = useState("");
   const [showInput, setShowInput] = useState(false);
@@ -95,14 +97,17 @@ const CastList = () => {
     let unsubscribe: (() => void) | undefined = undefined;
 
     if (user?.uid) {
+      setLoading(true);
       unsubscribe = fetchCasts((data: Cast[]) => {
         // Sort the casts by timestamp
         const timestampDescending = [...data].sort((a, b) => b.timestamp - a.timestamp);
         setCasts(timestampDescending);
+        setLoading(false);
       });
     } else {
       // Clear list when no user is present
       setCasts([]);
+      setLoading(false);
     }
 
     return () => {
@@ -118,6 +123,7 @@ const CastList = () => {
     // Render the list of casts with search functionality
     <Fragment>
       {user && <h2 className="text-3xl text-forrest font-serif mt-10 flex items-center justify-center">{user.displayName}'s Casts</h2>}
+      {loading && <Loader />}
       <div className="flex items-center justify-center">
         <h3 className="text-2xl text-mahogany font-serif mt-10 flex items-center justify-center">Cast Search </h3>
       </div>

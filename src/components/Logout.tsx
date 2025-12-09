@@ -13,9 +13,8 @@ const Logout = () => {
           window.history.pushState({}, '', '/');
           window.dispatchEvent(new PopStateEvent('popstate'));
         } catch (navErr) {
-          console.error('Navigation after signOut failed', navErr);
+          // console.error('Navigation after signOut failed', navErr);
         }
-        console.log("Signed out successfully")
       } catch (error) {
         // Logout unsuccessful — log full diagnostics
         console.error('Logout Error:', error);

@@ -53,13 +53,13 @@ const Login = () => {
 
 
             {/* Details Section */}
-            <div className={`lg:w-48 md:w-11/12 md:my-6 md:mr-10 sm:w-16 sm:mx-auto lg:border-2 lg:border-mahogany/30 lg:rounded-md md:border-2 md:border-mahogany/30 rounded-md p-4 bg-ivory shadow-md md:block lg:block ${showDetails ? 'block' : 'hidden'}`}>
-                <div className="pb-10 max-w-prose px-4 text-center">
-                    <h3 className="text-2xl text-mahogany w-full mt-5 mb-5 font-serif flex items-center justify-center">Why Online Obi?</h3>
+            <div className={`mx-auto md:mx-0 max-w-md px-4 md:px-6 md:py-6 md:border-2 lg:border-2 border-mahogany/30 rounded-md bg-ivory shadow-md md:block lg:block ${showDetails ? 'block' : 'hidden'}`}>
+                <div className="pb-6 text-center md:text-left">
+                    <h3 className="text-2xl text-mahogany mt-5 mb-5 font-serif">Why Online Obi?</h3>
                     <p className="text-base text-mahogany/90 font-sans-serif mb-5"><b>Forgot your pennies or coconut shells? Online Obi casts Obi divination online! Each cast includes an Odu and it's interpretation, a yes/no/maybe result, and a set of four kola nuts. Casts can be saved with a title and a note for later recollection.</b></p>
                 </div>
-                <h3 className="text-2xl text-mahogany w-full mb-5 font-serif flex items-center justify-center">What is Obi?</h3>
-                <p className="text-base text-mahogany/90 font-sans-serif max-w-prose mb-5 text-center px-4"><b>Obi is a divination system used in the spiritual science, IFA. To cast, the diviner throws kola nut, coconut pieces, or even pennies on the ground; then interprets an answer based on how the pieces land.</b></p>
+                <h3 className="text-2xl text-mahogany mb-5 font-serif text-center md:text-left">What is Obi?</h3>
+                <p className="text-base text-mahogany/90 font-sans-serif mb-5 text-center md:text-left"><b>Obi is a divination system used in the spiritual science, IFA. To cast, the diviner throws kola nut, coconut pieces, or even pennies on the ground; then interprets an answer based on how the pieces land.</b></p>
             </div>
             </>
             )}
