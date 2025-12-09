@@ -7,6 +7,7 @@ import { Cast } from "../interfaces/Cast.tsx";
 import { handleDelete } from "../services/deleteCast.tsx";
 import { fetchCasts } from "../services/fetchCasts.tsx";
 import { handleUpdate } from "../services/updateCast.tsx";
+import Loader from "./Loader.tsx";
 import Modal from "./Modal.tsx";
 import Button from "./ui/Button";
 import Loader from "./Loader.tsx";

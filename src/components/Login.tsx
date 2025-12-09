@@ -1,6 +1,7 @@
 // This file includes the code for the Login page
 import React from 'react';
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase.config";
 import { signInWithGoogle } from "./../../GoogleProvider";
 import Loader from "./Loader.tsx";
@@ -9,18 +10,14 @@ import Button from "./ui/Button";
 const Login = () => {
     const [user, loading, error] = useAuthState(auth);
     const [showDetails, setShowDetails] = React.useState(false);
+    const navigate = useNavigate();
     
     React.useEffect(() => {
-        // After successful sign-in, navigate to the dashboard using history API
+        // After successful sign-in, navigate to the dashboard
         if (user) {
-            try {
-                window.history.pushState({}, '', '/dashboard');
-                window.dispatchEvent(new PopStateEvent('popstate'));
-            } catch (e) {
-                // ignore if environment blocks programmatic navigation
-            }
+            navigate('/dashboard', { replace: true });
         }
-    }, [user]);
+    }, [user, navigate]);
 
     return (
         // If there is a user, welcome them... If there is an error, show the message, if the page is loading show the loader
