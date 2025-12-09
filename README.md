@@ -89,7 +89,7 @@ Before you begin, ensure you have the following installed:
 ## 🧰 Dev & Tooling
 
 - Node.js: `20.19.5`
-- npm: `>=9`
+- npm: `11.6.2`
 
 - Firebase CLI: `firebase-tools` (used for deployment) — install with `npm i -g firebase-tools`
 - Linting: ESLint with the provided workspace config (`npm run lint`)
