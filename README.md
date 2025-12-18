@@ -1,6 +1,6 @@
 # Online Obi
 
-## 🛠️ Built With
+## Built With
 
 <p align="center">
   <a href="https://react.dev/">
@@ -36,13 +36,13 @@ Users can log in, save their casts, edit details, and revisit past results. Orig
 
 🔗 **Live Demo**: [obi-project-397801.web.app](https://obi-project-397801.web.app)
 
-## 🎯 Project Goals
+## Project Goals
 
 I set out on this coding endeavor to learn how to use **ReactJS, Vite, Figma, OAuth, and TailwindCSS**.
 
 ---
 
-## ✨ Features
+## Features
 
 <p align="center">
   <a href="https://firebase.google.com/docs/auth">
@@ -62,7 +62,7 @@ I set out on this coding endeavor to learn how to use **ReactJS, Vite, Figma, OA
   </a>
 </p>
 
-## ⚙️ Prerequisites
+## Prerequisites
 
 Before you begin, ensure you have the following installed:
 
@@ -71,7 +71,7 @@ Before you begin, ensure you have the following installed:
 - [Firebase CLI](https://firebase.google.com/docs/cli) (`npm install -g firebase-tools`)
 - A Firebase project created in the [Firebase Console](https://console.firebase.google.com/)
 
-## 📦 Dependencies
+## Dependencies
 
 ```json
 "firebase": "^12.6.0",
@@ -86,7 +86,7 @@ Before you begin, ensure you have the following installed:
 "vite": "^7.2.4"
 ```
 
-## 🧰 Dev & Tooling
+## Dev & Tooling
 
 - Node.js: `20.19.5`
 - npm: `11.6.2`
@@ -103,7 +103,7 @@ npm run preview  # preview production build
 npm run lint     # run ESLint checks
 ```
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Clone the repo
 
@@ -160,7 +160,7 @@ firebase deploy
 
 ---
 
-## 🖼️ Screenshots & Demo
+## Screenshots & Demo
 
 <p align="center">
   <img src="src/assets/homepage.png" alt="Homepage with Generate Result button" width="700"/><br/>
@@ -182,12 +182,12 @@ firebase deploy
   <em>Demo – Short animation of generating a cast</em>
 </p>
 
-## 🫱🏾‍🫲🏿 Contributing
+## Contributing
 
 Issues, and feature requests are welcome!
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License.
